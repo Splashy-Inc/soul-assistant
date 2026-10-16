@@ -1,13 +1,60 @@
-[gd_scene format=3 uid="uid://dhvgc0glasyim"]
+[gd_scene format=4 uid="uid://dhvgc0glasyim"]
 
 [ext_resource type="Script" uid="uid://cdt58i42l53ia" path="res://SCRIPTS/playground.gd" id="1_5e8d0"]
 [ext_resource type="PackedScene" uid="uid://dx3s73knm5n1u" path="res://SCENES/parallax_background.tscn" id="2_ffhdr"]
-[ext_resource type="PackedScene" uid="uid://d1fnfg5c0hmib" path="res://SCENES/tilemap_background.tscn" id="2_o64ee"]
 [ext_resource type="PackedScene" uid="uid://cwr6cg26cwtpw" path="res://SCENES/DialogSystem/dialog_box.tscn" id="2_xgpxw"]
 [ext_resource type="Resource" uid="uid://b6sm5mmiaaucn" path="res://SCRIPTS/DialogSystem/DialogData/example_dialog_data.tres" id="3_5ii31"]
+[ext_resource type="Texture2D" uid="uid://dwioj7irbg406" path="res://SplashySplashScreen.png" id="3_ktou3"]
 [ext_resource type="Texture2D" uid="uid://b4n6irf1jephl" path="res://icon.svg" id="3_vq471"]
 [ext_resource type="PackedScene" uid="uid://b77mh17y84d50" path="res://SCENES/GUI/mobile_controls.tscn" id="7_uhrci"]
 [ext_resource type="PackedScene" uid="uid://bvp1lppkqj5qi" path="res://SCENES/GUI/level_ui.tscn" id="8_y8n3e"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kk3q7"]
+texture = ExtResource("3_ktou3")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_7rfqe"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_kk3q7")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5u8wx"]
+texture = ExtResource("3_ktou3")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_rmx7e"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
+sources/0 = SubResource("TileSetAtlasSource_5u8wx")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5hh14"]
+texture = ExtResource("3_vq471")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_of7f0"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 3
+sources/2 = SubResource("TileSetAtlasSource_5hh14")
 
 [node name="Playground" type="Node" unique_id=147226910 node_paths=PackedStringArray("dialog_box", "mobile_controls")]
 script = ExtResource("1_5e8d0")
@@ -15,14 +62,60 @@ dialog_box = NodePath("DialogBox")
 mobile_controls = NodePath("MobileControls")
 
 [node name="ParallaxBackground" parent="." unique_id=1768022834 instance=ExtResource("2_ffhdr")]
+scroll_offset = Vector2(2147, 803)
 
-[node name="TileMapBackground" parent="." unique_id=84232109 instance=ExtResource("2_o64ee")]
+[node name="Dock" type="Node2D" parent="." unique_id=454072388]
+position = Vector2(0, 540)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Dock" unique_id=697195452]
+tile_map_data = PackedByteArray("AAACAAIAAAACAAIAAAADAAIAAAACAAIAAAAEAAIAAAACAAAAAAAFAAIAAAACAAIAAAAGAAIAAAACAAIAAAAGAAEAAAACAAIAAAAGAAAAAAACAAIAAAAFAAAAAAACAAIAAAAEAAAAAAACAAAAAAADAAAAAAACAAIAAAACAAAAAAACAAIAAAACAAEAAAACAAIAAAADAAEAAAACAAIAAAAEAAEAAAACAAIAAAAFAAEAAAACAAIAAAACAP//AAACAAIAAAACAP7/AAACAAIAAAACAP3/AAACAAIAAAADAP3/AAACAAIAAAAEAP3/AAACAAAAAAAFAP3/AAACAAIAAAAGAP3/AAACAAIAAAAGAP7/AAACAAIAAAAGAP//AAACAAIAAAAFAP//AAACAAIAAAAEAP//AAACAAAAAAADAP//AAACAAIAAAADAP7/AAACAAIAAAAEAP7/AAACAAIAAAAFAP7/AAACAAIAAAABAP//AAACAAIAAAABAAAAAAACAAIAAAAAAAAAAAACAAIAAAAAAP//AAACAAIAAAACAPz/AAACAAIAAAADAPz/AAACAAIAAAAEAPz/AAACAAIAAAAFAPz/AAACAAIAAAAGAPz/AAACAAIAAAACAAMAAAACAAIAAAADAAMAAAACAAIAAAAEAAMAAAACAAIAAAAFAAMAAAACAAIAAAAGAAMAAAACAAIAAAA=")
+tile_set = SubResource("TileSet_7rfqe")
+
+[node name="SoulSlot1" type="Marker2D" parent="Dock" unique_id=1897805037]
+position = Vector2(576, -320)
+
+[node name="SoulSlot2" type="Marker2D" parent="Dock" unique_id=650034066]
+position = Vector2(576, 0)
+
+[node name="SoulSlot3" type="Marker2D" parent="Dock" unique_id=1213557834]
+position = Vector2(576, 320)
+
+[node name="Boat" type="Node2D" parent="." unique_id=414886600]
+position = Vector2(1024, 156)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Boat" unique_id=648146197]
+tile_map_data = PackedByteArray("AAAAAAAAAAABAAEAAAABAAAAAAABAAEAAAACAAAAAAABAAEAAAADAAAAAAABAAEAAAAEAAAAAAABAAEAAAAFAAAAAAABAAEAAAAFAAEAAAABAAEAAAAFAAMAAAABAAEAAAAFAAIAAAABAAEAAAAFAAQAAAABAAEAAAAFAAUAAAABAAEAAAAAAAEAAAABAAEAAAAAAAIAAAABAAEAAAAAAAMAAAABAAEAAAAAAAQAAAABAAEAAAAAAAUAAAABAAEAAAABAAUAAAABAAEAAAACAAUAAAABAAEAAAADAAUAAAABAAEAAAAEAAUAAAABAAEAAAAEAAQAAAABAAEAAAADAAQAAAABAAEAAAACAAQAAAABAAEAAAABAAQAAAABAAEAAAABAAMAAAABAAEAAAABAAIAAAABAAEAAAABAAEAAAABAAEAAAACAAEAAAABAAEAAAADAAEAAAABAAEAAAAEAAEAAAABAAEAAAAEAAIAAAABAAEAAAAEAAMAAAABAAEAAAADAAMAAAABAAEAAAACAAMAAAABAAEAAAACAAIAAAABAAEAAAADAAIAAAABAAEAAAA=")
+tile_set = SubResource("TileSet_rmx7e")
+
+[node name="Soul1" type="Node2D" parent="." unique_id=2139953110]
+position = Vector2(576, 220)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Soul1" unique_id=754266332]
+tile_map_data = PackedByteArray("AAAAAP//AgAAAAAAAAAAAAAAAgAAAAAAAAD//wAAAgAAAAAAAAABAP//AgAAAAAAAAA=")
+tile_set = SubResource("TileSet_of7f0")
+
+[node name="Soul2" type="Node2D" parent="." unique_id=1074549360]
+position = Vector2(576, 540)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Soul2" unique_id=1047343443]
+tile_map_data = PackedByteArray("AAAAAP//AgAAAAAAAAAAAAAAAgAAAAAAAAA=")
+tile_set = SubResource("TileSet_of7f0")
+
+[node name="Soul3" type="Node2D" parent="." unique_id=359727926]
+position = Vector2(576, 860)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Soul3" unique_id=2082652168]
+tile_map_data = PackedByteArray("AAAAAAAAAgAAAAAAAAD//wAAAgAAAAAAAAD+/wAAAgAAAAAAAAD+////AgAAAAAAAAABAAAAAgAAAAAAAAABAP//AgAAAAAAAAA=")
+tile_set = SubResource("TileSet_of7f0")
 
 [node name="DialogBox" parent="." unique_id=393246458 instance=ExtResource("2_xgpxw")]
+visible = false
 left_texture = ExtResource("3_vq471")
 right_texture = ExtResource("3_vq471")
 dialog_data = ExtResource("3_5ii31")
 
 [node name="MobileControls" parent="." unique_id=2035199617 instance=ExtResource("7_uhrci")]
+visible = false
 
 [node name="LevelUI" parent="." unique_id=1008832496 instance=ExtResource("8_y8n3e")]
+visible = false

@@ -1,48 +1,55 @@
-[gd_scene load_steps=3 format=3 uid="uid://temjlvcxcb3r"]
+[gd_scene format=3 uid="uid://temjlvcxcb3r"]
 
-[ext_resource type="Script" path="res://SCRIPTS/loss_screen.gd" id="1_ig5wj"]
+[ext_resource type="Script" uid="uid://ief1j0yj1rv8" path="res://SCRIPTS/loss_screen.gd" id="1_ig5wj"]
 [ext_resource type="StyleBox" uid="uid://1mss4twkxib3" path="res://button_box.tres" id="1_kt3cy"]
 
-[node name="LossScreen" type="Control"]
+[node name="LossScreen" type="Control" unique_id=1688434163]
 custom_minimum_size = Vector2(640, 360)
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_ig5wj")
 
-[node name="MenuContent" type="VBoxContainer" parent="."]
+[node name="MenuContent" type="VBoxContainer" parent="." unique_id=562272288]
 custom_minimum_size = Vector2(640, 360)
-layout_mode = 0
-offset_right = 255.0
-offset_bottom = 204.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="Title" type="Label" parent="MenuContent"]
+[node name="Title" type="Label" parent="MenuContent" unique_id=146333076]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "You lose..."
 horizontal_alignment = 1
 
-[node name="MenuButtons" type="VBoxContainer" parent="MenuContent"]
+[node name="MenuButtons" type="VBoxContainer" parent="MenuContent" unique_id=1924737503]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 20
 
-[node name="MainMenuButton" type="Button" parent="MenuContent/MenuButtons"]
+[node name="MainMenuButton" type="Button" parent="MenuContent/MenuButtons" unique_id=1209814441]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = ExtResource("1_kt3cy")
 text = "Main Menu"
 
-[node name="RestartButton" type="Button" parent="MenuContent/MenuButtons"]
+[node name="RestartButton" type="Button" parent="MenuContent/MenuButtons" unique_id=215560753]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 theme_override_styles/normal = ExtResource("1_kt3cy")
 text = "Restart Level"
 
-[node name="QuitButton" type="Button" parent="MenuContent/MenuButtons"]
+[node name="QuitButton" type="Button" parent="MenuContent/MenuButtons" unique_id=2110981475]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
