@@ -11,13 +11,17 @@ var boat_offset : Vector2
 func _process(delta: float) -> void:
 	if dragging:
 		if Input.is_action_pressed("click"):
-			global_position = get_viewport().get_mouse_position() - (offset * scale.x)
-			if is_instance_valid(boat):
-				global_position = Vector2(snappedf(global_position.x, 128), snapped(global_position.y, 128)) + boat_offset
+			if is_instance_valid(starting_slot):
+				global_position = get_viewport().get_mouse_position() - (offset * scale.x)
+				if is_instance_valid(boat):
+					global_position = Vector2(snappedf(global_position.x, 128), snapped(global_position.y, 128)) + boat_offset
 		else:
 			dragging = false
 			if not is_instance_valid(boat):
 				position = Vector2.ZERO
+			else:
+				reparent(boat)
+				starting_slot = null
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
@@ -26,11 +30,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	boat = body
-	reparent(boat)
-	scale = Vector2.ONE
 	boat_offset = Vector2(boat.global_position.x - snappedf(boat.global_position.x, 128) + 128, boat.global_position.y - snappedf(boat.global_position.y, 128) + 128)
 
 func _on_body_exited(body: Node2D) -> void:
 	boat = null
-	reparent(starting_slot)
-	scale = Vector2.ONE
