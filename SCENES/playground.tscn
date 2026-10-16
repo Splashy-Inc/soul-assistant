@@ -14,6 +14,23 @@
 texture = ExtResource("3_ktou3")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_7rfqe"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_kk3q7")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5u8wx"]
+texture = ExtResource("3_ktou3")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
@@ -31,25 +48,6 @@ texture_region_size = Vector2i(128, 128)
 1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 2:2/0 = 0
 2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-
-[sub_resource type="TileSet" id="TileSet_7rfqe"]
-tile_size = Vector2i(128, 128)
-physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 0
-sources/0 = SubResource("TileSetAtlasSource_kk3q7")
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5u8wx"]
-texture = ExtResource("3_ktou3")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_rmx7e"]
 tile_size = Vector2i(128, 128)
@@ -139,4 +137,5 @@ visible = false
 visible = false
 
 [connection signal="body_entered" from="Soul1" to="Soul1" method="_on_body_entered"]
+[connection signal="body_exited" from="Soul1" to="Soul1" method="_on_body_exited"]
 [connection signal="input_event" from="Soul1" to="Soul1" method="_on_input_event"]
