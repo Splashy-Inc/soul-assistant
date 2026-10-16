@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://b6sm5mmiaaucn" path="res://SCRIPTS/DialogSystem/DialogData/example_dialog_data.tres" id="3_5ii31"]
 [ext_resource type="Texture2D" uid="uid://dwioj7irbg406" path="res://SplashySplashScreen.png" id="3_ktou3"]
 [ext_resource type="Texture2D" uid="uid://b4n6irf1jephl" path="res://icon.svg" id="3_vq471"]
+[ext_resource type="Script" uid="uid://cba0bpvyx7idv" path="res://SCRIPTS/soul.gd" id="4_kk3q7"]
 [ext_resource type="PackedScene" uid="uid://b77mh17y84d50" path="res://SCENES/GUI/mobile_controls.tscn" id="7_uhrci"]
 [ext_resource type="PackedScene" uid="uid://bvp1lppkqj5qi" path="res://SCENES/GUI/level_ui.tscn" id="8_y8n3e"]
 
@@ -13,17 +14,28 @@
 texture = ExtResource("3_ktou3")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
 [sub_resource type="TileSet" id="TileSet_7rfqe"]
 tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_kk3q7")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5u8wx"]
@@ -87,12 +99,18 @@ position = Vector2(1024, 156)
 tile_map_data = PackedByteArray("AAAAAAAAAAABAAEAAAABAAAAAAABAAEAAAACAAAAAAABAAEAAAADAAAAAAABAAEAAAAEAAAAAAABAAEAAAAFAAAAAAABAAEAAAAFAAEAAAABAAEAAAAFAAMAAAABAAEAAAAFAAIAAAABAAEAAAAFAAQAAAABAAEAAAAFAAUAAAABAAEAAAAAAAEAAAABAAEAAAAAAAIAAAABAAEAAAAAAAMAAAABAAEAAAAAAAQAAAABAAEAAAAAAAUAAAABAAEAAAABAAUAAAABAAEAAAACAAUAAAABAAEAAAADAAUAAAABAAEAAAAEAAUAAAABAAEAAAAEAAQAAAABAAEAAAADAAQAAAABAAEAAAACAAQAAAABAAEAAAABAAQAAAABAAEAAAABAAMAAAABAAEAAAABAAIAAAABAAEAAAABAAEAAAABAAEAAAACAAEAAAABAAEAAAADAAEAAAABAAEAAAAEAAEAAAABAAEAAAAEAAIAAAABAAEAAAAEAAMAAAABAAEAAAADAAMAAAABAAEAAAACAAMAAAABAAEAAAACAAIAAAABAAEAAAADAAIAAAABAAEAAAA=")
 tile_set = SubResource("TileSet_rmx7e")
 
-[node name="Soul1" type="Node2D" parent="." unique_id=2139953110]
+[node name="Soul1" type="Area2D" parent="." unique_id=2019894285]
 position = Vector2(576, 220)
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("4_kk3q7")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Soul1" unique_id=754266332]
 tile_map_data = PackedByteArray("AAAAAP//AgAAAAAAAAAAAAAAAgAAAAAAAAD//wAAAgAAAAAAAAABAP//AgAAAAAAAAA=")
 tile_set = SubResource("TileSet_of7f0")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Soul1" unique_id=1904227499]
+polygon = PackedVector2Array(0, -128, 256, -128, 256, 0, 128, 0, 128, 128, -128, 128, -128, 0, 0, 0)
 
 [node name="Soul2" type="Node2D" parent="." unique_id=1074549360]
 position = Vector2(576, 540)
@@ -119,3 +137,6 @@ visible = false
 
 [node name="LevelUI" parent="." unique_id=1008832496 instance=ExtResource("8_y8n3e")]
 visible = false
+
+[connection signal="body_entered" from="Soul1" to="Soul1" method="_on_body_entered"]
+[connection signal="input_event" from="Soul1" to="Soul1" method="_on_input_event"]
