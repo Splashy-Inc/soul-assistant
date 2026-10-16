@@ -1,10 +1,13 @@
 extends Level
 
-func _level_ready():
-	var new_timer := Timer.new()
-	new_timer.one_shot = true
-	add_child(new_timer)
-	new_timer.start(3.0)
-	await new_timer.timeout
-	new_timer.queue_free()
-	Globals.update_info("Updated")
+@export var soul_scenes : Array[PackedScene]
+
+@onready var dock: Dock = $Dock
+
+func _level_ready():	
+	while dock.add_soul(generate_new_soul()):
+		print("New soul added to dock")
+
+func generate_new_soul() -> Soul:
+	var new_soul = soul_scenes.pick_random().instantiate()
+	return new_soul
