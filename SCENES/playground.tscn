@@ -27,6 +27,17 @@ texture_region_size = Vector2i(128, 128)
 tile_size = Vector2i(128, 128)
 sources/0 = SubResource("TileSetAtlasSource_kk3q7")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5hh14"]
+texture = ExtResource("3_vq471")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_of7f0"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 3
+sources/2 = SubResource("TileSetAtlasSource_5hh14")
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5u8wx"]
 texture = ExtResource("3_ktou3")
 texture_region_size = Vector2i(128, 128)
@@ -55,17 +66,6 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_5u8wx")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5hh14"]
-texture = ExtResource("3_vq471")
-texture_region_size = Vector2i(128, 128)
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_of7f0"]
-tile_size = Vector2i(128, 128)
-physics_layer_0/collision_layer = 2
-physics_layer_0/collision_mask = 3
-sources/2 = SubResource("TileSetAtlasSource_5hh14")
-
 [node name="Playground" type="Node" unique_id=147226910 node_paths=PackedStringArray("dialog_box", "mobile_controls")]
 script = ExtResource("1_5e8d0")
 dialog_box = NodePath("DialogBox")
@@ -84,11 +84,37 @@ tile_set = SubResource("TileSet_7rfqe")
 [node name="SoulSlot1" type="Marker2D" parent="Dock" unique_id=1897805037]
 position = Vector2(576, -320)
 
+[node name="Soul1" type="Area2D" parent="Dock/SoulSlot1" unique_id=2019894285]
+z_index = 2
+scale = Vector2(0.75, 0.75)
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("4_kk3q7")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Dock/SoulSlot1/Soul1" unique_id=754266332]
+tile_map_data = PackedByteArray("AAAAAP//AgAAAAAAAAAAAAAAAgAAAAAAAAD//wAAAgAAAAAAAAABAP//AgAAAAAAAAA=")
+tile_set = SubResource("TileSet_of7f0")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Dock/SoulSlot1/Soul1" unique_id=1904227499]
+polygon = PackedVector2Array(1, -127, 255, -127, 255, -1, 127, -1, 127, 127, -127, 127, -127, 1, 1, 1)
+
 [node name="SoulSlot2" type="Marker2D" parent="Dock" unique_id=650034066]
 position = Vector2(576, 0)
 
+[node name="Soul2" type="Node2D" parent="Dock/SoulSlot2" unique_id=1074549360]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Dock/SoulSlot2/Soul2" unique_id=1047343443]
+tile_map_data = PackedByteArray("AAAAAP//AgAAAAAAAAAAAAAAAgAAAAAAAAA=")
+tile_set = SubResource("TileSet_of7f0")
+
 [node name="SoulSlot3" type="Marker2D" parent="Dock" unique_id=1213557834]
 position = Vector2(576, 320)
+
+[node name="Soul3" type="Node2D" parent="Dock/SoulSlot3" unique_id=359727926]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Dock/SoulSlot3/Soul3" unique_id=2082652168]
+tile_map_data = PackedByteArray("AAAAAAAAAgAAAAAAAAD//wAAAgAAAAAAAAD+/wAAAgAAAAAAAAD+////AgAAAAAAAAABAAAAAgAAAAAAAAABAP//AgAAAAAAAAA=")
+tile_set = SubResource("TileSet_of7f0")
 
 [node name="Boat" type="Node2D" parent="." unique_id=414886600]
 position = Vector2(1024, 156)
@@ -96,33 +122,6 @@ position = Vector2(1024, 156)
 [node name="TileMapLayer" type="TileMapLayer" parent="Boat" unique_id=648146197]
 tile_map_data = PackedByteArray("AAAAAAAAAAABAAEAAAABAAAAAAABAAEAAAACAAAAAAABAAEAAAADAAAAAAABAAEAAAAEAAAAAAABAAEAAAAFAAAAAAABAAEAAAAFAAEAAAABAAEAAAAFAAMAAAABAAEAAAAFAAIAAAABAAEAAAAFAAQAAAABAAEAAAAFAAUAAAABAAEAAAAAAAEAAAABAAEAAAAAAAIAAAABAAEAAAAAAAMAAAABAAEAAAAAAAQAAAABAAEAAAAAAAUAAAABAAEAAAABAAUAAAABAAEAAAACAAUAAAABAAEAAAADAAUAAAABAAEAAAAEAAUAAAABAAEAAAAEAAQAAAABAAEAAAADAAQAAAABAAEAAAACAAQAAAABAAEAAAABAAQAAAABAAEAAAABAAMAAAABAAEAAAABAAIAAAABAAEAAAABAAEAAAABAAEAAAACAAEAAAABAAEAAAADAAEAAAABAAEAAAAEAAEAAAABAAEAAAAEAAIAAAABAAEAAAAEAAMAAAABAAEAAAADAAMAAAABAAEAAAACAAMAAAABAAEAAAACAAIAAAABAAEAAAADAAIAAAABAAEAAAA=")
 tile_set = SubResource("TileSet_rmx7e")
-
-[node name="Soul1" type="Area2D" parent="." unique_id=2019894285]
-position = Vector2(576, 220)
-collision_layer = 2
-collision_mask = 3
-script = ExtResource("4_kk3q7")
-
-[node name="TileMapLayer" type="TileMapLayer" parent="Soul1" unique_id=754266332]
-tile_map_data = PackedByteArray("AAAAAP//AgAAAAAAAAAAAAAAAgAAAAAAAAD//wAAAgAAAAAAAAABAP//AgAAAAAAAAA=")
-tile_set = SubResource("TileSet_of7f0")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Soul1" unique_id=1904227499]
-polygon = PackedVector2Array(0, -128, 256, -128, 256, 0, 128, 0, 128, 128, -128, 128, -128, 0, 0, 0)
-
-[node name="Soul2" type="Node2D" parent="." unique_id=1074549360]
-position = Vector2(576, 540)
-
-[node name="TileMapLayer" type="TileMapLayer" parent="Soul2" unique_id=1047343443]
-tile_map_data = PackedByteArray("AAAAAP//AgAAAAAAAAAAAAAAAgAAAAAAAAA=")
-tile_set = SubResource("TileSet_of7f0")
-
-[node name="Soul3" type="Node2D" parent="." unique_id=359727926]
-position = Vector2(576, 860)
-
-[node name="TileMapLayer" type="TileMapLayer" parent="Soul3" unique_id=2082652168]
-tile_map_data = PackedByteArray("AAAAAAAAAgAAAAAAAAD//wAAAgAAAAAAAAD+/wAAAgAAAAAAAAD+////AgAAAAAAAAABAAAAAgAAAAAAAAABAP//AgAAAAAAAAA=")
-tile_set = SubResource("TileSet_of7f0")
 
 [node name="DialogBox" parent="." unique_id=393246458 instance=ExtResource("2_xgpxw")]
 visible = false
@@ -136,6 +135,6 @@ visible = false
 [node name="LevelUI" parent="." unique_id=1008832496 instance=ExtResource("8_y8n3e")]
 visible = false
 
-[connection signal="body_entered" from="Soul1" to="Soul1" method="_on_body_entered"]
-[connection signal="body_exited" from="Soul1" to="Soul1" method="_on_body_exited"]
-[connection signal="input_event" from="Soul1" to="Soul1" method="_on_input_event"]
+[connection signal="body_entered" from="Dock/SoulSlot1/Soul1" to="Dock/SoulSlot1/Soul1" method="_on_body_entered"]
+[connection signal="body_exited" from="Dock/SoulSlot1/Soul1" to="Dock/SoulSlot1/Soul1" method="_on_body_exited"]
+[connection signal="input_event" from="Dock/SoulSlot1/Soul1" to="Dock/SoulSlot1/Soul1" method="_on_input_event"]
