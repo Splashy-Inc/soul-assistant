@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6tdu4r5v8bbs"]
+[gd_scene format=3 uid="uid://c6tdu4r5v8bbs"]
 
-[ext_resource type="Script" path="res://SCRIPTS/controls_screen.gd" id="1_tvbxo"]
-[ext_resource type="Script" path="res://SCRIPTS/controls_tab_container.gd" id="2_pnoft"]
+[ext_resource type="Script" uid="uid://b1qqgvni8d0wo" path="res://SCRIPTS/controls_screen.gd" id="1_tvbxo"]
+[ext_resource type="Script" uid="uid://sq2i10vv7r03" path="res://SCRIPTS/controls_tab_container.gd" id="2_pnoft"]
 [ext_resource type="StyleBox" uid="uid://1mss4twkxib3" path="res://button_box.tres" id="2_tn6xa"]
 [ext_resource type="Texture2D" uid="uid://bsnl2lvtbxral" path="res://ASSETS/Art/joystick/Joystick.png" id="3_1l55u"]
 [ext_resource type="Texture2D" uid="uid://b4n6irf1jephl" path="res://icon.svg" id="4_lo2b3"]
@@ -9,46 +9,51 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwyni"]
 bg_color = Color(0.255659, 0.255659, 0.255659, 1)
 
-[node name="HowToPlayScreen" type="Control"]
+[node name="HowToPlayScreen" type="Control" unique_id=260119240]
 custom_minimum_size = Vector2(640, 360)
 layout_mode = 3
-anchors_preset = 0
-offset_right = 640.0
-offset_bottom = 360.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_tvbxo")
 
-[node name="ScreenRows" type="VBoxContainer" parent="."]
+[node name="ScreenRows" type="VBoxContainer" parent="." unique_id=1638687595]
 custom_minimum_size = Vector2(640, 360)
-layout_mode = 0
-offset_right = 640.0
-offset_bottom = 339.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 15
 alignment = 1
 
-[node name="ScreenTitle" type="BoxContainer" parent="ScreenRows"]
+[node name="ScreenTitle" type="BoxContainer" parent="ScreenRows" unique_id=665121309]
 layout_mode = 2
 alignment = 1
 
-[node name="TitleLabel" type="Label" parent="ScreenRows/ScreenTitle"]
+[node name="TitleLabel" type="Label" parent="ScreenRows/ScreenTitle" unique_id=1249058176]
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "How To Play"
 
-[node name="TopicItem" type="VBoxContainer" parent="ScreenRows"]
+[node name="TopicItem" type="VBoxContainer" parent="ScreenRows" unique_id=935377558]
 layout_mode = 2
 alignment = 1
 
-[node name="TopicTitle" type="Label" parent="ScreenRows/TopicItem"]
+[node name="TopicTitle" type="Label" parent="ScreenRows/TopicItem" unique_id=843515925]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Goal"
 horizontal_alignment = 1
 
-[node name="TopicItem" type="HBoxContainer" parent="ScreenRows/TopicItem"]
+[node name="TopicItem" type="HBoxContainer" parent="ScreenRows/TopicItem" unique_id=105253316]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="ScreenRows/TopicItem/TopicItem"]
+[node name="Label" type="Label" parent="ScreenRows/TopicItem/TopicItem" unique_id=1308907912]
 custom_minimum_size = Vector2(640, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
@@ -56,18 +61,18 @@ text = "Describe the game goal here"
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="PlayerControl" type="VBoxContainer" parent="ScreenRows"]
+[node name="PlayerControl" type="VBoxContainer" parent="ScreenRows" unique_id=1354271070]
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Title" type="Label" parent="ScreenRows/PlayerControl"]
+[node name="Title" type="Label" parent="ScreenRows/PlayerControl" unique_id=1966649611]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Player Controls"
 horizontal_alignment = 1
 
-[node name="ControlsTabContainer" type="TabContainer" parent="ScreenRows/PlayerControl"]
+[node name="ControlsTabContainer" type="TabContainer" parent="ScreenRows/PlayerControl" unique_id=511986148]
 custom_minimum_size = Vector2(320, 190)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -76,16 +81,16 @@ tab_alignment = 1
 current_tab = 0
 script = ExtResource("2_pnoft")
 
-[node name="Keyboard + Mouse" type="HBoxContainer" parent="ScreenRows/PlayerControl/ControlsTabContainer"]
+[node name="Keyboard + Mouse" type="HBoxContainer" parent="ScreenRows/PlayerControl/ControlsTabContainer" unique_id=1544386438]
 layout_mode = 2
 alignment = 1
 metadata/_tab_index = 0
 
-[node name="SpacerRight" type="Control" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse"]
+[node name="SpacerRight" type="Control" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse" unique_id=1564253655]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ControlsGrid" type="GridContainer" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse"]
+[node name="ControlsGrid" type="GridContainer" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse" unique_id=1431502574]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -93,25 +98,25 @@ theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 16
 columns = 2
 
-[node name="Control1Name" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid"]
+[node name="Control1Name" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid" unique_id=1953202300]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Key map example"
 
-[node name="Control1Grid" type="GridContainer" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid"]
+[node name="Control1Grid" type="GridContainer" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid" unique_id=836587092]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/h_separation = 4
 theme_override_constants/v_separation = 4
 columns = 3
 
-[node name="ControlValue" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid/Control1Grid"]
+[node name="ControlValue" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid/Control1Grid" unique_id=913796451]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 
-[node name="ControlValue2" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid/Control1Grid"]
+[node name="ControlValue2" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid/Control1Grid" unique_id=1095159272]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
@@ -119,13 +124,13 @@ theme_override_styles/normal = ExtResource("2_tn6xa")
 text = "W"
 horizontal_alignment = 1
 
-[node name="ControlValue3" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid/Control1Grid"]
+[node name="ControlValue3" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid/Control1Grid" unique_id=209596021]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 
-[node name="ControlValue4" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid/Control1Grid"]
+[node name="ControlValue4" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid/Control1Grid" unique_id=1574565087]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
@@ -133,7 +138,7 @@ theme_override_styles/normal = ExtResource("2_tn6xa")
 text = "A"
 horizontal_alignment = 1
 
-[node name="ControlValue5" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid/Control1Grid"]
+[node name="ControlValue5" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid/Control1Grid" unique_id=117143281]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
@@ -141,7 +146,7 @@ theme_override_styles/normal = ExtResource("2_tn6xa")
 text = "S"
 horizontal_alignment = 1
 
-[node name="ControlValue6" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid/Control1Grid"]
+[node name="ControlValue6" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid/Control1Grid" unique_id=639755282]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
@@ -149,12 +154,12 @@ theme_override_styles/normal = ExtResource("2_tn6xa")
 text = "D"
 horizontal_alignment = 1
 
-[node name="Control2Name" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid"]
+[node name="Control2Name" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid" unique_id=2079631487]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Key press example"
 
-[node name="Control2Button" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid"]
+[node name="Control2Button" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid" unique_id=2052420401]
 custom_minimum_size = Vector2(57, 16)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -163,17 +168,17 @@ theme_override_styles/normal = ExtResource("2_tn6xa")
 text = "Left Click"
 horizontal_alignment = 1
 
-[node name="Control3Name" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid"]
+[node name="Control3Name" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid" unique_id=2098295241]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Key combo example"
 
-[node name="Control3Combo" type="HBoxContainer" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid"]
+[node name="Control3Combo" type="HBoxContainer" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid" unique_id=2042133707]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/separation = 10
 
-[node name="ControlButton1" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid/Control3Combo"]
+[node name="ControlButton1" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid/Control3Combo" unique_id=1360920939]
 custom_minimum_size = Vector2(61, 16)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
@@ -181,7 +186,7 @@ theme_override_styles/normal = ExtResource("2_tn6xa")
 text = "Right Click"
 horizontal_alignment = 1
 
-[node name="Plus" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid/Control3Combo"]
+[node name="Plus" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid/Control3Combo" unique_id=2013720448]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
@@ -189,7 +194,7 @@ theme_override_styles/normal = ExtResource("2_tn6xa")
 text = "+"
 horizontal_alignment = 1
 
-[node name="ControlButton2" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid/Control3Combo"]
+[node name="ControlButton2" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse/ControlsGrid/Control3Combo" unique_id=1083945306]
 custom_minimum_size = Vector2(57, 16)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
@@ -197,45 +202,45 @@ theme_override_styles/normal = ExtResource("2_tn6xa")
 text = "Left Click"
 horizontal_alignment = 1
 
-[node name="SpacerLeft" type="Control" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse"]
+[node name="SpacerLeft" type="Control" parent="ScreenRows/PlayerControl/ControlsTabContainer/Keyboard + Mouse" unique_id=2035844269]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Mobile" type="HBoxContainer" parent="ScreenRows/PlayerControl/ControlsTabContainer"]
+[node name="Mobile" type="HBoxContainer" parent="ScreenRows/PlayerControl/ControlsTabContainer" unique_id=716867021]
 visible = false
 layout_mode = 2
 alignment = 1
 metadata/_tab_index = 1
 
-[node name="SpacerRight" type="Control" parent="ScreenRows/PlayerControl/ControlsTabContainer/Mobile"]
+[node name="SpacerRight" type="Control" parent="ScreenRows/PlayerControl/ControlsTabContainer/Mobile" unique_id=1833247739]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ControlsGrid" type="GridContainer" parent="ScreenRows/PlayerControl/ControlsTabContainer/Mobile"]
+[node name="ControlsGrid" type="GridContainer" parent="ScreenRows/PlayerControl/ControlsTabContainer/Mobile" unique_id=540193751]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/h_separation = 16
 columns = 2
 
-[node name="Control1Name" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Mobile/ControlsGrid"]
+[node name="Control1Name" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Mobile/ControlsGrid" unique_id=1691189198]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Joystick example"
 
-[node name="TextureRect" type="TextureRect" parent="ScreenRows/PlayerControl/ControlsTabContainer/Mobile/ControlsGrid"]
+[node name="TextureRect" type="TextureRect" parent="ScreenRows/PlayerControl/ControlsTabContainer/Mobile/ControlsGrid" unique_id=197543475]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 texture = ExtResource("3_1l55u")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="Control2Name" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Mobile/ControlsGrid"]
+[node name="Control2Name" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Mobile/ControlsGrid" unique_id=1184980997]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Button press example"
 
-[node name="TextureRect2" type="TextureRect" parent="ScreenRows/PlayerControl/ControlsTabContainer/Mobile/ControlsGrid"]
+[node name="TextureRect2" type="TextureRect" parent="ScreenRows/PlayerControl/ControlsTabContainer/Mobile/ControlsGrid" unique_id=1862154591]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -243,12 +248,12 @@ texture = ExtResource("4_lo2b3")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="Control3Name" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Mobile/ControlsGrid"]
+[node name="Control3Name" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Mobile/ControlsGrid" unique_id=791520670]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Button press example"
 
-[node name="TextureRect3" type="TextureRect" parent="ScreenRows/PlayerControl/ControlsTabContainer/Mobile/ControlsGrid"]
+[node name="TextureRect3" type="TextureRect" parent="ScreenRows/PlayerControl/ControlsTabContainer/Mobile/ControlsGrid" unique_id=1888866831]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -256,20 +261,20 @@ texture = ExtResource("4_lo2b3")
 expand_mode = 3
 stretch_mode = 4
 
-[node name="SpacerLeft" type="Control" parent="ScreenRows/PlayerControl/ControlsTabContainer/Mobile"]
+[node name="SpacerLeft" type="Control" parent="ScreenRows/PlayerControl/ControlsTabContainer/Mobile" unique_id=1717843051]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Controller" type="HBoxContainer" parent="ScreenRows/PlayerControl/ControlsTabContainer"]
+[node name="Controller" type="HBoxContainer" parent="ScreenRows/PlayerControl/ControlsTabContainer" unique_id=1494171785]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="SpacerRight" type="Control" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller"]
+[node name="SpacerRight" type="Control" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller" unique_id=1458553884]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ControlsGrid" type="GridContainer" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller"]
+[node name="ControlsGrid" type="GridContainer" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller" unique_id=179854940]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -277,25 +282,25 @@ theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 16
 columns = 2
 
-[node name="Control1Name" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid"]
+[node name="Control1Name" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid" unique_id=1639674430]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Button map example"
 
-[node name="Control1Grid" type="GridContainer" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid"]
+[node name="Control1Grid" type="GridContainer" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid" unique_id=1733746314]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/h_separation = 4
 theme_override_constants/v_separation = 4
 columns = 3
 
-[node name="ControlValue" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid"]
+[node name="ControlValue" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid" unique_id=2105627105]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 
-[node name="ControlValue2" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid"]
+[node name="ControlValue2" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid" unique_id=1379925877]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
@@ -303,13 +308,13 @@ theme_override_styles/normal = ExtResource("2_tn6xa")
 text = "▲"
 horizontal_alignment = 1
 
-[node name="ControlValue3" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid"]
+[node name="ControlValue3" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid" unique_id=1632836267]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 
-[node name="ControlValue4" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid"]
+[node name="ControlValue4" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid" unique_id=179175746]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
@@ -317,13 +322,13 @@ theme_override_styles/normal = ExtResource("2_tn6xa")
 text = "◀"
 horizontal_alignment = 1
 
-[node name="ControlValue5" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid"]
+[node name="ControlValue5" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid" unique_id=1155270252]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 
-[node name="ControlValue6" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid"]
+[node name="ControlValue6" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid" unique_id=315085584]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
@@ -331,13 +336,13 @@ theme_override_styles/normal = ExtResource("2_tn6xa")
 text = "▶"
 horizontal_alignment = 1
 
-[node name="ControlValue7" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid"]
+[node name="ControlValue7" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid" unique_id=113533045]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 
-[node name="ControlValue8" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid"]
+[node name="ControlValue8" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid" unique_id=1908759723]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
@@ -345,18 +350,18 @@ theme_override_styles/normal = ExtResource("2_tn6xa")
 text = "▼"
 horizontal_alignment = 1
 
-[node name="ControlValue9" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid"]
+[node name="ControlValue9" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control1Grid" unique_id=1481083862]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 
-[node name="Control2Name" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid"]
+[node name="Control2Name" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid" unique_id=515022441]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Button press example"
 
-[node name="Control2Button" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid"]
+[node name="Control2Button" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid" unique_id=1287549970]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -366,17 +371,17 @@ text = "B"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Control3Name" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid"]
+[node name="Control3Name" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid" unique_id=210736009]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Button combo example"
 
-[node name="Control3Combo" type="HBoxContainer" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid"]
+[node name="Control3Combo" type="HBoxContainer" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid" unique_id=1035369185]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/separation = 10
 
-[node name="Control2Button" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control3Combo"]
+[node name="Control2Button" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control3Combo" unique_id=1234625850]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -386,7 +391,7 @@ text = "A"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Plus" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control3Combo"]
+[node name="Plus" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control3Combo" unique_id=1494991333]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
@@ -394,7 +399,7 @@ theme_override_styles/normal = ExtResource("2_tn6xa")
 text = "+"
 horizontal_alignment = 1
 
-[node name="Control2Button2" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control3Combo"]
+[node name="Control2Button2" type="Label" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller/ControlsGrid/Control3Combo" unique_id=964617526]
 custom_minimum_size = Vector2(24, 24)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -404,11 +409,11 @@ text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SpacerLeft" type="Control" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller"]
+[node name="SpacerLeft" type="Control" parent="ScreenRows/PlayerControl/ControlsTabContainer/Controller" unique_id=1674776113]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="KeyPressPrompt" type="Label" parent="ScreenRows"]
+[node name="KeyPressPrompt" type="Label" parent="ScreenRows" unique_id=1408296348]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Press any key to exit"
