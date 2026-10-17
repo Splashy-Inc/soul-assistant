@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://08dctchmt73b" path="res://SCRIPTS/play_grid.gd" id="8_xdw11"]
 [ext_resource type="PackedScene" uid="uid://bvp1lppkqj5qi" path="res://SCENES/GUI/level_ui.tscn" id="8_y8n3e"]
 [ext_resource type="Script" uid="uid://ddlp2tg4jsfml" path="res://SCRIPTS/river_bank.gd" id="10_lxigc"]
+[ext_resource type="Texture2D" uid="uid://du812ab7b500w" path="res://ASSETS/Art/wegman_spritesheet_128x256.png" id="10_pt0f8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kk3q7"]
 texture = ExtResource("6_5u8wx")
@@ -185,6 +186,42 @@ sources/1 = SubResource("TileSetAtlasSource_68f5m")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rmx7e"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7vje"]
+atlas = ExtResource("10_pt0f8")
+region = Rect2(0, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxwxs"]
+atlas = ExtResource("10_pt0f8")
+region = Rect2(128, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_af28u"]
+atlas = ExtResource("10_pt0f8")
+region = Rect2(256, 0, 128, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fk1cp"]
+atlas = ExtResource("10_pt0f8")
+region = Rect2(384, 0, 128, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rmx7e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7vje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wxwxs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_af28u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fk1cp")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 4.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_of7f0"]
 size = Vector2(1920, 1080)
 
@@ -244,6 +281,13 @@ tile_set = SubResource("TileSet_rmx7e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boat" unique_id=1267784743]
 shape = SubResource("RectangleShape2D_rmx7e")
+
+[node name="Wegman" type="AnimatedSprite2D" parent="Boat" unique_id=1513023895]
+position = Vector2(-400, -24)
+sprite_frames = SubResource("SpriteFrames_rmx7e")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.8133315
 
 [node name="Camera2D" type="Camera2D" parent="Boat" unique_id=299637142]
 
