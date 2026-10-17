@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://ni3675205s55"]
+
+[ext_resource type="Script" uid="uid://cba0bpvyx7idv" path="res://SCRIPTS/soul.gd" id="1_fxtsu"]
+[ext_resource type="Texture2D" uid="uid://bfeyhof1byjcs" path="res://ASSETS/Art/soul_spritesheet_128x128x3.png" id="2_ox3bg"]
+[ext_resource type="AudioStream" uid="uid://blf5hg7mqsdv" path="res://ASSETS/Sound/soul_drag_3.ogg" id="3_ilxiw"]
+[ext_resource type="AudioStream" uid="uid://cq8c3ubydw7ai" path="res://ASSETS/Sound/soul_drop_3.ogg" id="4_70sf3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxtsu"]
+atlas = ExtResource("2_ox3bg")
+region = Rect2(0, 1536, 384, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ox3bg"]
+atlas = ExtResource("2_ox3bg")
+region = Rect2(384, 1536, 384, 384)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uyejw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxtsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ox3bg")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="Soul" type="Area2D" unique_id=472145370]
+z_index = 2
+collision_layer = 2
+collision_mask = 19
+script = ExtResource("1_fxtsu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1419673022]
+sprite_frames = SubResource("SpriteFrames_uyejw")
+autoplay = "default"
+frame_progress = 0.55555683
+centered = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1297246680]
+position = Vector2(128, 192)
+polygon = PackedVector2Array(124, 60, -124, 60, -124, -188, 124, -188)
+
+[node name="Center" type="Marker2D" parent="." unique_id=1562784921]
+position = Vector2(128, 128)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Center" unique_id=790778443]
+rect = Rect2(-192, -192, 384, 384)
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="." unique_id=2130651528]
+stream = ExtResource("3_ilxiw")
+bus = &"SFX"
+
+[node name="DropoffSound" type="AudioStreamPlayer" parent="." unique_id=69304135]
+stream = ExtResource("4_70sf3")
+bus = &"SFX"
