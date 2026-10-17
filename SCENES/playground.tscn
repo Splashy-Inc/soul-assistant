@@ -190,39 +190,72 @@ sources/1 = SubResource("TileSetAtlasSource_68f5m")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rmx7e"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x7vje"]
-atlas = ExtResource("10_pt0f8")
-region = Rect2(0, 0, 128, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wxwxs"]
-atlas = ExtResource("10_pt0f8")
-region = Rect2(128, 0, 128, 256)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_af28u"]
-atlas = ExtResource("10_pt0f8")
-region = Rect2(256, 0, 128, 256)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_fk1cp"]
 atlas = ExtResource("10_pt0f8")
-region = Rect2(384, 0, 128, 256)
+region = Rect2(0, 0, 128, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apqvo"]
+atlas = ExtResource("10_pt0f8")
+region = Rect2(128, 0, 128, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k6an5"]
+atlas = ExtResource("10_pt0f8")
+region = Rect2(256, 0, 128, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0sjh1"]
+atlas = ExtResource("10_pt0f8")
+region = Rect2(384, 0, 128, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlf3s"]
+atlas = ExtResource("10_pt0f8")
+region = Rect2(0, 384, 128, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5t1o1"]
+atlas = ExtResource("10_pt0f8")
+region = Rect2(128, 384, 128, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wvmmt"]
+atlas = ExtResource("10_pt0f8")
+region = Rect2(256, 384, 128, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqp4f"]
+atlas = ExtResource("10_pt0f8")
+region = Rect2(384, 384, 128, 384)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rmx7e"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x7vje")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wxwxs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_af28u")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_fk1cp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apqvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k6an5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0sjh1")
 }],
 "loop": 1,
 "name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlf3s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5t1o1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wvmmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqp4f")
+}],
+"loop": 2,
+"name": &"rowing",
 "speed": 4.0
 }]
 
@@ -283,7 +316,7 @@ position = Vector2(512, -192)
 [node name="SoulSlot3" type="Marker2D" parent="Dock" unique_id=1213557834]
 position = Vector2(320, 130)
 
-[node name="Boat" type="RigidBody2D" parent="." unique_id=1824947986 node_paths=PackedStringArray("stop_point")]
+[node name="Boat" type="RigidBody2D" parent="." unique_id=1824947986 node_paths=PackedStringArray("stop_point", "wegman")]
 position = Vector2(1376, 540)
 collision_layer = 8
 collision_mask = 4
@@ -292,6 +325,7 @@ script = ExtResource("8_pm0gv")
 deceleration = 500.0
 max_speed = 2000.0
 stop_point = NodePath("../SoulPickup")
+wegman = NodePath("WegmanLeft/Wegman")
 
 [node name="MobileControls" parent="Boat" unique_id=2035199617 instance=ExtResource("7_uhrci")]
 visible = false
@@ -315,12 +349,19 @@ tile_set = SubResource("TileSet_rmx7e")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boat" unique_id=1267784743]
 shape = SubResource("RectangleShape2D_rmx7e")
 
-[node name="Wegman" type="AnimatedSprite2D" parent="Boat" unique_id=1513023895]
+[node name="WegmanLeft" type="Marker2D" parent="Boat" unique_id=1287135261]
 position = Vector2(-400, -24)
+
+[node name="Wegman" type="AnimatedSprite2D" parent="Boat/WegmanLeft" unique_id=1513023895]
 sprite_frames = SubResource("SpriteFrames_rmx7e")
-animation = &"idle"
+animation = &"rowing"
 autoplay = "idle"
-frame_progress = 0.6653275
+frame_progress = 0.77125716
+offset = Vector2(0, 64)
+
+[node name="WegmanRight" type="Marker2D" parent="Boat" unique_id=127474584]
+position = Vector2(400, -24)
+scale = Vector2(-1, 1)
 
 [node name="RowIndicators" type="Node2D" parent="Boat" unique_id=1418043124]
 position = Vector2(-576, 0)
