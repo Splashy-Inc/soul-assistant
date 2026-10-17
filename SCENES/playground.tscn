@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://du812ab7b500w" path="res://ASSETS/Art/wegman_spritesheet_128x256.png" id="10_pt0f8"]
 [ext_resource type="Script" uid="uid://dg0athbk448bf" path="res://SCRIPTS/stop_point.gd" id="11_x7vje"]
 [ext_resource type="Texture2D" uid="uid://ruy78ihgkybw" path="res://ASSETS/Art/GUI_128x128.png" id="13_fk1cp"]
+[ext_resource type="Script" uid="uid://ximhghbf72gj" path="res://SCRIPTS/soul_dropoff.gd" id="15_af28u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kk3q7"]
 texture = ExtResource("6_5u8wx")
@@ -245,9 +246,6 @@ gradient = SubResource("Gradient_wxwxs")
 width = 512
 height = 32
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_of7f0"]
-size = Vector2(1920, 1080)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_apqvo"]
 atlas = ExtResource("13_fk1cp")
 region = Rect2(1024, 128, 128, 128)
@@ -278,6 +276,9 @@ region_rect = Rect2(0, 0, 128, 128)
 [sub_resource type="Theme" id="Theme_wxwxs"]
 Button/styles/normal = SubResource("StyleBoxTexture_k6an5")
 Button/styles/pressed = SubResource("StyleBoxTexture_5t1o1")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_of7f0"]
+size = Vector2(1920, 1080)
 
 [node name="Playground" type="Node" unique_id=147226910 node_paths=PackedStringArray("dialog_box")]
 script = ExtResource("1_5e8d0")
@@ -388,6 +389,16 @@ step = 0.1
 texture_under = SubResource("GradientTexture2D_2dmvo")
 texture_progress = SubResource("GradientTexture2D_7rfqe")
 
+[node name="NextButton" type="Button" parent="Boat" unique_id=241913169]
+visible = false
+offset_left = -61.0
+offset_top = 365.0
+offset_right = 63.0
+offset_bottom = 455.0
+theme = SubResource("Theme_wxwxs")
+theme_override_font_sizes/font_size = 48
+text = "NEXT"
+
 [node name="Camera2D" type="Camera2D" parent="Boat" unique_id=299637142]
 offset = Vector2(-416, 0)
 
@@ -411,7 +422,7 @@ shape = SubResource("RectangleShape2D_of7f0")
 
 [node name="SoulDropoff" type="Marker2D" parent="RiverBank" unique_id=277778500]
 position = Vector2(-261, 0)
-script = ExtResource("11_x7vje")
+script = ExtResource("15_af28u")
 camera_offset = Vector2(261, 0)
 
 [node name="SoulGenerationTimer" type="Timer" parent="." unique_id=1296492894]
@@ -428,17 +439,9 @@ dialog_data = ExtResource("3_5ii31")
 [node name="LevelUI" parent="CanvasLayer" unique_id=1008832496 instance=ExtResource("8_y8n3e")]
 visible = false
 
-[node name="NextButton" type="Button" parent="." unique_id=241913169]
-visible = false
-offset_left = 1315.0
-offset_top = 905.0
-offset_right = 1439.0
-offset_bottom = 995.0
-theme = SubResource("Theme_wxwxs")
-theme_override_font_sizes/font_size = 48
-text = "NEXT"
-
+[connection signal="stopped" from="Boat" to="." method="_on_boat_stopped"]
 [connection signal="soul_added" from="Boat/PlayGrid" to="." method="_on_play_grid_soul_added"]
+[connection signal="soul_clicked" from="Boat/PlayGrid" to="Boat" method="_on_play_grid_soul_clicked"]
+[connection signal="pressed" from="Boat/NextButton" to="." method="_on_next_button_pressed"]
 [connection signal="body_entered" from="RiverBank" to="RiverBank" method="_on_body_entered"]
 [connection signal="timeout" from="SoulGenerationTimer" to="." method="_on_soul_generation_timer_timeout"]
-[connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]

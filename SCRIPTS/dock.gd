@@ -6,14 +6,12 @@ class_name Dock
 @onready var soul_preview: Marker2D = $SoulPreview
 
 func _ready() -> void:
-	for slot in slots:
-		for child in slot.get_children():
-			child.free()
+	clear_souls()
 
 func add_soul(new_soul: Soul) -> bool:
 	for slot in slots:
 		if slot.get_children().is_empty():
-			if not soul_preview.get_children().is_empty() and  soul_preview.get_child(0) is Soul:
+			if not soul_preview.get_children().is_empty() and soul_preview.get_child(0) is Soul:
 				var preview_child = soul_preview.get_child(0)
 				preview_child.reparent(slot, false)
 				preview_child.starting_slot = slot
@@ -25,10 +23,18 @@ func add_soul(new_soul: Soul) -> bool:
 				new_soul.starting_slot = slot
 				return true
 		
-		if soul_preview.get_children().is_empty():
-			if is_instance_valid(new_soul.get_parent()):
-				new_soul.reparent(soul_preview)
-			else:
-				soul_preview.add_child(new_soul)
-			return true
+	if soul_preview.get_children().is_empty():
+		if is_instance_valid(new_soul.get_parent()):
+			new_soul.reparent(soul_preview)
+		else:
+			soul_preview.add_child(new_soul)
+		return true
 	return false
+
+func clear_souls():
+	for slot in slots:
+		for child in slot.get_children():
+			child.free()
+	
+	for child in soul_preview.get_children():
+		child.free()

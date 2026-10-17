@@ -7,3 +7,6 @@ class_name RiverBank
 func _on_body_entered(body: Node2D) -> void:
 	if body is Boat:
 		body.stop_point = soul_dropoff
+
+func offload_soul(soul: Soul):
+	soul.queue_free()
