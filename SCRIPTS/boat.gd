@@ -22,13 +22,14 @@ var row_left := false
 func _process(delta: float) -> void:
 	if row_left:
 		left.modulate.a = 1
-		right.modulate.a = .5
+		right.modulate.a = .25
 	else:
-		left.modulate.a = .5
+		left.modulate.a = .25
 		right.modulate.a = 1
 	
 	if is_instance_valid(stop_point):
 		row_indicators.hide()
+		speed_meter.hide()
 		#mobile_controls.hide()
 		var distance_to_stop = global_position.distance_to(stop_point.global_position)
 		if distance_to_stop > 10:
@@ -40,6 +41,7 @@ func _process(delta: float) -> void:
 		camera.offset.x = lerpf(camera.offset.x, stop_point.camera_offset.x, .1)
 	else:
 		row_indicators.show()
+		speed_meter.show()
 		#mobile_controls.show()
 		camera.offset.x = lerpf(camera.offset.x, 0, .1)
 		speed = clampf(speed - deceleration * delta, 0, max_speed)
