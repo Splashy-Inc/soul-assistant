@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bn0ivqv2ndl3g"]
+
+[ext_resource type="Script" uid="uid://cba0bpvyx7idv" path="res://SCRIPTS/soul.gd" id="1_rhnye"]
+[ext_resource type="Texture2D" uid="uid://c0n8ghsg6gsiy" path="res://ASSETS/Art/soul_spritesheet_128x128.png" id="2_uku6m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmx7e"]
+atlas = ExtResource("2_uku6m")
+region = Rect2(0, 384, 256, 256)
+
+[node name="Soul" type="Area2D" unique_id=472145370]
+z_index = 2
+collision_layer = 2
+collision_mask = 19
+script = ExtResource("1_rhnye")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=221280337]
+texture = SubResource("AtlasTexture_rmx7e")
+centered = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1297246680]
+position = Vector2(128, 128)
+polygon = PackedVector2Array(124, -124, 124, 124, 4, 124, 4, -4, -124, -4, -124, -124)
+
+[node name="Center" type="Marker2D" parent="." unique_id=1776106245]
+position = Vector2(192, 64)

@@ -1,10 +1,22 @@
 extends Level
 
-func _level_ready():
-	var new_timer := Timer.new()
-	new_timer.one_shot = true
-	add_child(new_timer)
-	new_timer.start(3.0)
-	await new_timer.timeout
-	new_timer.queue_free()
-	Globals.update_info("Updated")
+@export var soul_scenes : Array[PackedScene]
+
+@onready var dock: Dock = $Dock
+@onready var soul_generation_timer: Timer = $SoulGenerationTimer
+@onready var play_grid: PlayGrid = $Boat/PlayGrid
+
+func _level_ready():	
+	while dock.add_soul(generate_new_soul()):
+		print("New soul added to dock")
+
+func generate_new_soul() -> Soul:
+	var new_soul = soul_scenes.pick_random().instantiate()
+	return new_soul
+
+func _on_soul_generation_timer_timeout() -> void:
+	dock.add_soul(generate_new_soul())
+
+
+func _on_next_button_pressed() -> void:
+	play_grid.clear_souls()
