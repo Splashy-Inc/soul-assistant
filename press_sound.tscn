@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bh6bhqq5s7sjn"]
+
+[ext_resource type="AudioStream" uid="uid://bgeq7kxtohssd" path="res://ASSETS/Sound/button_press_1.ogg" id="1_dp2l8"]
+
+[node name="PressSound" type="AudioStreamPlayer" unique_id=704776872]
+stream = ExtResource("1_dp2l8")
+pitch_scale = 0.6
+bus = &"SFX"

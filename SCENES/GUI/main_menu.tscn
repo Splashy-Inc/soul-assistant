@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b43405oisie5a" path="res://SCRIPTS/main_menu.gd" id="1_vkagb"]
 [ext_resource type="LabelSettings" uid="uid://bhv6g2xu5a7gv" path="res://title_label.tres" id="2_mgyil"]
 [ext_resource type="LabelSettings" uid="uid://bj8ccoxk5c0ui" path="res://subtitle_label.tres" id="3_7foxk"]
+[ext_resource type="Script" uid="uid://lth2idqm644" path="res://SCRIPTS/ui_button.gd" id="4_7foxk"]
 
 [node name="MainMenu" type="Control" unique_id=1488317606]
 custom_minimum_size = Vector2(640, 360)
@@ -51,5 +52,6 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 128
 text = "Play"
+script = ExtResource("4_7foxk")
 
 [connection signal="pressed" from="MenuContent/MenuButtons/PlayButton" to="." method="_on_play_button_pressed"]

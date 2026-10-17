@@ -12,6 +12,8 @@ var blocking_boundaries : Array[Node2D]
 var blocking_souls : Array[Soul]
 var invalid_modulate := Color(0.322, 0.322, 0.322, 1.0)
 @onready var center: Marker2D = $Center
+@onready var pickup_sound: AudioStreamPlayer = $PickupSound
+@onready var dropoff_sound: AudioStreamPlayer = $DropoffSound
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
@@ -47,6 +49,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			clicked.emit(self)
 		else:
 			dragging = true
+			pickup_sound.play()
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is PlayGrid:
@@ -70,3 +73,8 @@ func _on_area_entered(area: Area2D) -> void:
 
 func _on_area_exited(area: Area2D) -> void:
 	_on_body_exited(area)
+
+func offload():
+	dropoff_sound.play()
+	await dropoff_sound.finished
+	queue_free()

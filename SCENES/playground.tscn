@@ -17,9 +17,14 @@
 [ext_resource type="Script" uid="uid://ddlp2tg4jsfml" path="res://SCRIPTS/river_bank.gd" id="10_lxigc"]
 [ext_resource type="Texture2D" uid="uid://du812ab7b500w" path="res://ASSETS/Art/wegman_spritesheet_128x256.png" id="10_pt0f8"]
 [ext_resource type="Script" uid="uid://dg0athbk448bf" path="res://SCRIPTS/stop_point.gd" id="11_x7vje"]
+[ext_resource type="AudioStream" uid="uid://c6lowigg8qmog" path="res://ASSETS/Sound/row_1.ogg" id="12_5t1o1"]
 [ext_resource type="Theme" uid="uid://b1r8iutncpoar" path="res://global_theme.tres" id="13_apqvo"]
 [ext_resource type="Texture2D" uid="uid://ruy78ihgkybw" path="res://ASSETS/Art/GUI_128x128.png" id="13_fk1cp"]
+[ext_resource type="AudioStream" uid="uid://jpyny7nvwkdj" path="res://ASSETS/Sound/row_2.ogg" id="13_wvmmt"]
+[ext_resource type="Script" uid="uid://lth2idqm644" path="res://SCRIPTS/ui_button.gd" id="14_0sjh1"]
+[ext_resource type="PackedScene" uid="uid://lfjki5tuele5" path="res://hover_sound.tscn" id="15_0sjh1"]
 [ext_resource type="Script" uid="uid://ximhghbf72gj" path="res://SCRIPTS/soul_dropoff.gd" id="15_af28u"]
+[ext_resource type="PackedScene" uid="uid://bh6bhqq5s7sjn" path="res://press_sound.tscn" id="16_dlf3s"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kk3q7"]
 texture = ExtResource("6_5u8wx")
@@ -259,6 +264,108 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="Animation" id="Animation_5t1o1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_wvmmt"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+
+[sub_resource type="Animation" id="Animation_nqp4f"]
+resource_name = "rowing"
+length = 1.000025
+loop_mode = 2
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"rowing"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 3]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RowingSounds")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r5b4f"]
+_data = {
+&"RESET": SubResource("Animation_5t1o1"),
+&"idle": SubResource("Animation_wvmmt"),
+&"rowing": SubResource("Animation_nqp4f")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rmx7e"]
+random_pitch = 1.3348398
+streams_count = 2
+stream_0/stream = ExtResource("12_5t1o1")
+stream_1/stream = ExtResource("13_wvmmt")
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_rmx7e"]
 atlas = ExtResource("13_fk1cp")
 region = Rect2(256, 128, 128, 128)
@@ -354,10 +461,17 @@ position = Vector2(-400, -24)
 
 [node name="Wegman" type="AnimatedSprite2D" parent="Boat/WegmanLeft" unique_id=1513023895]
 sprite_frames = SubResource("SpriteFrames_rmx7e")
-animation = &"rowing"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.77125716
 offset = Vector2(0, 64)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Boat/WegmanLeft/Wegman" unique_id=1967349822]
+libraries/ = SubResource("AnimationLibrary_r5b4f")
+
+[node name="RowingSounds" type="AudioStreamPlayer" parent="Boat/WegmanLeft/Wegman" unique_id=1631264245]
+stream = SubResource("AudioStreamRandomizer_rmx7e")
+max_polyphony = 2
+bus = &"SFX"
 
 [node name="WegmanRight" type="Marker2D" parent="Boat" unique_id=127474584]
 position = Vector2(400, -24)
@@ -409,6 +523,11 @@ offset_bottom = 455.0
 theme = ExtResource("13_apqvo")
 theme_override_font_sizes/font_size = 48
 text = "NEXT"
+script = ExtResource("14_0sjh1")
+
+[node name="HoverSound" parent="Boat/NextButton" unique_id=1739431041 instance=ExtResource("15_0sjh1")]
+
+[node name="PressSound" parent="Boat/NextButton" unique_id=704776872 instance=ExtResource("16_dlf3s")]
 
 [node name="Camera2D" type="Camera2D" parent="Boat" unique_id=299637142]
 offset = Vector2(-416, 0)
@@ -435,6 +554,9 @@ shape = SubResource("RectangleShape2D_of7f0")
 position = Vector2(-261, 0)
 script = ExtResource("15_af28u")
 camera_offset = Vector2(261, 0)
+
+[node name="DropoffStart" type="Marker2D" parent="RiverBank" unique_id=1391872299]
+position = Vector2(512, 0)
 
 [node name="SoulGenerationTimer" type="Timer" parent="." unique_id=1296492894]
 wait_time = 0.5

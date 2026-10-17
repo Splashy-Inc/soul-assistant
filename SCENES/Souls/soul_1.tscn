@@ -1,11 +1,31 @@
 [gd_scene format=3 uid="uid://bn0ivqv2ndl3g"]
 
 [ext_resource type="Script" uid="uid://cba0bpvyx7idv" path="res://SCRIPTS/soul.gd" id="1_rhnye"]
-[ext_resource type="Texture2D" uid="uid://c0n8ghsg6gsiy" path="res://ASSETS/Art/soul_spritesheet_128x128.png" id="2_uku6m"]
+[ext_resource type="Texture2D" uid="uid://bfeyhof1byjcs" path="res://ASSETS/Art/soul_spritesheet_128x128x3.png" id="2_rhnye"]
+[ext_resource type="AudioStream" uid="uid://daibkdq4jlk5t" path="res://ASSETS/Sound/soul_drag_1.ogg" id="3_b3jvd"]
+[ext_resource type="AudioStream" uid="uid://dldhqp8fsf3ee" path="res://ASSETS/Sound/soul_drop_1.ogg" id="4_w7jb1"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rmx7e"]
-atlas = ExtResource("2_uku6m")
-region = Rect2(0, 384, 256, 256)
+[sub_resource type="AtlasTexture" id="AtlasTexture_uku6m"]
+atlas = ExtResource("2_rhnye")
+region = Rect2(0, 768, 384, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b3jvd"]
+atlas = ExtResource("2_rhnye")
+region = Rect2(384, 768, 384, 384)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rmx7e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uku6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b3jvd")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 4.0
+}]
 
 [node name="Soul" type="Area2D" unique_id=472145370]
 z_index = 2
@@ -13,9 +33,12 @@ collision_layer = 2
 collision_mask = 19
 script = ExtResource("1_rhnye")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=221280337]
-texture = SubResource("AtlasTexture_rmx7e")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=290141832]
+sprite_frames = SubResource("SpriteFrames_rmx7e")
+autoplay = "default"
+frame_progress = 0.51942873
 centered = false
+offset = Vector2(-128, -128)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1297246680]
 position = Vector2(128, 128)
@@ -23,3 +46,11 @@ polygon = PackedVector2Array(124, -124, 124, 124, 4, 124, 4, -4, -124, -4, -124,
 
 [node name="Center" type="Marker2D" parent="." unique_id=1776106245]
 position = Vector2(192, 64)
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="." unique_id=1411521324]
+stream = ExtResource("3_b3jvd")
+bus = &"SFX"
+
+[node name="DropoffSound" type="AudioStreamPlayer" parent="." unique_id=353465392]
+stream = ExtResource("4_w7jb1")
+bus = &"SFX"

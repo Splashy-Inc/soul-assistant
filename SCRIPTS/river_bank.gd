@@ -3,10 +3,12 @@ extends Area2D
 class_name RiverBank
 
 @onready var soul_dropoff: StopPoint = $SoulDropoff
+@onready var dropoff_start: Marker2D = $DropoffStart
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Boat:
 		body.stop_point = soul_dropoff
 
 func offload_soul(soul: Soul):
-	soul.queue_free()
+	soul.reparent(dropoff_start, false)
+	soul.offload()

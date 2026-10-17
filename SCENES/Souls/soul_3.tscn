@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://ljsffqt00xue"]
 
 [ext_resource type="Script" uid="uid://cba0bpvyx7idv" path="res://SCRIPTS/soul.gd" id="1_lv1xm"]
+[ext_resource type="AudioStream" uid="uid://blf5hg7mqsdv" path="res://ASSETS/Sound/soul_drag_3.ogg" id="2_7yhk0"]
+[ext_resource type="AudioStream" uid="uid://cq8c3ubydw7ai" path="res://ASSETS/Sound/soul_drop_3.ogg" id="3_248hw"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2xv78"]
 load_path = "res://.godot/imported/soul_spritesheet_128x128.png-49f4d6bc2c9d37501043b18c68994db6.ctex"
@@ -25,3 +27,11 @@ polygon = PackedVector2Array(-4, -60, 124, -60, 124, 60, -4, 60, -4, 188, -124, 
 
 [node name="Center" type="Marker2D" parent="." unique_id=1562784921]
 position = Vector2(64, 192)
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="." unique_id=2130651528]
+stream = ExtResource("2_7yhk0")
+bus = &"SFX"
+
+[node name="DropoffSound" type="AudioStreamPlayer" parent="." unique_id=69304135]
+stream = ExtResource("3_248hw")
+bus = &"SFX"

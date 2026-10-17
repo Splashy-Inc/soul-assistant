@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://boa5xvek58jla" path="res://SCRIPTS/pause_menu.gd" id="1_kmxbu"]
 [ext_resource type="LabelSettings" uid="uid://bj8ccoxk5c0ui" path="res://subtitle_label.tres" id="2_k46qq"]
+[ext_resource type="Script" uid="uid://lth2idqm644" path="res://SCRIPTS/ui_button.gd" id="3_rlby1"]
 
 [node name="PauseMenu" type="Control" unique_id=38992059]
 process_mode = 3
@@ -44,6 +45,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 48
 text = "Resume"
+script = ExtResource("3_rlby1")
 
 [node name="RestartButton" type="Button" parent="MenuContent/MenuButtons" unique_id=1771759819]
 custom_minimum_size = Vector2(100, 20)
@@ -51,6 +53,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 48
 text = "Restart"
+script = ExtResource("3_rlby1")
 
 [node name="MainMenuButton" type="Button" parent="MenuContent/MenuButtons" unique_id=1241046859]
 custom_minimum_size = Vector2(100, 20)
@@ -58,6 +61,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 48
 text = "Main Menu"
+script = ExtResource("3_rlby1")
 
 [connection signal="pressed" from="MenuContent/MenuButtons/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="MenuContent/MenuButtons/RestartButton" to="." method="_on_restart_button_pressed"]
