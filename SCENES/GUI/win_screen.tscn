@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://v65h1k4msxhb"]
 
-[ext_resource type="StyleBox" uid="uid://1mss4twkxib3" path="res://button_box.tres" id="1_mm3s4"]
 [ext_resource type="Script" uid="uid://b7wytnfog22kr" path="res://SCRIPTS/win_screen.gd" id="1_ypahy"]
+[ext_resource type="LabelSettings" uid="uid://bhv6g2xu5a7gv" path="res://title_label.tres" id="2_nrdyh"]
 
 [node name="WinScreen" type="Control" unique_id=1663284116]
 custom_minimum_size = Vector2(640, 360)
@@ -28,6 +28,7 @@ alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "You win!"
+label_settings = ExtResource("2_nrdyh")
 horizontal_alignment = 1
 
 [node name="MenuButtons" type="VBoxContainer" parent="MenuContent" unique_id=126054047]
@@ -38,24 +39,14 @@ theme_override_constants/separation = 20
 [node name="MainMenuButton" type="Button" parent="MenuContent/MenuButtons" unique_id=598799029]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = ExtResource("1_mm3s4")
+theme_override_font_sizes/font_size = 48
 text = "Main Menu"
 
 [node name="RestartButton" type="Button" parent="MenuContent/MenuButtons" unique_id=1537734159]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = ExtResource("1_mm3s4")
-text = "Restart Level"
-
-[node name="QuitButton" type="Button" parent="MenuContent/MenuButtons" unique_id=1345974325]
-custom_minimum_size = Vector2(100, 20)
-layout_mode = 2
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = ExtResource("1_mm3s4")
-text = "Quit"
+theme_override_font_sizes/font_size = 48
+text = "Play Again"
 
 [connection signal="pressed" from="MenuContent/MenuButtons/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="MenuContent/MenuButtons/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="MenuContent/MenuButtons/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c3sldi7g5fcg6"]
 
 [ext_resource type="Script" uid="uid://boa5xvek58jla" path="res://SCRIPTS/pause_menu.gd" id="1_kmxbu"]
-[ext_resource type="StyleBox" uid="uid://1mss4twkxib3" path="res://button_box.tres" id="2_1q666"]
+[ext_resource type="LabelSettings" uid="uid://bj8ccoxk5c0ui" path="res://subtitle_label.tres" id="2_k46qq"]
 
 [node name="PauseMenu" type="Control" unique_id=38992059]
 process_mode = 3
@@ -29,46 +29,36 @@ alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "Paused"
+label_settings = ExtResource("2_k46qq")
 horizontal_alignment = 1
 
 [node name="MenuButtons" type="VBoxContainer" parent="MenuContent" unique_id=1370496098]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_constants/separation = 10
+alignment = 1
 
 [node name="ResumeButton" type="Button" parent="MenuContent/MenuButtons" unique_id=537950019]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
-size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = ExtResource("2_1q666")
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 48
 text = "Resume"
 
 [node name="RestartButton" type="Button" parent="MenuContent/MenuButtons" unique_id=1771759819]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
-size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = ExtResource("2_1q666")
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 48
 text = "Restart"
-
-[node name="ControlsButton" type="Button" parent="MenuContent/MenuButtons" unique_id=246953694]
-custom_minimum_size = Vector2(100, 20)
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = ExtResource("2_1q666")
-text = "Controls"
 
 [node name="MainMenuButton" type="Button" parent="MenuContent/MenuButtons" unique_id=1241046859]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
-size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = ExtResource("2_1q666")
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 48
 text = "Main Menu"
 
 [connection signal="pressed" from="MenuContent/MenuButtons/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="MenuContent/MenuButtons/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="MenuContent/MenuButtons/ControlsButton" to="." method="_on_controls_button_pressed"]
 [connection signal="pressed" from="MenuContent/MenuButtons/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

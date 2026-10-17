@@ -35,6 +35,7 @@ window/stretch/mode="canvas_items"
 
 [gui]
 
+theme/custom="uid://b1r8iutncpoar"
 theme/custom_font="res://ASSETS/Font/m5x7.ttf"
 
 [input]

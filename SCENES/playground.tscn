@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://ddlp2tg4jsfml" path="res://SCRIPTS/river_bank.gd" id="10_lxigc"]
 [ext_resource type="Texture2D" uid="uid://du812ab7b500w" path="res://ASSETS/Art/wegman_spritesheet_128x256.png" id="10_pt0f8"]
 [ext_resource type="Script" uid="uid://dg0athbk448bf" path="res://SCRIPTS/stop_point.gd" id="11_x7vje"]
+[ext_resource type="Theme" uid="uid://b1r8iutncpoar" path="res://global_theme.tres" id="13_apqvo"]
 [ext_resource type="Texture2D" uid="uid://ruy78ihgkybw" path="res://ASSETS/Art/GUI_128x128.png" id="13_fk1cp"]
 [ext_resource type="Script" uid="uid://ximhghbf72gj" path="res://SCRIPTS/soul_dropoff.gd" id="15_af28u"]
 
@@ -246,38 +247,6 @@ gradient = SubResource("Gradient_wxwxs")
 width = 512
 height = 32
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_apqvo"]
-atlas = ExtResource("13_fk1cp")
-region = Rect2(1024, 128, 128, 128)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k6an5"]
-texture = SubResource("AtlasTexture_apqvo")
-texture_margin_left = 26.0
-texture_margin_top = 26.0
-texture_margin_right = 26.0
-texture_margin_bottom = 26.0
-region_rect = Rect2(0, 0, 128, 128)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0sjh1"]
-load_path = "res://.godot/imported/GUI_128x128.png-2edf7589bf3caf200cfbb983fa973c58.ctex"
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dlf3s"]
-atlas = SubResource("CompressedTexture2D_0sjh1")
-region = Rect2(256, 128, 128, 128)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5t1o1"]
-texture = SubResource("AtlasTexture_dlf3s")
-texture_margin_left = 26.0
-texture_margin_top = 26.0
-texture_margin_right = 26.0
-texture_margin_bottom = 26.0
-region_rect = Rect2(0, 0, 128, 128)
-
-[sub_resource type="Theme" id="Theme_wxwxs"]
-Button/styles/hover = SubResource("StyleBoxTexture_k6an5")
-Button/styles/normal = SubResource("StyleBoxTexture_5t1o1")
-Button/styles/pressed = SubResource("StyleBoxTexture_k6an5")
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_of7f0"]
 size = Vector2(1920, 1080)
 
@@ -396,7 +365,7 @@ offset_left = -61.0
 offset_top = 365.0
 offset_right = 63.0
 offset_bottom = 455.0
-theme = SubResource("Theme_wxwxs")
+theme = ExtResource("13_apqvo")
 theme_override_font_sizes/font_size = 48
 text = "NEXT"
 

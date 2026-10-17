@@ -1,0 +1,35 @@
+[gd_resource type="Theme" format=3 uid="uid://b1r8iutncpoar"]
+
+[ext_resource type="Texture2D" uid="uid://ruy78ihgkybw" path="res://ASSETS/Art/GUI_128x128.png" id="1_ofusn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apqvo"]
+atlas = ExtResource("1_ofusn")
+region = Rect2(1024, 128, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k6an5"]
+texture = SubResource("AtlasTexture_apqvo")
+texture_margin_left = 26.0
+texture_margin_top = 26.0
+texture_margin_right = 26.0
+texture_margin_bottom = 26.0
+region_rect = Rect2(0, 0, 128, 128)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0sjh1"]
+load_path = "res://.godot/imported/GUI_128x128.png-2edf7589bf3caf200cfbb983fa973c58.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlf3s"]
+atlas = SubResource("CompressedTexture2D_0sjh1")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5t1o1"]
+texture = SubResource("AtlasTexture_dlf3s")
+texture_margin_left = 26.0
+texture_margin_top = 26.0
+texture_margin_right = 26.0
+texture_margin_bottom = 26.0
+region_rect = Rect2(0, 0, 128, 128)
+
+[resource]
+Button/styles/hover = SubResource("StyleBoxTexture_k6an5")
+Button/styles/normal = SubResource("StyleBoxTexture_5t1o1")
+Button/styles/pressed = SubResource("StyleBoxTexture_k6an5")
