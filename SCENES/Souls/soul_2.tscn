@@ -37,6 +37,7 @@ script = ExtResource("1_w4yan")
 position = Vector2(-128, -128)
 sprite_frames = SubResource("SpriteFrames_rmx7e")
 autoplay = "default"
+frame_progress = 0.6862527
 centered = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1297246680]

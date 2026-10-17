@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cba0bpvyx7idv" path="res://SCRIPTS/soul.gd" id="1_pwhgm"]
 [ext_resource type="Texture2D" uid="uid://bfeyhof1byjcs" path="res://ASSETS/Art/soul_spritesheet_128x128x3.png" id="2_uooy1"]
-[ext_resource type="AudioStream" uid="uid://blf5hg7mqsdv" path="res://ASSETS/Sound/soul_drag_3.ogg" id="3_5ekdn"]
-[ext_resource type="AudioStream" uid="uid://cq8c3ubydw7ai" path="res://ASSETS/Sound/soul_drop_3.ogg" id="4_iu6wq"]
+[ext_resource type="AudioStream" uid="uid://daibkdq4jlk5t" path="res://ASSETS/Sound/soul_drag_1.ogg" id="3_pwhgm"]
+[ext_resource type="AudioStream" uid="uid://dldhqp8fsf3ee" path="res://ASSETS/Sound/soul_drop_1.ogg" id="4_uooy1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pwhgm"]
 atlas = ExtResource("2_uooy1")
@@ -49,9 +49,11 @@ position = Vector2(128, 192)
 rect = Rect2(-192, -192, 384, 384)
 
 [node name="PickupSound" type="AudioStreamPlayer" parent="." unique_id=2130651528]
-stream = ExtResource("3_5ekdn")
+stream = ExtResource("3_pwhgm")
+pitch_scale = 0.9
 bus = &"SFX"
 
 [node name="DropoffSound" type="AudioStreamPlayer" parent="." unique_id=69304135]
-stream = ExtResource("4_iu6wq")
+stream = ExtResource("4_uooy1")
+pitch_scale = 0.9
 bus = &"SFX"

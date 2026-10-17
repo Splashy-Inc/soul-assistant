@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cba0bpvyx7idv" path="res://SCRIPTS/soul.gd" id="1_1wt1f"]
 [ext_resource type="Texture2D" uid="uid://bfeyhof1byjcs" path="res://ASSETS/Art/soul_spritesheet_128x128x3.png" id="2_tcu0g"]
-[ext_resource type="AudioStream" uid="uid://blf5hg7mqsdv" path="res://ASSETS/Sound/soul_drag_3.ogg" id="3_h4u0m"]
-[ext_resource type="AudioStream" uid="uid://cq8c3ubydw7ai" path="res://ASSETS/Sound/soul_drop_3.ogg" id="4_js7w6"]
+[ext_resource type="AudioStream" uid="uid://x5vwmqitp67v" path="res://ASSETS/Sound/soul_drag_4.ogg" id="3_1wt1f"]
+[ext_resource type="AudioStream" uid="uid://dgu3oye52t5w3" path="res://ASSETS/Sound/soul_drop_4.ogg" id="4_tcu0g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1wt1f"]
 atlas = ExtResource("2_tcu0g")
@@ -34,13 +34,14 @@ collision_mask = 19
 script = ExtResource("1_1wt1f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1419673022]
+position = Vector2(-128, 0)
 sprite_frames = SubResource("SpriteFrames_4gkps")
 autoplay = "default"
 centered = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1297246680]
 position = Vector2(128, 192)
-polygon = PackedVector2Array(-4, -60, 124, -60, 124, 60, -4, 60, -4, 188, -124, 188, -124, -188, -4, -188)
+polygon = PackedVector2Array(-4, 188, -124, 188, -124, -188, -4, -188)
 
 [node name="Center" type="Marker2D" parent="." unique_id=1562784921]
 position = Vector2(64, 192)
@@ -49,9 +50,11 @@ position = Vector2(64, 192)
 rect = Rect2(-192, -192, 384, 384)
 
 [node name="PickupSound" type="AudioStreamPlayer" parent="." unique_id=2130651528]
-stream = ExtResource("3_h4u0m")
+stream = ExtResource("3_1wt1f")
+pitch_scale = 1.2
 bus = &"SFX"
 
 [node name="DropoffSound" type="AudioStreamPlayer" parent="." unique_id=69304135]
-stream = ExtResource("4_js7w6")
+stream = ExtResource("4_tcu0g")
+pitch_scale = 1.2
 bus = &"SFX"
