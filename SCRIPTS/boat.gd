@@ -21,6 +21,9 @@ var row_left := false
 @onready var row_indicators: Node2D = $RowIndicators
 @onready var left: Sprite2D = $RowIndicators/Left
 @onready var right: Sprite2D = $RowIndicators/Right
+@export var wegman: AnimatedSprite2D
+@onready var wegman_left: Marker2D = $WegmanLeft
+@onready var wegman_right: Marker2D = $WegmanRight
 
 # TODO: Add mobile control check to only show on mobile devices
 func _process(delta: float) -> void:
@@ -41,6 +44,7 @@ func _process(delta: float) -> void:
 				global_position = stop_point.global_position
 				speed = 0
 				auto_travel = false
+				wegman.reparent(wegman_left, false)
 				stopped.emit()
 		else:
 			row_indicators.hide()
@@ -51,6 +55,7 @@ func _process(delta: float) -> void:
 			else:
 				global_position = stop_point.global_position
 				if speed != 0:
+					wegman.reparent(wegman_right, false)
 					stopped.emit()
 				speed = 0
 		camera.offset.x = lerpf(camera.offset.x, stop_point.camera_offset.x, .1)
@@ -63,6 +68,11 @@ func _process(delta: float) -> void:
 	
 	linear_velocity.x = speed
 	speed_meter.value = speed/max_speed * 100.0
+	if speed != 0:
+		if wegman.animation != "rowing":
+			wegman.play("rowing")
+	else:
+		wegman.play("idle")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not is_instance_valid(stop_point):

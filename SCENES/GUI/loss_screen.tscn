@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://temjlvcxcb3r"]
 
 [ext_resource type="Script" uid="uid://ief1j0yj1rv8" path="res://SCRIPTS/loss_screen.gd" id="1_ig5wj"]
-[ext_resource type="StyleBox" uid="uid://1mss4twkxib3" path="res://button_box.tres" id="1_kt3cy"]
+[ext_resource type="LabelSettings" uid="uid://bhv6g2xu5a7gv" path="res://title_label.tres" id="2_koh0w"]
 
 [node name="LossScreen" type="Control" unique_id=1688434163]
 custom_minimum_size = Vector2(640, 360)
@@ -28,6 +28,7 @@ alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 36
 text = "You lose..."
+label_settings = ExtResource("2_koh0w")
 horizontal_alignment = 1
 
 [node name="MenuButtons" type="VBoxContainer" parent="MenuContent" unique_id=1924737503]
@@ -38,24 +39,14 @@ theme_override_constants/separation = 20
 [node name="MainMenuButton" type="Button" parent="MenuContent/MenuButtons" unique_id=1209814441]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = ExtResource("1_kt3cy")
+theme_override_font_sizes/font_size = 48
 text = "Main Menu"
 
 [node name="RestartButton" type="Button" parent="MenuContent/MenuButtons" unique_id=215560753]
 custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = ExtResource("1_kt3cy")
+theme_override_font_sizes/font_size = 48
 text = "Restart Level"
-
-[node name="QuitButton" type="Button" parent="MenuContent/MenuButtons" unique_id=2110981475]
-custom_minimum_size = Vector2(100, 20)
-layout_mode = 2
-theme_override_font_sizes/font_size = 18
-theme_override_styles/normal = ExtResource("1_kt3cy")
-text = "Quit"
 
 [connection signal="pressed" from="MenuContent/MenuButtons/MainMenuButton" to="." method="_on_main_menu_button_pressed"]
 [connection signal="pressed" from="MenuContent/MenuButtons/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="MenuContent/MenuButtons/QuitButton" to="." method="_on_quit_button_pressed"]
