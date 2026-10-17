@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://ddlp2tg4jsfml" path="res://SCRIPTS/river_bank.gd" id="10_lxigc"]
 [ext_resource type="Texture2D" uid="uid://du812ab7b500w" path="res://ASSETS/Art/wegman_spritesheet_128x256.png" id="10_pt0f8"]
 [ext_resource type="Script" uid="uid://dg0athbk448bf" path="res://SCRIPTS/stop_point.gd" id="11_x7vje"]
+[ext_resource type="Texture2D" uid="uid://ruy78ihgkybw" path="res://ASSETS/Art/GUI_128x128.png" id="13_fk1cp"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kk3q7"]
 texture = ExtResource("6_5u8wx")
@@ -223,6 +224,10 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmx7e"]
+atlas = ExtResource("13_fk1cp")
+region = Rect2(256, 128, 128, 128)
+
 [sub_resource type="Gradient" id="Gradient_x7vje"]
 offsets = PackedFloat32Array(1)
 colors = PackedColorArray(0.45490196, 0.45490196, 0.45490196, 0.43137255)
@@ -243,11 +248,10 @@ height = 32
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_of7f0"]
 size = Vector2(1920, 1080)
 
-[node name="Playground" type="Node" unique_id=147226910 node_paths=PackedStringArray("dialog_box", "mobile_controls")]
+[node name="Playground" type="Node" unique_id=147226910 node_paths=PackedStringArray("dialog_box")]
 script = ExtResource("1_5e8d0")
 soul_scenes = Array[PackedScene]([ExtResource("4_5u8wx"), ExtResource("5_5u8wx"), ExtResource("6_5hh14")])
 dialog_box = NodePath("CanvasLayer/DialogBox")
-mobile_controls = NodePath("Boat/MobileControls")
 
 [node name="ParallaxBackground" parent="." unique_id=1768022834 instance=ExtResource("2_ffhdr")]
 repeat_size = Vector2(1920, 1080)
@@ -288,6 +292,7 @@ max_speed = 2000.0
 stop_point = NodePath("../SoulPickup")
 
 [node name="MobileControls" parent="Boat" unique_id=2035199617 instance=ExtResource("7_uhrci")]
+visible = false
 z_index = 5
 offset_left = -288.0
 offset_top = -192.0
@@ -314,6 +319,33 @@ sprite_frames = SubResource("SpriteFrames_rmx7e")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.6653275
+
+[node name="RowIndicators" type="Node2D" parent="Boat" unique_id=1418043124]
+position = Vector2(-576, 0)
+
+[node name="Left" type="Sprite2D" parent="Boat/RowIndicators" unique_id=1586476551]
+position = Vector2(0, -128)
+texture = SubResource("AtlasTexture_rmx7e")
+
+[node name="Label" type="Label" parent="Boat/RowIndicators/Left" unique_id=971528609]
+offset_left = -21.0
+offset_top = -62.0
+offset_right = 27.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 128
+text = "A"
+
+[node name="Right" type="Sprite2D" parent="Boat/RowIndicators" unique_id=1649746608]
+position = Vector2(0, 128)
+texture = SubResource("AtlasTexture_rmx7e")
+
+[node name="Label" type="Label" parent="Boat/RowIndicators/Right" unique_id=661775338]
+offset_left = -21.0
+offset_top = -58.0
+offset_right = 27.0
+offset_bottom = 44.0
+theme_override_font_sizes/font_size = 128
+text = "D"
 
 [node name="SpeedMeter" type="TextureProgressBar" parent="Boat" unique_id=684843348]
 offset_left = -264.0

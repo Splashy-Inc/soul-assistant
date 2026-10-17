@@ -22,7 +22,6 @@ func _on_soul_generation_timer_timeout() -> void:
 
 func _on_next_button_pressed() -> void:
 	next_button.hide()
-	mobile_controls.show()
 	boat.stop_point = null
 
 func _on_play_grid_soul_added() -> void:

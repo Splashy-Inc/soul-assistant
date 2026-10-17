@@ -14,11 +14,22 @@ var row_left := false
 @onready var camera: Camera2D = $Camera2D
 @onready var speed_meter: TextureProgressBar = $SpeedMeter
 @onready var mobile_controls: MobileControls = $MobileControls
+@onready var row_indicators: Node2D = $RowIndicators
+@onready var left: Sprite2D = $RowIndicators/Left
+@onready var right: Sprite2D = $RowIndicators/Right
 
 # TODO: Add mobile control check to only show on mobile devices
 func _process(delta: float) -> void:
+	if row_left:
+		left.modulate.a = 1
+		right.modulate.a = .5
+	else:
+		left.modulate.a = .5
+		right.modulate.a = 1
+	
 	if is_instance_valid(stop_point):
-		mobile_controls.hide()
+		row_indicators.hide()
+		#mobile_controls.hide()
 		var distance_to_stop = global_position.distance_to(stop_point.global_position)
 		if distance_to_stop > 10:
 			speed = clampf(lerpf(speed, 0, .1 * delta), min(256, distance_to_stop), lerpf(speed, distance_to_stop, .1))
@@ -28,7 +39,8 @@ func _process(delta: float) -> void:
 			speed = 0
 		camera.offset.x = lerpf(camera.offset.x, stop_point.camera_offset.x, .1)
 	else:
-		mobile_controls.show()
+		row_indicators.show()
+		#mobile_controls.show()
 		camera.offset.x = lerpf(camera.offset.x, 0, .1)
 		speed = clampf(speed - deceleration * delta, 0, max_speed)
 	
