@@ -11,8 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://ycy77cnq6swf" path="res://ASSETS/Art/raft_128x128.png" id="6_5u8wx"]
 [ext_resource type="Script" uid="uid://7n8dusxikaqi" path="res://SCRIPTS/dock.gd" id="6_68f5m"]
 [ext_resource type="PackedScene" uid="uid://b77mh17y84d50" path="res://SCENES/GUI/mobile_controls.tscn" id="7_uhrci"]
+[ext_resource type="Script" uid="uid://p60lolvyq3mq" path="res://SCRIPTS/boat.gd" id="8_pm0gv"]
 [ext_resource type="Script" uid="uid://08dctchmt73b" path="res://SCRIPTS/play_grid.gd" id="8_xdw11"]
 [ext_resource type="PackedScene" uid="uid://bvp1lppkqj5qi" path="res://SCENES/GUI/level_ui.tscn" id="8_y8n3e"]
+[ext_resource type="Script" uid="uid://ddlp2tg4jsfml" path="res://SCRIPTS/river_bank.gd" id="10_lxigc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kk3q7"]
 texture = ExtResource("6_5u8wx")
@@ -181,6 +183,11 @@ physics_layer_1/collision_layer = 16
 physics_layer_1/collision_mask = 0
 sources/1 = SubResource("TileSetAtlasSource_68f5m")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rmx7e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_of7f0"]
+size = Vector2(1920, 1080)
+
 [node name="Playground" type="Node" unique_id=147226910 node_paths=PackedStringArray("dialog_box", "mobile_controls")]
 script = ExtResource("1_5e8d0")
 soul_scenes = Array[PackedScene]([ExtResource("4_5u8wx"), ExtResource("5_5u8wx"), ExtResource("6_5hh14")])
@@ -188,7 +195,9 @@ dialog_box = NodePath("DialogBox")
 mobile_controls = NodePath("MobileControls")
 
 [node name="ParallaxBackground" parent="." unique_id=1768022834 instance=ExtResource("2_ffhdr")]
-scroll_offset = Vector2(2147, 803)
+repeat_size = Vector2(1920, 1080)
+autoscroll = Vector2(8, 32)
+repeat_times = 12
 
 [node name="Dock" type="Node2D" parent="." unique_id=454072388 node_paths=PackedStringArray("slots")]
 position = Vector2(0, 540)
@@ -213,17 +222,46 @@ position = Vector2(512, -192)
 [node name="SoulSlot3" type="Marker2D" parent="Dock" unique_id=1213557834]
 position = Vector2(320, 130)
 
-[node name="Boat" type="Node2D" parent="." unique_id=414886600]
-position = Vector2(960, 92)
+[node name="Boat" type="RigidBody2D" parent="." unique_id=1824947986]
+position = Vector2(1376, 540)
+collision_layer = 8
+collision_mask = 4
+gravity_scale = 0.0
+script = ExtResource("8_pm0gv")
+deceleration = 500.0
+max_speed = 2000.0
 
 [node name="PlayGrid" type="TileMapLayer" parent="Boat" unique_id=648146197]
-tile_map_data = PackedByteArray("AAAFAAUAAQAFAAUAAAABAAEAAQABAAEAAAABAAIAAQABAAIAAAABAAMAAQABAAMAAAABAAQAAQABAAQAAAABAAUAAQABAAUAAAACAAEAAQACAAEAAAACAAIAAQACAAIAAAACAAMAAQACAAMAAAACAAQAAQACAAQAAAACAAUAAQACAAUAAAADAAEAAQADAAEAAAADAAIAAQADAAIAAAADAAMAAQADAAMAAAADAAQAAQADAAQAAAADAAUAAQADAAUAAAAEAAEAAQAEAAEAAAAEAAIAAQAEAAIAAAAEAAMAAQAEAAMAAAAEAAQAAQAEAAQAAAAEAAUAAQAEAAUAAAAFAAEAAQAFAAEAAAAFAAIAAQAFAAIAAAAFAAMAAQAFAAMAAAAFAAQAAQAFAAQAAAA=")
+position = Vector2(-64, -64)
+tile_map_data = PackedByteArray("AAD+//7/AQABAAEAAAD+////AQABAAIAAAD+/wAAAQABAAMAAAD+/wEAAQABAAQAAAD+/wIAAQABAAUAAAD///7/AQACAAEAAAD/////AQACAAIAAAD//wAAAQACAAMAAAD//wEAAQACAAQAAAD//wIAAQACAAUAAAAAAP7/AQADAAEAAAAAAP//AQADAAIAAAAAAAAAAQADAAMAAAAAAAEAAQADAAQAAAAAAAIAAQADAAUAAAABAP7/AQAEAAEAAAABAP//AQAEAAIAAAABAAAAAQAEAAMAAAABAAEAAQAEAAQAAAABAAIAAQAEAAUAAAACAP7/AQAFAAEAAAACAP//AQAFAAIAAAACAAAAAQAFAAMAAAACAAEAAQAFAAQAAAACAAIAAQAFAAUAAAA=")
 tile_set = SubResource("TileSet_rmx7e")
 script = ExtResource("8_xdw11")
 
 [node name="Boundary" type="TileMapLayer" parent="Boat" unique_id=727304571]
-tile_map_data = PackedByteArray("AAAAAAAAAQAAAAAAAAAAAAEAAQAAAAEAAAAAAAIAAQAAAAIAAAAAAAMAAQAAAAMAAAAAAAQAAQAAAAQAAAAAAAUAAQAAAAUAAAAAAAYAAQAAAAYAAAABAAAAAQABAAAAAAABAAYAAQABAAYAAAACAAAAAQACAAAAAAACAAYAAQACAAYAAAADAAAAAQADAAAAAAADAAYAAQADAAYAAAAEAAAAAQAEAAAAAAAEAAYAAQAEAAYAAAAFAAAAAQAFAAAAAAAFAAYAAQAFAAYAAAAGAAAAAQAGAAAAAAAGAAEAAQAGAAEAAAAGAAIAAQAGAAIAAAAGAAMAAQAGAAMAAAAGAAQAAQAGAAQAAAAGAAUAAQAGAAUAAAAGAAYAAQAGAAYAAAA=")
+position = Vector2(-64, -64)
+tile_map_data = PackedByteArray("AAD9//3/AQAAAAAAAAD+//3/AQABAAAAAAD///3/AQACAAAAAAAAAP3/AQADAAAAAAABAP3/AQAEAAAAAAACAP3/AQAFAAAAAAADAP3/AQAGAAAAAAD9//7/AQAAAAEAAAD9////AQAAAAIAAAD9/wAAAQAAAAMAAAD9/wEAAQAAAAQAAAD9/wIAAQAAAAUAAAADAP7/AQAGAAEAAAADAP//AQAGAAIAAAADAAAAAQAGAAMAAAADAAEAAQAGAAQAAAADAAIAAQAGAAUAAAD9/wMAAQAAAAYAAAD+/wMAAQABAAYAAAD//wMAAQACAAYAAAAAAAMAAQADAAYAAAABAAMAAQAEAAYAAAACAAMAAQAFAAYAAAADAAMAAQAGAAYAAAA=")
 tile_set = SubResource("TileSet_rmx7e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boat" unique_id=1267784743]
+shape = SubResource("RectangleShape2D_rmx7e")
+
+[node name="Camera2D" type="Camera2D" parent="Boat" unique_id=299637142]
+
+[node name="RiverBank" type="Area2D" parent="." unique_id=1810081864]
+position = Vector2(11376, 540)
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("10_lxigc")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="RiverBank" unique_id=2021873676]
+tile_map_data = PackedByteArray("AAADAAIAAQAAAAIAAFAEAAIAAQAAAAIAAFAFAAIAAQAAAAIAAFAGAAIAAQAFAAAAAFAGAAEAAQAEAAAAAFAFAAAAAQAAAAIAAFADAAEAAQAAAAIAAFAEAAEAAQAAAAIAAFAFAAEAAQAAAAIAAFAEAP3/AQAAAAIAAFAFAP3/AQAAAAIAAFAGAP3/AQAAAAAAAFAGAP7/AQABAAAAAFAFAP//AQAAAAIAAFAEAP7/AQAAAAIAAFAFAP7/AQAAAAIAAFADAPz/AQAAAAIAAFAEAPz/AQAAAAIAAFAFAPz/AQAAAAIAAFAGAPz/AQAAAAAAAFADAAMAAQAAAAIAAFAEAAMAAQAAAAIAAFAFAAMAAQAAAAIAAFAGAAMAAQAGAAAAAFACAAEAAQAEAAYAAFACAP7/AQACAAYAAFACAP3/AQABAAYAAFACAPz/AQAAAAYAAFACAAIAAQAFAAYAAFACAAMAAQAGAAYAAFADAP//AQAAAAIAAFADAP7/AQAAAAIAAFADAP3/AQAAAAIAAFAEAP//AQAAAAIAAFAEAAAAAQAAAAIAAFADAAAAAQAAAAIAAFACAAAAAQADAAAAAGACAP//AQAEAAAAAGAGAP//AQAAAAMAAFAGAAAAAQAAAAMAAFAHAP//AQAAAAMAAFAHAAAAAQAAAAMAAFAIAP//AQAAAAMAAFAIAAAAAQAAAAMAAFA=")
+tile_set = SubResource("TileSet_7rfqe")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RiverBank" unique_id=760338087]
+shape = SubResource("RectangleShape2D_of7f0")
+
+[node name="Marker2D" type="Marker2D" parent="RiverBank" unique_id=277778500]
+position = Vector2(-261, 0)
 
 [node name="SoulGenerationTimer" type="Timer" parent="." unique_id=1296492894]
 autostart = true
@@ -248,5 +286,6 @@ offset_bottom = 1007.0
 theme_override_font_sizes/font_size = 48
 text = "Next"
 
+[connection signal="body_entered" from="RiverBank" to="RiverBank" method="_on_body_entered"]
 [connection signal="timeout" from="SoulGenerationTimer" to="." method="_on_soul_generation_timer_timeout"]
 [connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]
