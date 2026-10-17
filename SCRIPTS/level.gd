@@ -8,11 +8,11 @@ class_name Level
 func _ready() -> void:
 	if dialog_box:
 		dialog_box.dialog_ended.connect(_on_dialog_ended.bind(dialog_box))
-	if mobile_controls:
-		if OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile"):
-			mobile_controls.show()
-		else:
-			mobile_controls.hide()
+	#if mobile_controls:
+		#if OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile"):
+			#mobile_controls.show()
+		#else:
+			#mobile_controls.hide()
 	_level_ready()
 
 func _level_ready():
@@ -20,8 +20,9 @@ func _level_ready():
 
 func _process(_delta: float) -> void:
 	# Ensure that the mobile controls are not visible if the dialog box is present
-	if mobile_controls.visible and dialog_box.visible:
-		mobile_controls.hide()
+	#if mobile_controls.visible and dialog_box.visible:
+		#mobile_controls.hide()
+	pass
 
 func _physics_process(_delta: float) -> void:
 	pass
