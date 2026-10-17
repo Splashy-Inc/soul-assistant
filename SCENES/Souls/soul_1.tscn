@@ -1,26 +1,26 @@
-[gd_scene format=3 uid="uid://bn0ivqv2ndl3g"]
+[gd_scene format=3 uid="uid://2gwp4gcmwnf7"]
 
 [ext_resource type="Script" uid="uid://cba0bpvyx7idv" path="res://SCRIPTS/soul.gd" id="1_rhnye"]
 [ext_resource type="Texture2D" uid="uid://bfeyhof1byjcs" path="res://ASSETS/Art/soul_spritesheet_128x128x3.png" id="2_rhnye"]
-[ext_resource type="AudioStream" uid="uid://daibkdq4jlk5t" path="res://ASSETS/Sound/soul_drag_1.ogg" id="3_b3jvd"]
-[ext_resource type="AudioStream" uid="uid://dldhqp8fsf3ee" path="res://ASSETS/Sound/soul_drop_1.ogg" id="4_w7jb1"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uku6m"]
-atlas = ExtResource("2_rhnye")
-region = Rect2(0, 768, 384, 384)
+[ext_resource type="AudioStream" uid="uid://x5vwmqitp67v" path="res://ASSETS/Sound/soul_drag_4.ogg" id="3_b3jvd"]
+[ext_resource type="AudioStream" uid="uid://dgu3oye52t5w3" path="res://ASSETS/Sound/soul_drop_4.ogg" id="4_w7jb1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b3jvd"]
 atlas = ExtResource("2_rhnye")
-region = Rect2(384, 768, 384, 384)
+region = Rect2(0, 0, 384, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7jb1"]
+atlas = ExtResource("2_rhnye")
+region = Rect2(384, 0, 384, 384)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rmx7e"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_uku6m")
+"texture": SubResource("AtlasTexture_b3jvd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b3jvd")
+"texture": SubResource("AtlasTexture_w7jb1")
 }],
 "loop": 1,
 "name": &"default",
@@ -33,24 +33,27 @@ collision_layer = 2
 collision_mask = 19
 script = ExtResource("1_rhnye")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=290141832]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1570287294]
+position = Vector2(-128, -128)
 sprite_frames = SubResource("SpriteFrames_rmx7e")
 autoplay = "default"
-frame_progress = 0.51942873
+frame_progress = 0.6575235
 centered = false
-offset = Vector2(-128, -128)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1297246680]
-position = Vector2(128, 128)
-polygon = PackedVector2Array(124, -124, 124, 124, 4, 124, 4, -4, -124, -4, -124, -124)
+position = Vector2(64, 128)
+polygon = PackedVector2Array(-60, -124, 60, -124, 60, -4, -60, -4)
 
-[node name="Center" type="Marker2D" parent="." unique_id=1776106245]
-position = Vector2(192, 64)
+[node name="Center" type="Marker2D" parent="." unique_id=1865733401]
+position = Vector2(64, 64)
 
-[node name="PickupSound" type="AudioStreamPlayer" parent="." unique_id=1411521324]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Center" unique_id=1092077172]
+rect = Rect2(-192, -192, 384, 384)
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="." unique_id=144772586]
 stream = ExtResource("3_b3jvd")
 bus = &"SFX"
 
-[node name="DropoffSound" type="AudioStreamPlayer" parent="." unique_id=353465392]
+[node name="DropoffSound" type="AudioStreamPlayer" parent="." unique_id=1546379212]
 stream = ExtResource("4_w7jb1")
 bus = &"SFX"

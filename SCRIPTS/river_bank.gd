@@ -11,4 +11,5 @@ func _on_body_entered(body: Node2D) -> void:
 
 func offload_soul(soul: Soul):
 	soul.reparent(dropoff_start, false)
+	soul.position = -soul.center.position
 	soul.offload()

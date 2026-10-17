@@ -2,14 +2,30 @@
 
 [ext_resource type="Script" uid="uid://cba0bpvyx7idv" path="res://SCRIPTS/soul.gd" id="1_w4yan"]
 [ext_resource type="AudioStream" uid="uid://wo1i2tyap4os" path="res://ASSETS/Sound/soul_drag_2.ogg" id="2_8oh2u"]
+[ext_resource type="Texture2D" uid="uid://bfeyhof1byjcs" path="res://ASSETS/Art/soul_spritesheet_128x128x3.png" id="2_b3irm"]
 [ext_resource type="AudioStream" uid="uid://vtw07nb46fwh" path="res://ASSETS/Sound/soul_drop_2.ogg" id="3_b3irm"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8brsc"]
-load_path = "res://.godot/imported/soul_spritesheet_128x128.png-49f4d6bc2c9d37501043b18c68994db6.ctex"
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0huh"]
+atlas = ExtResource("2_b3irm")
+region = Rect2(0, 384, 384, 384)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_we48p"]
-atlas = SubResource("CompressedTexture2D_8brsc")
-region = Rect2(0, 128, 128, 256)
+[sub_resource type="AtlasTexture" id="AtlasTexture_m54hn"]
+atlas = ExtResource("2_b3irm")
+region = Rect2(384, 384, 384, 384)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rmx7e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0huh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m54hn")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 4.0
+}]
 
 [node name="Soul" type="Area2D" unique_id=472145370]
 z_index = 2
@@ -17,8 +33,10 @@ collision_layer = 2
 collision_mask = 19
 script = ExtResource("1_w4yan")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=49748737]
-texture = SubResource("AtlasTexture_we48p")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1821055010]
+position = Vector2(-128, -128)
+sprite_frames = SubResource("SpriteFrames_rmx7e")
+autoplay = "default"
 centered = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1297246680]
@@ -27,6 +45,9 @@ polygon = PackedVector2Array(-60, -124, 60, -124, 60, 124, -60, 124)
 
 [node name="Center" type="Marker2D" parent="." unique_id=1865733401]
 position = Vector2(64, 128)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Center" unique_id=648876862]
+rect = Rect2(-192, -192, 384, 384)
 
 [node name="PickupSound" type="AudioStreamPlayer" parent="." unique_id=144772586]
 stream = ExtResource("2_8oh2u")

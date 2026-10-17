@@ -5,9 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://cwr6cg26cwtpw" path="res://SCENES/DialogSystem/dialog_box.tscn" id="2_xgpxw"]
 [ext_resource type="Resource" uid="uid://b6sm5mmiaaucn" path="res://SCRIPTS/DialogSystem/DialogData/example_dialog_data.tres" id="3_5ii31"]
 [ext_resource type="Texture2D" uid="uid://b4n6irf1jephl" path="res://icon.svg" id="3_vq471"]
-[ext_resource type="PackedScene" uid="uid://bn0ivqv2ndl3g" path="res://SCENES/Souls/soul_1.tscn" id="4_5u8wx"]
+[ext_resource type="PackedScene" uid="uid://2gwp4gcmwnf7" path="res://SCENES/Souls/soul_1.tscn" id="4_5u8wx"]
+[ext_resource type="PackedScene" uid="uid://bn0ivqv2ndl3g" path="res://SCENES/Souls/soul_3.tscn" id="4_wvmmt"]
 [ext_resource type="PackedScene" uid="uid://bvvos1pgkwivs" path="res://SCENES/Souls/soul_2.tscn" id="5_5u8wx"]
-[ext_resource type="PackedScene" uid="uid://ljsffqt00xue" path="res://SCENES/Souls/soul_3.tscn" id="6_5hh14"]
+[ext_resource type="PackedScene" uid="uid://ljsffqt00xue" path="res://SCENES/Souls/soul_4.tscn" id="6_5hh14"]
 [ext_resource type="Texture2D" uid="uid://ycy77cnq6swf" path="res://ASSETS/Art/raft_128x128.png" id="6_5u8wx"]
 [ext_resource type="Script" uid="uid://7n8dusxikaqi" path="res://SCRIPTS/dock.gd" id="6_68f5m"]
 [ext_resource type="PackedScene" uid="uid://b77mh17y84d50" path="res://SCENES/GUI/mobile_controls.tscn" id="7_uhrci"]
@@ -392,7 +393,7 @@ size = Vector2(1920, 1080)
 
 [node name="Playground" type="Node" unique_id=147226910 node_paths=PackedStringArray("dialog_box")]
 script = ExtResource("1_5e8d0")
-soul_scenes = Array[PackedScene]([ExtResource("4_5u8wx"), ExtResource("5_5u8wx"), ExtResource("6_5hh14")])
+soul_scenes = Array[PackedScene]([ExtResource("4_5u8wx"), ExtResource("5_5u8wx"), ExtResource("4_wvmmt"), ExtResource("6_5hh14")])
 dialog_box = NodePath("CanvasLayer/DialogBox")
 
 [node name="ParallaxBackground" parent="." unique_id=1768022834 instance=ExtResource("2_ffhdr")]

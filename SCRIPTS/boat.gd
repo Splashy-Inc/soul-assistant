@@ -40,7 +40,6 @@ func _process(delta: float) -> void:
 		if auto_travel:
 			if distance_to_stop > 10:
 				speed = clampf(lerpf(speed, 0, stop_weight), lerpf(speed, -distance_to_stop, stop_weight), min(-256, -distance_to_stop))
-				print(speed)
 			else:
 				global_position = stop_point.global_position
 				speed = 0
