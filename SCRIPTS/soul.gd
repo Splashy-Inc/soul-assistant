@@ -2,6 +2,8 @@ extends Area2D
 
 class_name Soul
 
+signal clicked
+
 var dragging := false
 var boat : Node2D
 var boat_offset : Vector2
@@ -41,7 +43,10 @@ func _process(delta: float) -> void:
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event.is_action_pressed("click"):
-		dragging = true
+		if get_parent() is PlayGrid:
+			clicked.emit(self)
+		else:
+			dragging = true
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is PlayGrid:

@@ -2,12 +2,16 @@ extends RigidBody2D
 
 class_name Boat
 
+signal stopped
+
 @export var speed := 0.0
 @export var deceleration := 100.0
 @export var max_speed := 500.0
 @export var presses_to_max_speed := 4
 
 var acceleration := max_speed/presses_to_max_speed
+var stop_weight := .1
+var auto_travel := false
 
 var row_left := false
 @export var stop_point : StopPoint
@@ -28,16 +32,27 @@ func _process(delta: float) -> void:
 		right.modulate.a = 1
 	
 	if is_instance_valid(stop_point):
-		row_indicators.hide()
-		speed_meter.hide()
-		#mobile_controls.hide()
 		var distance_to_stop = global_position.distance_to(stop_point.global_position)
-		if distance_to_stop > 10:
-			speed = clampf(lerpf(speed, 0, .1 * delta), min(256, distance_to_stop), lerpf(speed, distance_to_stop, .1))
-			print(speed, distance_to_stop)
+		if auto_travel:
+			if distance_to_stop > 10:
+				speed = clampf(lerpf(speed, 0, stop_weight), lerpf(speed, -distance_to_stop, stop_weight), min(-256, -distance_to_stop))
+				print(speed)
+			else:
+				global_position = stop_point.global_position
+				speed = 0
+				auto_travel = false
+				stopped.emit()
 		else:
-			global_position = stop_point.global_position
-			speed = 0
+			row_indicators.hide()
+			speed_meter.hide()
+			#mobile_controls.hide()
+			if distance_to_stop > 10:
+				speed = clampf(lerpf(speed, 0, stop_weight), min(256, distance_to_stop), lerpf(speed, distance_to_stop, stop_weight))
+			else:
+				global_position = stop_point.global_position
+				if speed != 0:
+					stopped.emit()
+				speed = 0
 		camera.offset.x = lerpf(camera.offset.x, stop_point.camera_offset.x, .1)
 	else:
 		row_indicators.show()
@@ -57,3 +72,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif event.is_action_pressed("row_right") and not row_left:
 			speed += acceleration
 			row_left = true
+
+func _on_play_grid_soul_clicked(soul: Soul) -> void:
+	if stop_point is SoulDropoff and speed == 0:
+		var stop_parent := stop_point.get_parent()
+		if stop_parent is RiverBank:
+			stop_parent.offload_soul(soul)
+
+func travel_to_stop_point():
+	auto_travel = true
