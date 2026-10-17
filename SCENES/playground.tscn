@@ -274,8 +274,9 @@ texture_margin_bottom = 26.0
 region_rect = Rect2(0, 0, 128, 128)
 
 [sub_resource type="Theme" id="Theme_wxwxs"]
-Button/styles/normal = SubResource("StyleBoxTexture_k6an5")
-Button/styles/pressed = SubResource("StyleBoxTexture_5t1o1")
+Button/styles/hover = SubResource("StyleBoxTexture_k6an5")
+Button/styles/normal = SubResource("StyleBoxTexture_5t1o1")
+Button/styles/pressed = SubResource("StyleBoxTexture_k6an5")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_of7f0"]
 size = Vector2(1920, 1080)
@@ -426,6 +427,7 @@ script = ExtResource("15_af28u")
 camera_offset = Vector2(261, 0)
 
 [node name="SoulGenerationTimer" type="Timer" parent="." unique_id=1296492894]
+wait_time = 0.5
 autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=239463223]
