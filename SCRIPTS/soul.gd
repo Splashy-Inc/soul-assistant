@@ -12,6 +12,11 @@ var blocking_boundaries : Array[Node2D]
 var blocking_souls : Array[Soul]
 var invalid_modulate := Color(0.322, 0.322, 0.322, 1.0)
 @onready var center: Marker2D = $Center
+@onready var pickup_sound: AudioStreamPlayer = $PickupSound
+@onready var dropoff_sound: AudioStreamPlayer = $DropoffSound
+@onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $Center/VisibleOnScreenNotifier2D
+var offloading := false
+var speed := 200.0
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
@@ -19,6 +24,7 @@ func _ready() -> void:
 	area_entered.connect(_on_body_entered)
 	area_exited.connect(_on_body_exited)
 	input_event.connect(_on_input_event)
+	visible_on_screen_notifier_2d.screen_exited.connect(_on_screen_exited)
 
 func _process(delta: float) -> void:
 	if dragging:
@@ -40,13 +46,17 @@ func _process(delta: float) -> void:
 				boat.add_soul(self)
 				modulate.a = .75
 				starting_slot = null
+	elif offloading:
+		global_position.x += speed * delta
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event.is_action_pressed("click"):
-		if get_parent() is PlayGrid:
-			clicked.emit(self)
-		else:
-			dragging = true
+	if not offloading:
+		if event.is_action_pressed("click"):
+			if get_parent() is PlayGrid:
+				clicked.emit(self)
+			else:
+				dragging = true
+				pickup_sound.play()
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is PlayGrid:
@@ -70,3 +80,11 @@ func _on_area_entered(area: Area2D) -> void:
 
 func _on_area_exited(area: Area2D) -> void:
 	_on_body_exited(area)
+
+func offload():
+	offloading = true
+	dropoff_sound.play()
+
+func _on_screen_exited() -> void:
+	if offloading:
+		queue_free()

@@ -20,6 +20,10 @@ config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/stretch_mode=0
 boot_splash/image="res://SplashySplashScreen.png"
 
+[audio]
+
+buses/default_bus_layout="uid://domh3elhrxwc6"
+
 [autoload]
 
 Globals="*res://SCRIPTS/globals.gd"

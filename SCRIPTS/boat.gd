@@ -24,6 +24,7 @@ var row_left := false
 @export var wegman: AnimatedSprite2D
 @onready var wegman_left: Marker2D = $WegmanLeft
 @onready var wegman_right: Marker2D = $WegmanRight
+@onready var wemgan_animations: AnimationPlayer = $WegmanLeft/Wegman/AnimationPlayer
 
 # TODO: Add mobile control check to only show on mobile devices
 func _process(delta: float) -> void:
@@ -39,7 +40,6 @@ func _process(delta: float) -> void:
 		if auto_travel:
 			if distance_to_stop > 10:
 				speed = clampf(lerpf(speed, 0, stop_weight), lerpf(speed, -distance_to_stop, stop_weight), min(-256, -distance_to_stop))
-				print(speed)
 			else:
 				global_position = stop_point.global_position
 				speed = 0
@@ -70,9 +70,9 @@ func _process(delta: float) -> void:
 	speed_meter.value = speed/max_speed * 100.0
 	if speed != 0:
 		if wegman.animation != "rowing":
-			wegman.play("rowing")
+			wemgan_animations.play("rowing")
 	else:
-		wegman.play("idle")
+		wemgan_animations.play("idle")
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not is_instance_valid(stop_point):

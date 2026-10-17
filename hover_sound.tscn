@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://lfjki5tuele5"]
+
+[ext_resource type="AudioStream" uid="uid://c3q3ivhhyur43" path="res://ASSETS/Sound/button_hover_1.ogg" id="1_jfpiv"]
+
+[node name="HoverSound" type="AudioStreamPlayer" unique_id=1739431041]
+stream = ExtResource("1_jfpiv")
+pitch_scale = 0.7
+bus = &"SFX"
