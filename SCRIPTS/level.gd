@@ -8,11 +8,11 @@ class_name Level
 func _ready() -> void:
 	if dialog_box:
 		dialog_box.dialog_ended.connect(_on_dialog_ended.bind(dialog_box))
-	if mobile_controls:
-		if OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile"):
-			mobile_controls.show()
-		else:
-			mobile_controls.hide()
+	#if mobile_controls:
+		#if OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile"):
+			#mobile_controls.show()
+		#else:
+			#mobile_controls.hide()
 	_level_ready()
 
 func _level_ready():

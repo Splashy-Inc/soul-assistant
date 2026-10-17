@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 			if not is_instance_valid(boat) or not blocking_souls.is_empty() or not blocking_boundaries.is_empty():
 				position = Vector2.ZERO
 			else:
-				reparent(boat)
+				boat.add_soul(self)
 				modulate.a = .75
 				starting_slot = null
 

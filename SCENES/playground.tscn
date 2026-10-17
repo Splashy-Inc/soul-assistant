@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://bvp1lppkqj5qi" path="res://SCENES/GUI/level_ui.tscn" id="8_y8n3e"]
 [ext_resource type="Script" uid="uid://ddlp2tg4jsfml" path="res://SCRIPTS/river_bank.gd" id="10_lxigc"]
 [ext_resource type="Texture2D" uid="uid://du812ab7b500w" path="res://ASSETS/Art/wegman_spritesheet_128x256.png" id="10_pt0f8"]
+[ext_resource type="Script" uid="uid://dg0athbk448bf" path="res://SCRIPTS/stop_point.gd" id="11_x7vje"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kk3q7"]
 texture = ExtResource("6_5u8wx")
@@ -222,14 +223,31 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_x7vje"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.45490196, 0.45490196, 0.45490196, 0.43137255)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2dmvo"]
+gradient = SubResource("Gradient_x7vje")
+width = 512
+height = 32
+
+[sub_resource type="Gradient" id="Gradient_wxwxs"]
+colors = PackedColorArray(0.043137256, 0.16078432, 0.13333334, 1, 0.62352943, 0.88235295, 0.81960785, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7rfqe"]
+gradient = SubResource("Gradient_wxwxs")
+width = 512
+height = 32
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_of7f0"]
 size = Vector2(1920, 1080)
 
 [node name="Playground" type="Node" unique_id=147226910 node_paths=PackedStringArray("dialog_box", "mobile_controls")]
 script = ExtResource("1_5e8d0")
 soul_scenes = Array[PackedScene]([ExtResource("4_5u8wx"), ExtResource("5_5u8wx"), ExtResource("6_5hh14")])
-dialog_box = NodePath("DialogBox")
-mobile_controls = NodePath("MobileControls")
+dialog_box = NodePath("CanvasLayer/DialogBox")
+mobile_controls = NodePath("Boat/MobileControls")
 
 [node name="ParallaxBackground" parent="." unique_id=1768022834 instance=ExtResource("2_ffhdr")]
 repeat_size = Vector2(1920, 1080)
@@ -259,7 +277,7 @@ position = Vector2(512, -192)
 [node name="SoulSlot3" type="Marker2D" parent="Dock" unique_id=1213557834]
 position = Vector2(320, 130)
 
-[node name="Boat" type="RigidBody2D" parent="." unique_id=1824947986]
+[node name="Boat" type="RigidBody2D" parent="." unique_id=1824947986 node_paths=PackedStringArray("stop_point")]
 position = Vector2(1376, 540)
 collision_layer = 8
 collision_mask = 4
@@ -267,6 +285,14 @@ gravity_scale = 0.0
 script = ExtResource("8_pm0gv")
 deceleration = 500.0
 max_speed = 2000.0
+stop_point = NodePath("../SoulPickup")
+
+[node name="MobileControls" parent="Boat" unique_id=2035199617 instance=ExtResource("7_uhrci")]
+z_index = 5
+offset_left = -288.0
+offset_top = -192.0
+offset_right = 352.0
+offset_bottom = 168.0
 
 [node name="PlayGrid" type="TileMapLayer" parent="Boat" unique_id=648146197]
 position = Vector2(-64, -64)
@@ -287,9 +313,24 @@ position = Vector2(-400, -24)
 sprite_frames = SubResource("SpriteFrames_rmx7e")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.8133315
+frame_progress = 0.6653275
+
+[node name="SpeedMeter" type="TextureProgressBar" parent="Boat" unique_id=684843348]
+offset_left = -264.0
+offset_top = 474.0
+offset_right = 248.0
+offset_bottom = 514.0
+step = 0.1
+texture_under = SubResource("GradientTexture2D_2dmvo")
+texture_progress = SubResource("GradientTexture2D_7rfqe")
 
 [node name="Camera2D" type="Camera2D" parent="Boat" unique_id=299637142]
+offset = Vector2(-416, 0)
+
+[node name="SoulPickup" type="Marker2D" parent="." unique_id=1910730461]
+position = Vector2(1376, 540)
+script = ExtResource("11_x7vje")
+camera_offset = Vector2(-416, 0)
 
 [node name="RiverBank" type="Area2D" parent="." unique_id=1810081864]
 position = Vector2(11376, 540)
@@ -304,25 +345,27 @@ tile_set = SubResource("TileSet_7rfqe")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RiverBank" unique_id=760338087]
 shape = SubResource("RectangleShape2D_of7f0")
 
-[node name="Marker2D" type="Marker2D" parent="RiverBank" unique_id=277778500]
+[node name="SoulDropoff" type="Marker2D" parent="RiverBank" unique_id=277778500]
 position = Vector2(-261, 0)
+script = ExtResource("11_x7vje")
+camera_offset = Vector2(261, 0)
 
 [node name="SoulGenerationTimer" type="Timer" parent="." unique_id=1296492894]
 autostart = true
 
-[node name="DialogBox" parent="." unique_id=393246458 instance=ExtResource("2_xgpxw")]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=239463223]
+
+[node name="DialogBox" parent="CanvasLayer" unique_id=393246458 instance=ExtResource("2_xgpxw")]
 visible = false
 left_texture = ExtResource("3_vq471")
 right_texture = ExtResource("3_vq471")
 dialog_data = ExtResource("3_5ii31")
 
-[node name="MobileControls" parent="." unique_id=2035199617 instance=ExtResource("7_uhrci")]
-visible = false
-
-[node name="LevelUI" parent="." unique_id=1008832496 instance=ExtResource("8_y8n3e")]
+[node name="LevelUI" parent="CanvasLayer" unique_id=1008832496 instance=ExtResource("8_y8n3e")]
 visible = false
 
 [node name="NextButton" type="Button" parent="." unique_id=241913169]
+visible = false
 offset_left = 1349.0
 offset_top = 932.0
 offset_right = 1468.0
@@ -330,6 +373,7 @@ offset_bottom = 1007.0
 theme_override_font_sizes/font_size = 48
 text = "Next"
 
+[connection signal="soul_added" from="Boat/PlayGrid" to="." method="_on_play_grid_soul_added"]
 [connection signal="body_entered" from="RiverBank" to="RiverBank" method="_on_body_entered"]
 [connection signal="timeout" from="SoulGenerationTimer" to="." method="_on_soul_generation_timer_timeout"]
 [connection signal="pressed" from="NextButton" to="." method="_on_next_button_pressed"]

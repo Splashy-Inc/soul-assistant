@@ -5,8 +5,11 @@ extends Level
 @onready var dock: Dock = $Dock
 @onready var soul_generation_timer: Timer = $SoulGenerationTimer
 @onready var play_grid: PlayGrid = $Boat/PlayGrid
+@onready var soul_pickup: Marker2D = $SoulPickup
+@onready var boat: Boat = $Boat
+@onready var next_button: Button = $NextButton
 
-func _level_ready():	
+func _level_ready():
 	while dock.add_soul(generate_new_soul()):
 		print("New soul added to dock")
 
@@ -17,6 +20,10 @@ func generate_new_soul() -> Soul:
 func _on_soul_generation_timer_timeout() -> void:
 	dock.add_soul(generate_new_soul())
 
-
 func _on_next_button_pressed() -> void:
-	play_grid.clear_souls()
+	next_button.hide()
+	mobile_controls.show()
+	boat.stop_point = null
+
+func _on_play_grid_soul_added() -> void:
+	next_button.show()
