@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bvvos1pgkwivs"]
 
-[ext_resource type="Script" uid="uid://cba0bpvyx7idv" path="res://SCRIPTS/soul.gd" id="1_we48p"]
+[ext_resource type="Script" uid="uid://cba0bpvyx7idv" path="res://SCRIPTS/soul.gd" id="1_w4yan"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8brsc"]
 load_path = "res://.godot/imported/soul_spritesheet_128x128.png-49f4d6bc2c9d37501043b18c68994db6.ctex"
@@ -12,8 +12,8 @@ region = Rect2(0, 128, 128, 256)
 [node name="Soul" type="Area2D" unique_id=472145370]
 z_index = 2
 collision_layer = 2
-collision_mask = 3
-script = ExtResource("1_we48p")
+collision_mask = 19
+script = ExtResource("1_w4yan")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=49748737]
 texture = SubResource("AtlasTexture_we48p")
@@ -21,8 +21,7 @@ centered = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1297246680]
 position = Vector2(64, 128)
-polygon = PackedVector2Array(-64, -128, 64, -128, 64, 128, -64, 128)
+polygon = PackedVector2Array(-60, -124, 60, -124, 60, 124, -60, 124)
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
-[connection signal="input_event" from="." to="." method="_on_input_event"]
+[node name="Center" type="Marker2D" parent="." unique_id=1865733401]
+position = Vector2(64, 128)

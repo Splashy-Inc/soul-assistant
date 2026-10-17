@@ -56,6 +56,7 @@ click={
 
 2d_physics/layer_1="Boat Grid"
 2d_physics/layer_2="Soul"
+2d_physics/layer_5="Boundary"
 
 [physics]
 
