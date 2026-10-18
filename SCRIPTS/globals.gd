@@ -1,6 +1,7 @@
 extends Node
 
 signal info_updated
+signal game_over
 
 var cur_level_scene: PackedScene
 
@@ -9,6 +10,9 @@ var joypad_connected := false
 var joystick: JoyStick
 
 var info = 10 # Example info to track for level UI
+
+var money := 0
+var money_goal := 0
 
 #var controls_data := load("res://controls_data.tres") as ControlsData
 var cur_controls := ControlsData.AVAILABLE_CONTROLS

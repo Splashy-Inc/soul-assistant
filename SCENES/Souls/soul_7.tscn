@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dcundabs8egdd"]
+
+[ext_resource type="Script" uid="uid://cba0bpvyx7idv" path="res://SCRIPTS/soul.gd" id="1_lcqk1"]
+[ext_resource type="Texture2D" uid="uid://bfeyhof1byjcs" path="res://ASSETS/Art/soul_spritesheet_128x128x3.png" id="2_0axnq"]
+[ext_resource type="AudioStream" uid="uid://wo1i2tyap4os" path="res://ASSETS/Sound/soul_drag_2.ogg" id="3_lcqk1"]
+[ext_resource type="AudioStream" uid="uid://vtw07nb46fwh" path="res://ASSETS/Sound/soul_drop_2.ogg" id="4_0axnq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lcqk1"]
+atlas = ExtResource("2_0axnq")
+region = Rect2(0, 2304, 384, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0axnq"]
+atlas = ExtResource("2_0axnq")
+region = Rect2(384, 2304, 384, 384)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pwhgm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lcqk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0axnq")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="Soul" type="Area2D" unique_id=472145370]
+z_index = 2
+collision_layer = 2
+collision_mask = 19
+script = ExtResource("1_lcqk1")
+money = 5
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1419673022]
+position = Vector2(-192, -320)
+sprite_frames = SubResource("SpriteFrames_pwhgm")
+autoplay = "default"
+centered = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1297246680]
+position = Vector2(-64, 0)
+polygon = PackedVector2Array(-4, -60, 132, -60, 132, -188, 252, -188, 252, 60, -124, 60, -124, -188, -4, -188)
+
+[node name="Center" type="Marker2D" parent="." unique_id=1562784921]
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Center" unique_id=790778443]
+rect = Rect2(-192, -192, 384, 384)
+
+[node name="PickupSound" type="AudioStreamPlayer" parent="." unique_id=2130651528]
+stream = ExtResource("3_lcqk1")
+pitch_scale = 1.2
+bus = &"SFX"
+
+[node name="DropoffSound" type="AudioStreamPlayer" parent="." unique_id=69304135]
+stream = ExtResource("4_0axnq")
+pitch_scale = 1.2
+bus = &"SFX"

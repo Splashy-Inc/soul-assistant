@@ -2,6 +2,9 @@ extends Node
 
 class_name Level
 
+signal won
+signal lost
+
 @export var dialog_box: DialogBox
 @export var mobile_controls: MobileControls
 

@@ -2,31 +2,50 @@
 
 [ext_resource type="Script" uid="uid://cba0bpvyx7idv" path="res://SCRIPTS/soul.gd" id="1_dniky"]
 [ext_resource type="AudioStream" uid="uid://blf5hg7mqsdv" path="res://ASSETS/Sound/soul_drag_3.ogg" id="2_0gcqe"]
+[ext_resource type="Texture2D" uid="uid://bfeyhof1byjcs" path="res://ASSETS/Art/soul_spritesheet_128x128x3.png" id="2_p1fha"]
 [ext_resource type="AudioStream" uid="uid://cq8c3ubydw7ai" path="res://ASSETS/Sound/soul_drop_3.ogg" id="3_p1fha"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2xv78"]
-load_path = "res://.godot/imported/soul_spritesheet_128x128.png-49f4d6bc2c9d37501043b18c68994db6.ctex"
+[sub_resource type="AtlasTexture" id="AtlasTexture_vu6e6"]
+atlas = ExtResource("2_p1fha")
+region = Rect2(0, 1152, 384, 384)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_07fcu"]
-atlas = SubResource("CompressedTexture2D_2xv78")
-region = Rect2(0, 640, 256, 384)
+[sub_resource type="AtlasTexture" id="AtlasTexture_vp3xp"]
+atlas = ExtResource("2_p1fha")
+region = Rect2(384, 1152, 384, 384)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rmx7e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vu6e6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vp3xp")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 4.0
+}]
 
 [node name="Soul" type="Area2D" unique_id=472145370]
 z_index = 2
 collision_layer = 2
 collision_mask = 19
 script = ExtResource("1_dniky")
+money = 4
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=774704999]
-texture = SubResource("AtlasTexture_07fcu")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1419673022]
+position = Vector2(-64, -192)
+sprite_frames = SubResource("SpriteFrames_rmx7e")
+autoplay = "default"
+frame_progress = 0.2870317
 centered = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1297246680]
-position = Vector2(128, 192)
+position = Vector2(64, 0)
 polygon = PackedVector2Array(-4, -60, 124, -60, 124, 60, -4, 60, -4, 188, -124, 188, -124, -188, -4, -188)
 
 [node name="Center" type="Marker2D" parent="." unique_id=1562784921]
-position = Vector2(64, 192)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Center" unique_id=790778443]
 rect = Rect2(-192, -192, 384, 384)

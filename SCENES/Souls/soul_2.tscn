@@ -32,19 +32,20 @@ z_index = 2
 collision_layer = 2
 collision_mask = 19
 script = ExtResource("1_w4yan")
+money = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1821055010]
-position = Vector2(-128, -128)
+position = Vector2(-192, -192)
 sprite_frames = SubResource("SpriteFrames_rmx7e")
 autoplay = "default"
+frame_progress = 0.6862527
 centered = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1297246680]
-position = Vector2(64, 128)
+position = Vector2(0, 64)
 polygon = PackedVector2Array(-60, -124, 60, -124, 60, 124, -60, 124)
 
 [node name="Center" type="Marker2D" parent="." unique_id=1865733401]
-position = Vector2(64, 128)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Center" unique_id=648876862]
 rect = Rect2(-192, -192, 384, 384)

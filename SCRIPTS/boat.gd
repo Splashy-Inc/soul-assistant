@@ -25,6 +25,13 @@ var row_left := false
 @onready var wegman_left: Marker2D = $WegmanLeft
 @onready var wegman_right: Marker2D = $WegmanRight
 @onready var wemgan_animations: AnimationPlayer = $WegmanLeft/Wegman/AnimationPlayer
+@onready var play_grid: PlayGrid = $PlayGrid
+
+@export var pickup_text  := "Drag and drop souls to the raft"
+@export var rowing_text  := "Row to the other side!"
+@export var dropoff_text := "Click souls to offload for money"
+@onready var helper_text: Label = $HelperText
+@onready var next_button: UIButton = $NextButton
 
 # TODO: Add mobile control check to only show on mobile devices
 func _process(delta: float) -> void:
@@ -88,6 +95,18 @@ func _on_play_grid_soul_clicked(soul: Soul) -> void:
 		var stop_parent := stop_point.get_parent()
 		if stop_parent is RiverBank:
 			stop_parent.offload_soul(soul)
+			if play_grid.get_children().is_empty():
+				next_button.show()
+				next_button.text = "Back to Soul Pickup"
 
 func travel_to_stop_point():
 	auto_travel = true
+
+func change_helper_text(phase: String):
+	match phase:
+		"pickup":
+			helper_text.text = pickup_text
+		"rowing":
+			helper_text.text = rowing_text
+		"dropoff":
+			helper_text.text = dropoff_text

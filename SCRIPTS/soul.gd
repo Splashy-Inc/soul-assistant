@@ -16,7 +16,8 @@ var invalid_modulate := Color(0.322, 0.322, 0.322, 1.0)
 @onready var dropoff_sound: AudioStreamPlayer = $DropoffSound
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $Center/VisibleOnScreenNotifier2D
 var offloading := false
-var speed := 200.0
+var speed := 512.0
+@export var money := 1
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
@@ -32,7 +33,7 @@ func _process(delta: float) -> void:
 			if is_instance_valid(starting_slot):
 				global_position = get_viewport().get_mouse_position() - center.position * scale.x
 				if is_instance_valid(boat) and blocking_boundaries.is_empty():
-					global_position = Vector2(snappedf(global_position.x, 128), snapped(global_position.y, 128)) + boat_offset
+					global_position = Vector2(snappedf(global_position.x, 128), snapped(global_position.y, 128)) + Vector2(32, -64)
 					if not blocking_souls.is_empty():
 						modulate = invalid_modulate
 					else:
@@ -83,6 +84,7 @@ func _on_area_exited(area: Area2D) -> void:
 
 func offload():
 	offloading = true
+	rotation = 0
 	dropoff_sound.play()
 
 func _on_screen_exited() -> void:

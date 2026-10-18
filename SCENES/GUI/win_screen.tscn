@@ -32,6 +32,26 @@ text = "You win!"
 label_settings = ExtResource("2_nrdyh")
 horizontal_alignment = 1
 
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuContent" unique_id=1223634044]
+layout_mode = 2
+alignment = 1
+
+[node name="Money" type="Label" parent="MenuContent/HBoxContainer" unique_id=1917257594]
+layout_mode = 2
+text = "Money: "
+
+[node name="Amount" type="Label" parent="MenuContent/HBoxContainer" unique_id=48104542]
+layout_mode = 2
+text = "0"
+
+[node name="Slash" type="Label" parent="MenuContent/HBoxContainer" unique_id=2044691734]
+layout_mode = 2
+text = "/"
+
+[node name="Goal" type="Label" parent="MenuContent/HBoxContainer" unique_id=1444973143]
+layout_mode = 2
+text = "0"
+
 [node name="MenuButtons" type="VBoxContainer" parent="MenuContent" unique_id=126054047]
 layout_mode = 2
 size_flags_horizontal = 4

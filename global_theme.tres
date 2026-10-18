@@ -29,7 +29,22 @@ texture_margin_right = 26.0
 texture_margin_bottom = 26.0
 region_rect = Rect2(0, 0, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_of7f0"]
+atlas = ExtResource("1_ofusn")
+region = Rect2(147, 1124, 347, 441)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rmx7e"]
+texture = SubResource("AtlasTexture_of7f0")
+texture_margin_left = 26.0
+texture_margin_top = 55.0
+texture_margin_right = 26.0
+texture_margin_bottom = 56.0
+
 [resource]
+Button/colors/font_color = Color(0.6862745, 0.9490196, 0.8862745, 1)
 Button/styles/hover = SubResource("StyleBoxTexture_k6an5")
 Button/styles/normal = SubResource("StyleBoxTexture_5t1o1")
 Button/styles/pressed = SubResource("StyleBoxTexture_k6an5")
+Label/colors/font_color = Color(0.6862745, 0.9490196, 0.8862745, 1)
+Label/font_sizes/font_size = 64
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_rmx7e")
