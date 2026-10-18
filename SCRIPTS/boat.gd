@@ -28,7 +28,7 @@ var row_left := false
 @onready var play_grid: PlayGrid = $PlayGrid
 
 @export var pickup_text  := "Drag and drop souls to the raft"
-@export var rowing_text  := "Row to the other side!"
+@export var rowing_text  := "Alternate buttons quickly to go faster!"
 @export var dropoff_text := "Click souls to offload for money"
 @onready var helper_text: Label = $HelperText
 @onready var next_button: UIButton = $NextButton
@@ -41,15 +41,19 @@ func _process(delta: float) -> void:
 	if row_left:
 		left.modulate.a = 1
 		right.modulate.a = .25
+		mobile_controls.button_left.modulate.a = 1
+		mobile_controls.button_right.modulate.a = .25
 	else:
 		left.modulate.a = .25
 		right.modulate.a = 1
+		mobile_controls.button_left.modulate.a = .25
+		mobile_controls.button_right.modulate.a = 1
 	
 	if is_instance_valid(stop_point):
 		var distance_to_stop = global_position.distance_to(stop_point.global_position)
 		if auto_travel:
 			if distance_to_stop > 10:
-				speed = clampf(lerpf(speed, 0, stop_weight), lerpf(speed, -distance_to_stop, stop_weight), min(-256, -distance_to_stop))
+				speed = clampf(lerpf(speed, 0, stop_weight), lerpf(speed, -distance_to_stop, stop_weight), min(-512, -distance_to_stop))
 			else:
 				global_position = stop_point.global_position
 				speed = 0
@@ -59,9 +63,10 @@ func _process(delta: float) -> void:
 		else:
 			row_indicators.hide()
 			speed_meter.hide()
-			#mobile_controls.hide()
+			mobile_controls.hide()
 			if distance_to_stop > 10:
-				speed = clampf(lerpf(speed, 0, stop_weight), min(256, distance_to_stop), lerpf(speed, distance_to_stop, stop_weight))
+				speed = clampf(lerpf(speed, 0, stop_weight), clampf(distance_to_stop, 512, distance_to_stop), lerpf(speed, distance_to_stop, stop_weight))
+				print(speed)
 			else:
 				global_position = stop_point.global_position
 				if speed != 0:
@@ -70,9 +75,12 @@ func _process(delta: float) -> void:
 				speed = 0
 		camera.offset.x = lerpf(camera.offset.x, stop_point.camera_offset.x, .1)
 	else:
-		row_indicators.show()
 		speed_meter.show()
-		#mobile_controls.show()
+		if OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile"):
+			mobile_controls.show()
+			row_indicators.hide()
+		else:
+			row_indicators.show()
 		camera.offset.x = lerpf(camera.offset.x, 0, .1)
 		speed = clampf(speed - deceleration * delta, 0, max_speed)
 	
@@ -91,11 +99,15 @@ func _unhandled_input(event: InputEvent) -> void:
 			row_left = false
 			left_animation_player.play("RESET")
 			right_animation_player.play("pulse")
+			mobile_controls.left_animation.play("RESET")
+			mobile_controls.right_animation.play("pulse")
 		elif event.is_action_pressed("row_right") and not row_left:
 			speed += acceleration
 			row_left = true
 			left_animation_player.play("pulse")
 			right_animation_player.play("RESET")
+			mobile_controls.left_animation.play("pulse")
+			mobile_controls.right_animation.play("RESET")
 
 func _on_play_grid_soul_clicked(soul: Soul) -> void:
 	if stop_point is SoulDropoff and speed == 0:

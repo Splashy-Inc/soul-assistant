@@ -1,7 +1,12 @@
 [gd_scene format=3 uid="uid://bvp1lppkqj5qi"]
 
 [ext_resource type="PackedScene" uid="uid://l63bub3q0j7s" path="res://SCENES/GUI/pause_button.tscn" id="1_l6r4l"]
+[ext_resource type="Texture2D" uid="uid://b5xbsg4gic4mi" path="res://ASSETS/Art/Soul_Icons_48x48.png" id="1_ukvpf"]
 [ext_resource type="Script" uid="uid://bs2g1oyj03xsx" path="res://SCRIPTS/timer.gd" id="2_pn7mg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_of7f0"]
+atlas = ExtResource("1_ukvpf")
+region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="GDScript" id="GDScript_prxe1"]
 script/source = "extends Label
@@ -17,6 +22,10 @@ func _process(_delta: float) -> void:
 func _on_info_updated(new_info):
 	text = str(new_info)
 "
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmx7e"]
+atlas = ExtResource("1_ukvpf")
+region = Rect2(0, 0, 48, 48)
 
 [node name="LevelUI" type="Control" unique_id=580807360]
 layout_mode = 3
@@ -36,40 +45,52 @@ offset_bottom = 226.0
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=2108240978]
 layout_mode = 2
 
-[node name="Money" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1676978621]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Money" unique_id=2138971963]
-layout_mode = 2
-size_flags_horizontal = 0
-text = "Money: "
-
-[node name="InfoLabel" type="Label" parent="PanelContainer/VBoxContainer/Money" unique_id=790652174]
-layout_mode = 2
-text = "0"
-horizontal_alignment = 2
-script = SubResource("GDScript_prxe1")
-
 [node name="Goal" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1088333161]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Goal" unique_id=541423558]
 layout_mode = 2
 size_flags_horizontal = 0
-text = "Goal:   "
+text = "Goal"
 
 [node name="InfoLabel" type="Label" parent="PanelContainer/VBoxContainer/Goal" unique_id=1507101209]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "100"
 horizontal_alignment = 2
 
-[node name="Timer" type="Label" parent="PanelContainer/VBoxContainer" unique_id=190363759]
+[node name="Money" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1676978621]
 layout_mode = 2
-text = "0:00"
+
+[node name="Label" type="TextureRect" parent="PanelContainer/VBoxContainer/Money" unique_id=1948269742]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = SubResource("AtlasTexture_of7f0")
+
+[node name="InfoLabel" type="Label" parent="PanelContainer/VBoxContainer/Money" unique_id=790652174]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+horizontal_alignment = 2
+script = SubResource("GDScript_prxe1")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1754389463]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=721901276]
+layout_mode = 2
+texture = SubResource("AtlasTexture_rmx7e")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Timer" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer" unique_id=190363759]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "00:00"
 horizontal_alignment = 1
 script = ExtResource("2_pn7mg")
 
-[node name="Tick" type="Timer" parent="PanelContainer/VBoxContainer/Timer" unique_id=624453831]
+[node name="Tick" type="Timer" parent="PanelContainer/VBoxContainer/HBoxContainer/Timer" unique_id=624453831]
 
 [node name="PauseButton" parent="." unique_id=1347886322 instance=ExtResource("1_l6r4l")]
 layout_mode = 0

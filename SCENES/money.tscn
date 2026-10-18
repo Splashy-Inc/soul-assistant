@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://s3iq8vuh5qtd"]
+
+[ext_resource type="Texture2D" uid="uid://b5xbsg4gic4mi" path="res://ASSETS/Art/Soul_Icons_48x48.png" id="1_3iq7b"]
+[ext_resource type="Script" uid="uid://cxspu7k3o2l16" path="res://SCRIPTS/money.gd" id="2_36slq"]
+[ext_resource type="AudioStream" uid="uid://co68d8iu6apy7" path="res://ASSETS/Sound/money_1.ogg" id="3_w4xg0"]
+[ext_resource type="AudioStream" uid="uid://cnnj4shacldi0" path="res://ASSETS/Sound/money_2.ogg" id="4_if36y"]
+[ext_resource type="AudioStream" uid="uid://du87ieyug720o" path="res://ASSETS/Sound/money_3.ogg" id="5_8ua03"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmx7e"]
+atlas = ExtResource("1_3iq7b")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="Animation" id="Animation_36slq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_kqjbc"]
+resource_name = "get"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -192)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate:a")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"die"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MoneySound")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k2xn6"]
+_data = {
+&"RESET": SubResource("Animation_36slq"),
+&"get": SubResource("Animation_kqjbc")
+}
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_anfmi"]
+random_pitch = 1.3348398
+streams_count = 3
+stream_0/stream = ExtResource("3_w4xg0")
+stream_1/stream = ExtResource("4_if36y")
+stream_2/stream = ExtResource("5_8ua03")
+
+[node name="Money" type="Sprite2D" unique_id=1321902001 node_paths=PackedStringArray("amount", "animation_player")]
+texture = SubResource("AtlasTexture_rmx7e")
+script = ExtResource("2_36slq")
+amount = NodePath("HBoxContainer/Amount")
+animation_player = NodePath("AnimationPlayer")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1938628783]
+offset_left = -87.0
+offset_top = -30.0
+offset_right = -11.0
+offset_bottom = 21.0
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=617147442]
+layout_mode = 2
+text = "+"
+
+[node name="Amount" type="Label" parent="HBoxContainer" unique_id=464970070]
+layout_mode = 2
+text = "1"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1920523778]
+libraries/ = SubResource("AnimationLibrary_k2xn6")
+
+[node name="MoneySound" type="AudioStreamPlayer" parent="." unique_id=53419295]
+stream = SubResource("AudioStreamRandomizer_anfmi")
+volume_db = 5.0
+bus = &"SFX"
