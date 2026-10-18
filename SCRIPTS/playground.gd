@@ -26,9 +26,11 @@ func _on_soul_generation_timer_timeout() -> void:
 func _on_next_button_pressed() -> void:
 	next_button.hide()
 	if boat.stop_point is SoulDropoff:
+		boat.change_helper_text("pickup")
 		boat.stop_point = soul_pickup
 		boat.travel_to_stop_point()
 	else:
+		boat.change_helper_text("rowing")
 		boat.stop_point = null
 
 func _on_play_grid_soul_added() -> void:

@@ -508,6 +508,17 @@ script = ExtResource("14_0sjh1")
 [node name="Camera2D" type="Camera2D" parent="Boat" unique_id=299637142]
 offset = Vector2(-416, 32)
 
+[node name="HelperText" type="Label" parent="Boat" unique_id=664511673]
+z_index = 10
+z_as_relative = false
+offset_left = -393.0
+offset_top = -467.0
+offset_right = 493.0
+offset_bottom = -416.0
+theme_override_font_sizes/font_size = 80
+text = "Drag and drop souls to the raft!"
+horizontal_alignment = 1
+
 [node name="SoulPickup" type="Marker2D" parent="." unique_id=1910730461]
 position = Vector2(1376, 512)
 script = ExtResource("11_x7vje")

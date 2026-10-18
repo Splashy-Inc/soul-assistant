@@ -26,6 +26,11 @@ var row_left := false
 @onready var wegman_right: Marker2D = $WegmanRight
 @onready var wemgan_animations: AnimationPlayer = $WegmanLeft/Wegman/AnimationPlayer
 
+@export var pickup_text  := "Drag and drop souls to the raft"
+@export var rowing_text  := "Row to the other side!"
+@export var dropoff_text := "Click souls to offload for money"
+@onready var helper_text: Label = $HelperText
+
 # TODO: Add mobile control check to only show on mobile devices
 func _process(delta: float) -> void:
 	if row_left:
@@ -91,3 +96,12 @@ func _on_play_grid_soul_clicked(soul: Soul) -> void:
 
 func travel_to_stop_point():
 	auto_travel = true
+
+func change_helper_text(phase: String):
+	match phase:
+		"pickup":
+			helper_text.text = pickup_text
+		"rowing":
+			helper_text.text = rowing_text
+		"dropoff":
+			helper_text.text = dropoff_text

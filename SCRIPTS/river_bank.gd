@@ -9,6 +9,7 @@ signal money_generated(amount: int)
 
 func _on_body_entered(body: Node2D) -> void:
 	if body is Boat:
+		body.change_helper_text("dropoff")
 		body.stop_point = soul_dropoff
 
 func offload_soul(soul: Soul):
