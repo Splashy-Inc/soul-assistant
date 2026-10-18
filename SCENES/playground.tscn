@@ -30,6 +30,8 @@
 [ext_resource type="Script" uid="uid://ximhghbf72gj" path="res://SCRIPTS/soul_dropoff.gd" id="15_af28u"]
 [ext_resource type="PackedScene" uid="uid://bh6bhqq5s7sjn" path="res://press_sound.tscn" id="16_dlf3s"]
 [ext_resource type="Texture2D" uid="uid://bp321sxscuh1l" path="res://ASSETS/Art/raft_spritesheet_896x896.png" id="17_swea1"]
+[ext_resource type="Script" uid="uid://b6y1r4ksuboyd" path="res://SCRIPTS/dropoff_start.gd" id="30_gfavb"]
+[ext_resource type="PackedScene" uid="uid://s3iq8vuh5qtd" path="res://SCENES/money.tscn" id="31_mb6ca"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kk3q7"]
 texture = ExtResource("6_5u8wx")
@@ -672,6 +674,11 @@ camera_offset = Vector2(261, 0)
 
 [node name="DropoffStart" type="Marker2D" parent="RiverBank" unique_id=1391872299]
 position = Vector2(288, 0)
+script = ExtResource("30_gfavb")
+money_scene = ExtResource("31_mb6ca")
+
+[node name="MoneySpawn" type="Marker2D" parent="RiverBank/DropoffStart" unique_id=810595664]
+position = Vector2(0, -96)
 
 [node name="SoulGenerationTimer" type="Timer" parent="." unique_id=1296492894]
 wait_time = 0.5
