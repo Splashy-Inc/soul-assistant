@@ -32,12 +32,13 @@ z_index = 2
 collision_layer = 2
 collision_mask = 19
 script = ExtResource("1_dniky")
+money = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1419673022]
 position = Vector2(-64, -192)
 sprite_frames = SubResource("SpriteFrames_rmx7e")
 autoplay = "default"
-frame_progress = 0.031184731
+frame_progress = 0.2870317
 centered = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1297246680]

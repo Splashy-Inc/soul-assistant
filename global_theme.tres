@@ -33,3 +33,4 @@ region_rect = Rect2(0, 0, 128, 128)
 Button/styles/hover = SubResource("StyleBoxTexture_k6an5")
 Button/styles/normal = SubResource("StyleBoxTexture_5t1o1")
 Button/styles/pressed = SubResource("StyleBoxTexture_k6an5")
+Label/font_sizes/font_size = 64

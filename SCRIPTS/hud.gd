@@ -8,7 +8,7 @@ signal quit_pressed
 signal main_menu_pressed
 
 @onready var menu_screens: Control = $MenuScreens
-@onready var menu_back_ground: ColorRect = $MenuScreens/MenuBackGround
+@onready var menu_back_ground: TextureRect = $MenuScreens/MenuBackGround
 @onready var main_menu: Control = $MenuScreens/MainMenu
 @onready var controls_screen: Control = $MenuScreens/ControlsScreen
 @onready var win_screen: Control = $MenuScreens/WinScreen

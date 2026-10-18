@@ -17,6 +17,7 @@ var invalid_modulate := Color(0.322, 0.322, 0.322, 1.0)
 @onready var visible_on_screen_notifier_2d: VisibleOnScreenNotifier2D = $Center/VisibleOnScreenNotifier2D
 var offloading := false
 var speed := 512.0
+@export var money := 1
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)

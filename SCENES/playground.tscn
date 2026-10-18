@@ -547,11 +547,11 @@ right_texture = ExtResource("3_vq471")
 dialog_data = ExtResource("3_5ii31")
 
 [node name="LevelUI" parent="CanvasLayer" unique_id=1008832496 instance=ExtResource("8_y8n3e")]
-visible = false
 
 [connection signal="stopped" from="Boat" to="." method="_on_boat_stopped"]
 [connection signal="soul_added" from="Boat/PlayGrid" to="." method="_on_play_grid_soul_added"]
 [connection signal="soul_clicked" from="Boat/PlayGrid" to="Boat" method="_on_play_grid_soul_clicked"]
 [connection signal="pressed" from="Boat/NextButton" to="." method="_on_next_button_pressed"]
 [connection signal="body_entered" from="RiverBank" to="RiverBank" method="_on_body_entered"]
+[connection signal="money_generated" from="RiverBank" to="." method="_on_river_bank_money_generated"]
 [connection signal="timeout" from="SoulGenerationTimer" to="." method="_on_soul_generation_timer_timeout"]

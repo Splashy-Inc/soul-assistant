@@ -9,6 +9,8 @@ extends Level
 @onready var boat: Boat = $Boat
 @onready var next_button: Button = $Boat/NextButton
 
+var money := 0
+
 func _level_ready():
 	pass
 
@@ -38,3 +40,8 @@ func _on_boat_stopped() -> void:
 		next_button.show()
 	else:
 		soul_generation_timer.start()
+
+func _on_river_bank_money_generated(amount: int) -> void:
+	money += amount
+	Globals.info_updated.emit(money)
+	

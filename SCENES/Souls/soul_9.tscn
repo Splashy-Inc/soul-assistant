@@ -32,6 +32,7 @@ z_index = 2
 collision_layer = 2
 collision_mask = 19
 script = ExtResource("1_1wt1f")
+money = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1419673022]
 position = Vector2(-192, -192)

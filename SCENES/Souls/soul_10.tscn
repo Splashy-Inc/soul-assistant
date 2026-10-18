@@ -32,12 +32,13 @@ z_index = 2
 collision_layer = 2
 collision_mask = 19
 script = ExtResource("1_karci")
+money = 5
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1419673022]
 position = Vector2(-192, -192)
 sprite_frames = SubResource("SpriteFrames_1wt1f")
 autoplay = "default"
-frame_progress = 0.24107337
+frame_progress = 0.8801034
 centered = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1297246680]
