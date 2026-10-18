@@ -62,7 +62,6 @@ text = "Goal:   "
 layout_mode = 2
 text = "100"
 horizontal_alignment = 2
-script = SubResource("GDScript_prxe1")
 
 [node name="Timer" type="Label" parent="PanelContainer/VBoxContainer" unique_id=190363759]
 layout_mode = 2

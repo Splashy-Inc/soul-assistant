@@ -34,13 +34,13 @@ func _on_next_button_pressed() -> void:
 		boat.stop_point = null
 
 func _on_play_grid_soul_added() -> void:
+	next_button.text = "Cross the River Styx"
 	next_button.show()
 
 func _on_boat_stopped() -> void:
 	if boat.stop_point is SoulDropoff:
 		soul_generation_timer.stop()
 		dock.clear_souls()
-		next_button.show()
 	else:
 		soul_generation_timer.start()
 

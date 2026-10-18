@@ -492,13 +492,14 @@ texture_progress = SubResource("GradientTexture2D_7rfqe")
 
 [node name="NextButton" type="Button" parent="Boat" unique_id=241913169]
 visible = false
-offset_left = 3.0
-offset_top = 429.0
-offset_right = 127.0
-offset_bottom = 519.0
+custom_minimum_size = Vector2(382, 90)
+offset_left = -134.0
+offset_top = 395.0
+offset_right = 248.0
+offset_bottom = 485.0
 theme = ExtResource("13_apqvo")
 theme_override_font_sizes/font_size = 48
-text = "NEXT"
+text = "Cross the River Styx"
 script = ExtResource("14_0sjh1")
 
 [node name="HoverSound" parent="Boat/NextButton" unique_id=1739431041 instance=ExtResource("15_0sjh1")]
