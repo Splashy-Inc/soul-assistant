@@ -19,6 +19,7 @@ run/main_scene="res://SCENES/screen_manager.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 boot_splash/stretch_mode=0
 boot_splash/image="res://SplashySplashScreen.png"
+config/icon="uid://hn8cich5q5o7"
 
 [audio]
 
