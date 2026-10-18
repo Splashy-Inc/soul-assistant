@@ -10,9 +10,10 @@ extends Level
 @onready var next_button: Button = $Boat/NextButton
 
 var money := 0
+@export var money_goal := 100
 
 func _level_ready():
-	pass
+	Globals.game_over.connect(_on_game_over)
 
 func generate_new_soul() -> Soul:
 	var new_soul := soul_scenes.pick_random().instantiate() as Soul
@@ -45,3 +46,9 @@ func _on_river_bank_money_generated(amount: int) -> void:
 	money += amount
 	Globals.info_updated.emit(money)
 	
+
+func _on_game_over():
+	if money >= money_goal:
+		won.emit()
+	else:
+		lost.emit()

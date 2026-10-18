@@ -397,7 +397,7 @@ position = Vector2(448, 0)
 position = Vector2(640, 320)
 
 [node name="Boat" type="RigidBody2D" parent="." unique_id=1824947986 node_paths=PackedStringArray("stop_point", "wegman")]
-position = Vector2(1344, 512)
+position = Vector2(1376, 512)
 collision_layer = 8
 collision_mask = 4
 gravity_scale = 0.0
@@ -509,7 +509,7 @@ script = ExtResource("14_0sjh1")
 offset = Vector2(-416, 32)
 
 [node name="SoulPickup" type="Marker2D" parent="." unique_id=1910730461]
-position = Vector2(1344, 512)
+position = Vector2(1376, 512)
 script = ExtResource("11_x7vje")
 camera_offset = Vector2(-416, 0)
 

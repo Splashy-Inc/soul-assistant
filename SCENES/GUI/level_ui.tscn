@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bvp1lppkqj5qi"]
 
 [ext_resource type="PackedScene" uid="uid://l63bub3q0j7s" path="res://SCENES/GUI/pause_button.tscn" id="1_l6r4l"]
+[ext_resource type="Script" uid="uid://bs2g1oyj03xsx" path="res://SCRIPTS/timer.gd" id="2_pn7mg"]
 
 [sub_resource type="GDScript" id="GDScript_prxe1"]
 script/source = "extends Label
@@ -26,28 +27,40 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PauseButton" parent="." unique_id=1347886322 instance=ExtResource("1_l6r4l")]
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=926885539]
 layout_mode = 0
-offset_left = 56.0
-offset_top = 31.0
-offset_right = 198.0
-offset_bottom = 121.0
-mouse_behavior_recursive = 1
+offset_right = 480.0
+offset_bottom = 273.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=2108240978]
+layout_mode = 2
+
+[node name="PauseButton" parent="PanelContainer/VBoxContainer" unique_id=1347886322 instance=ExtResource("1_l6r4l")]
+layout_mode = 2
+size_flags_horizontal = 4
+mouse_behavior_recursive = 2
 theme_override_font_sizes/font_size = 48
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1676978621]
-layout_mode = 0
-offset_right = 320.0
-offset_bottom = 331.0
+[node name="Money" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1676978621]
+layout_mode = 2
+alignment = 1
 
-[node name="Label" type="Label" parent="HBoxContainer" unique_id=2138971963]
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Money" unique_id=2138971963]
 layout_mode = 2
 text = "  Money: "
 
-[node name="InfoLabel" type="Label" parent="HBoxContainer" unique_id=790652174]
+[node name="InfoLabel" type="Label" parent="PanelContainer/VBoxContainer/Money" unique_id=790652174]
 layout_mode = 2
 text = "0"
 horizontal_alignment = 2
 script = SubResource("GDScript_prxe1")
 
-[connection signal="pressed" from="PauseButton" to="PauseButton" method="_on_pressed"]
+[node name="Timer" type="Label" parent="PanelContainer/VBoxContainer" unique_id=190363759]
+layout_mode = 2
+text = "0:00"
+horizontal_alignment = 1
+script = ExtResource("2_pn7mg")
+
+[node name="Tick" type="Timer" parent="PanelContainer/VBoxContainer/Timer" unique_id=624453831]
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/PauseButton" to="PanelContainer/VBoxContainer/PauseButton" method="_on_pressed"]

@@ -33,7 +33,7 @@ func _process(delta: float) -> void:
 			if is_instance_valid(starting_slot):
 				global_position = get_viewport().get_mouse_position() - center.position * scale.x
 				if is_instance_valid(boat) and blocking_boundaries.is_empty():
-					global_position = Vector2(snappedf(global_position.x, 128), snapped(global_position.y, 128)) + Vector2(0, -64)
+					global_position = Vector2(snappedf(global_position.x, 128), snapped(global_position.y, 128)) + Vector2(32, -64)
 					if not blocking_souls.is_empty():
 						modulate = invalid_modulate
 					else:
