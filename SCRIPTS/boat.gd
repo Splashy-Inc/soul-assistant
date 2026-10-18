@@ -49,7 +49,7 @@ func _process(delta: float) -> void:
 		var distance_to_stop = global_position.distance_to(stop_point.global_position)
 		if auto_travel:
 			if distance_to_stop > 10:
-				speed = clampf(lerpf(speed, 0, stop_weight), lerpf(speed, -distance_to_stop, stop_weight), min(-256, -distance_to_stop))
+				speed = clampf(lerpf(speed, 0, stop_weight), lerpf(speed, -distance_to_stop, stop_weight), min(-512, -distance_to_stop))
 			else:
 				global_position = stop_point.global_position
 				speed = 0
@@ -61,7 +61,8 @@ func _process(delta: float) -> void:
 			speed_meter.hide()
 			#mobile_controls.hide()
 			if distance_to_stop > 10:
-				speed = clampf(lerpf(speed, 0, stop_weight), min(256, distance_to_stop), lerpf(speed, distance_to_stop, stop_weight))
+				speed = clampf(lerpf(speed, 0, stop_weight), clampf(distance_to_stop, 512, distance_to_stop), lerpf(speed, distance_to_stop, stop_weight))
+				print(speed)
 			else:
 				global_position = stop_point.global_position
 				if speed != 0:

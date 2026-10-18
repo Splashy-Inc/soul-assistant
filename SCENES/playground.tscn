@@ -634,6 +634,7 @@ autoplay = &"pulse"
 
 [node name="Camera2D" type="Camera2D" parent="Boat" unique_id=299637142]
 offset = Vector2(-416, 32)
+position_smoothing_enabled = true
 
 [node name="HelperText" type="Label" parent="Boat" unique_id=664511673]
 z_index = 10
@@ -658,6 +659,7 @@ collision_mask = 8
 script = ExtResource("10_lxigc")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="RiverBank" unique_id=2021873676]
+position = Vector2(-192, 0)
 tile_map_data = PackedByteArray("AAADAAIAAQAAAAIAAFAEAAIAAQAAAAIAAFAFAAIAAQAAAAIAAFAGAAIAAQAFAAAAAFAGAAEAAQAEAAAAAFAFAAAAAQAAAAIAAFADAAEAAQAAAAIAAFAEAAEAAQAAAAIAAFAFAAEAAQAAAAIAAFAEAP3/AQAAAAIAAFAFAP3/AQAAAAIAAFAGAP3/AQAAAAAAAFAGAP7/AQABAAAAAFAFAP//AQAAAAIAAFAEAP7/AQAAAAIAAFAFAP7/AQAAAAIAAFADAPz/AQAAAAIAAFAEAPz/AQAAAAIAAFAFAPz/AQAAAAIAAFAGAPz/AQAAAAAAAFADAAMAAQAAAAIAAFAEAAMAAQAAAAIAAFAFAAMAAQAAAAIAAFAGAAMAAQAGAAAAAFACAAEAAQAEAAYAAFACAP7/AQACAAYAAFACAP3/AQABAAYAAFACAPz/AQAAAAYAAFACAAIAAQAFAAYAAFACAAMAAQAGAAYAAFADAP//AQAAAAIAAFADAP7/AQAAAAIAAFADAP3/AQAAAAIAAFAEAP//AQAAAAIAAFAEAAAAAQAAAAIAAFADAAAAAQAAAAIAAFACAAAAAQADAAAAAGACAP//AQAEAAAAAGAGAP//AQAAAAMAAFAGAAAAAQAAAAMAAFAHAP//AQAAAAMAAFAHAAAAAQAAAAMAAFAIAP//AQAAAAMAAFAIAAAAAQAAAAMAAFA=")
 tile_set = SubResource("TileSet_7rfqe")
 
@@ -665,12 +667,12 @@ tile_set = SubResource("TileSet_7rfqe")
 shape = SubResource("RectangleShape2D_of7f0")
 
 [node name="SoulDropoff" type="Marker2D" parent="RiverBank" unique_id=277778500]
-position = Vector2(-261, -28)
+position = Vector2(-485, -28)
 script = ExtResource("15_af28u")
 camera_offset = Vector2(261, 0)
 
 [node name="DropoffStart" type="Marker2D" parent="RiverBank" unique_id=1391872299]
-position = Vector2(512, 0)
+position = Vector2(288, 0)
 
 [node name="SoulGenerationTimer" type="Timer" parent="." unique_id=1296492894]
 wait_time = 0.5
