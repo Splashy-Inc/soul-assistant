@@ -41,9 +41,13 @@ func _process(delta: float) -> void:
 	if row_left:
 		left.modulate.a = 1
 		right.modulate.a = .25
+		mobile_controls.button_left.modulate.a = 1
+		mobile_controls.button_right.modulate.a = .25
 	else:
 		left.modulate.a = .25
 		right.modulate.a = 1
+		mobile_controls.button_left.modulate.a = .25
+		mobile_controls.button_right.modulate.a = 1
 	
 	if is_instance_valid(stop_point):
 		var distance_to_stop = global_position.distance_to(stop_point.global_position)
@@ -59,7 +63,7 @@ func _process(delta: float) -> void:
 		else:
 			row_indicators.hide()
 			speed_meter.hide()
-			#mobile_controls.hide()
+			mobile_controls.hide()
 			if distance_to_stop > 10:
 				speed = clampf(lerpf(speed, 0, stop_weight), clampf(distance_to_stop, 512, distance_to_stop), lerpf(speed, distance_to_stop, stop_weight))
 				print(speed)
@@ -71,9 +75,12 @@ func _process(delta: float) -> void:
 				speed = 0
 		camera.offset.x = lerpf(camera.offset.x, stop_point.camera_offset.x, .1)
 	else:
-		row_indicators.show()
 		speed_meter.show()
-		#mobile_controls.show()
+		if OS.has_feature("web_android") or OS.has_feature("web_ios") or OS.has_feature("mobile"):
+			mobile_controls.show()
+			row_indicators.hide()
+		else:
+			row_indicators.show()
 		camera.offset.x = lerpf(camera.offset.x, 0, .1)
 		speed = clampf(speed - deceleration * delta, 0, max_speed)
 	

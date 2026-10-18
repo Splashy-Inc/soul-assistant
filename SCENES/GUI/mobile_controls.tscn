@@ -44,9 +44,23 @@ texture_normal = SubResource("AtlasTexture_mxsvn")
 texture_pressed = SubResource("AtlasTexture_lofgt")
 action = "row_left"
 
+[node name="Label" type="Label" parent="Button1" unique_id=83985421]
+offset_left = 26.0
+offset_top = 38.0
+offset_right = 106.0
+offset_bottom = 89.0
+text = "ROW"
+
 [node name="Button2" type="TouchScreenButton" parent="." unique_id=990867453]
 position = Vector2(836, 363)
 scale = Vector2(2, 2)
 texture_normal = SubResource("AtlasTexture_jth03")
 texture_pressed = SubResource("AtlasTexture_2a575")
 action = "row_right"
+
+[node name="Label" type="Label" parent="Button2" unique_id=820971188]
+offset_left = 26.0
+offset_top = 38.0
+offset_right = 106.0
+offset_bottom = 89.0
+text = "ROW"
