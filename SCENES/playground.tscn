@@ -418,20 +418,20 @@ tile_set = SubResource("TileSet_7rfqe")
 
 [node name="SoulPreview" type="Marker2D" parent="Dock" unique_id=1961604483]
 modulate = Color(1, 1, 1, 0.49803922)
-position = Vector2(64, -92)
+position = Vector2(128, 0)
 scale = Vector2(0.5, 0.5)
 
 [node name="SoulSlot1" type="Marker2D" parent="Dock" unique_id=1897805037]
-position = Vector2(320, -512)
+position = Vector2(640, -320)
 
 [node name="SoulSlot2" type="Marker2D" parent="Dock" unique_id=650034066]
-position = Vector2(512, -192)
+position = Vector2(448, 0)
 
 [node name="SoulSlot3" type="Marker2D" parent="Dock" unique_id=1213557834]
-position = Vector2(320, 130)
+position = Vector2(640, 320)
 
 [node name="Boat" type="RigidBody2D" parent="." unique_id=1824947986 node_paths=PackedStringArray("stop_point", "wegman")]
-position = Vector2(1376, 540)
+position = Vector2(1344, 512)
 collision_layer = 8
 collision_mask = 4
 gravity_scale = 0.0
@@ -450,21 +450,20 @@ offset_right = 352.0
 offset_bottom = 168.0
 
 [node name="PlayGrid" type="TileMapLayer" parent="Boat" unique_id=648146197]
-position = Vector2(-64, -64)
 tile_map_data = PackedByteArray("AAD+//7/AQABAAEAAAD+////AQABAAIAAAD+/wAAAQABAAMAAAD+/wEAAQABAAQAAAD+/wIAAQABAAUAAAD///7/AQACAAEAAAD/////AQACAAIAAAD//wAAAQACAAMAAAD//wEAAQACAAQAAAD//wIAAQACAAUAAAAAAP7/AQADAAEAAAAAAP//AQADAAIAAAAAAAAAAQADAAMAAAAAAAEAAQADAAQAAAAAAAIAAQADAAUAAAABAP7/AQAEAAEAAAABAP//AQAEAAIAAAABAAAAAQAEAAMAAAABAAEAAQAEAAQAAAABAAIAAQAEAAUAAAACAP7/AQAFAAEAAAACAP//AQAFAAIAAAACAAAAAQAFAAMAAAACAAEAAQAFAAQAAAACAAIAAQAFAAUAAAA=")
 tile_set = SubResource("TileSet_rmx7e")
 script = ExtResource("8_xdw11")
 
 [node name="Boundary" type="TileMapLayer" parent="Boat" unique_id=727304571]
-position = Vector2(-64, -64)
 tile_map_data = PackedByteArray("AAD9//3/AQAAAAAAAAD+//3/AQABAAAAAAD///3/AQACAAAAAAAAAP3/AQADAAAAAAABAP3/AQAEAAAAAAACAP3/AQAFAAAAAAADAP3/AQAGAAAAAAD9//7/AQAAAAEAAAD9////AQAAAAIAAAD9/wAAAQAAAAMAAAD9/wEAAQAAAAQAAAD9/wIAAQAAAAUAAAADAP7/AQAGAAEAAAADAP//AQAGAAIAAAADAAAAAQAGAAMAAAADAAEAAQAGAAQAAAADAAIAAQAGAAUAAAD9/wMAAQAAAAYAAAD+/wMAAQABAAYAAAD//wMAAQACAAYAAAAAAAMAAQADAAYAAAABAAMAAQAEAAYAAAACAAMAAQAFAAYAAAADAAMAAQAGAAYAAAA=")
 tile_set = SubResource("TileSet_rmx7e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boat" unique_id=1267784743]
+position = Vector2(64, 64)
 shape = SubResource("RectangleShape2D_rmx7e")
 
 [node name="WegmanLeft" type="Marker2D" parent="Boat" unique_id=1287135261]
-position = Vector2(-400, -24)
+position = Vector2(-336, 40)
 
 [node name="Wegman" type="AnimatedSprite2D" parent="Boat/WegmanLeft" unique_id=1513023895]
 sprite_frames = SubResource("SpriteFrames_rmx7e")
@@ -481,11 +480,11 @@ max_polyphony = 2
 bus = &"SFX"
 
 [node name="WegmanRight" type="Marker2D" parent="Boat" unique_id=127474584]
-position = Vector2(400, -24)
+position = Vector2(464, 40)
 scale = Vector2(-1, 1)
 
 [node name="RowIndicators" type="Node2D" parent="Boat" unique_id=1418043124]
-position = Vector2(-576, 0)
+position = Vector2(-512, 64)
 
 [node name="Left" type="Sprite2D" parent="Boat/RowIndicators" unique_id=1586476551]
 position = Vector2(0, -128)
@@ -513,20 +512,20 @@ text = "D"
 
 [node name="SpeedMeter" type="TextureProgressBar" parent="Boat" unique_id=684843348]
 visible = false
-offset_left = -264.0
-offset_top = 474.0
-offset_right = 248.0
-offset_bottom = 514.0
+offset_left = -200.0
+offset_top = 514.0
+offset_right = 312.0
+offset_bottom = 554.0
 step = 0.1
 texture_under = SubResource("GradientTexture2D_2dmvo")
 texture_progress = SubResource("GradientTexture2D_7rfqe")
 
 [node name="NextButton" type="Button" parent="Boat" unique_id=241913169]
 visible = false
-offset_left = -61.0
-offset_top = 365.0
-offset_right = 63.0
-offset_bottom = 455.0
+offset_left = 3.0
+offset_top = 429.0
+offset_right = 127.0
+offset_bottom = 519.0
 theme = ExtResource("13_apqvo")
 theme_override_font_sizes/font_size = 48
 text = "NEXT"
@@ -537,10 +536,10 @@ script = ExtResource("14_0sjh1")
 [node name="PressSound" parent="Boat/NextButton" unique_id=704776872 instance=ExtResource("16_dlf3s")]
 
 [node name="Camera2D" type="Camera2D" parent="Boat" unique_id=299637142]
-offset = Vector2(-416, 0)
+offset = Vector2(-416, 32)
 
 [node name="SoulPickup" type="Marker2D" parent="." unique_id=1910730461]
-position = Vector2(1376, 540)
+position = Vector2(1344, 512)
 script = ExtResource("11_x7vje")
 camera_offset = Vector2(-416, 0)
 
@@ -558,7 +557,7 @@ tile_set = SubResource("TileSet_7rfqe")
 shape = SubResource("RectangleShape2D_of7f0")
 
 [node name="SoulDropoff" type="Marker2D" parent="RiverBank" unique_id=277778500]
-position = Vector2(-261, 0)
+position = Vector2(-261, -28)
 script = ExtResource("15_af28u")
 camera_offset = Vector2(261, 0)
 

@@ -13,7 +13,8 @@ func _level_ready():
 	pass
 
 func generate_new_soul() -> Soul:
-	var new_soul = soul_scenes.pick_random().instantiate()
+	var new_soul := soul_scenes.pick_random().instantiate() as Soul
+	new_soul.rotation_degrees = snapped(randi_range(0, 270), 90)
 	return new_soul
 
 func _on_soul_generation_timer_timeout() -> void:

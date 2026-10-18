@@ -34,16 +34,16 @@ collision_mask = 19
 script = ExtResource("1_qj445")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1419673022]
+position = Vector2(-64, -192)
 sprite_frames = SubResource("SpriteFrames_0axnq")
 autoplay = "default"
 centered = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1297246680]
-position = Vector2(128, 192)
+position = Vector2(64, 0)
 polygon = PackedVector2Array(-4, 68, 124, 68, 124, 188, -124, 188, -124, -188, -4, -188)
 
 [node name="Center" type="Marker2D" parent="." unique_id=1562784921]
-position = Vector2(64, 192)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Center" unique_id=790778443]
 rect = Rect2(-192, -192, 384, 384)
