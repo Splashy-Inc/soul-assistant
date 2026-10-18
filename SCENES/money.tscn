@@ -130,4 +130,5 @@ libraries/ = SubResource("AnimationLibrary_k2xn6")
 
 [node name="MoneySound" type="AudioStreamPlayer" parent="." unique_id=53419295]
 stream = SubResource("AudioStreamRandomizer_anfmi")
+volume_db = 5.0
 bus = &"SFX"
