@@ -28,7 +28,7 @@ var row_left := false
 @onready var play_grid: PlayGrid = $PlayGrid
 
 @export var pickup_text  := "Drag and drop souls to the raft"
-@export var rowing_text  := "Row to the other side!"
+@export var rowing_text  := "Alternate buttons quickly to go faster!"
 @export var dropoff_text := "Click souls to offload for money"
 @onready var helper_text: Label = $HelperText
 @onready var next_button: UIButton = $NextButton
