@@ -6,6 +6,7 @@ signal play_pressed
 signal restart_pressed
 signal quit_pressed
 signal main_menu_pressed
+signal intro_ended
 
 @onready var menu_screens: Control = $MenuScreens
 @onready var menu_back_ground: TextureRect = $MenuScreens/MenuBackGround
@@ -14,6 +15,7 @@ signal main_menu_pressed
 @onready var win_screen: WinScreen = $MenuScreens/WinScreen
 @onready var loss_screen: LossScreen = $MenuScreens/LossScreen
 @onready var pause_menu: Control = $MenuScreens/PauseMenu
+@onready var intro_scene: IntroScene = $MenuScreens/IntroScene
 
 enum Menus {
 	NONE,
@@ -22,6 +24,7 @@ enum Menus {
 	WIN,
 	LOSS,
 	PAUSE,
+	INTRO,
 }
 
 var cur_menu := Menus.NONE
@@ -92,6 +95,13 @@ func show_loss_screen():
 	show_menu_screens()
 	loss_screen.show()
 
+func show_intro_scene():
+	cur_menu = Menus.INTRO
+	_clear_menu()
+	show_menu_screens()
+	intro_scene.show()
+	intro_scene.start_dialog()
+
 func _on_game_menu_button_pressed(type: String):
 	match type:
 		"Play":
@@ -104,3 +114,6 @@ func _on_game_menu_button_pressed(type: String):
 			main_menu_pressed.emit()
 		"Quit":
 			quit_pressed.emit()
+
+func _on_intro_ended() -> void:
+	intro_ended.emit()

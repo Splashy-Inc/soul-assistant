@@ -48,7 +48,7 @@ func _on_quit_pressed():
 
 func _on_play_pressed():
 	if game_ended or not level:
-		_on_restart_pressed()
+		hud.show_intro_scene()
 	else:
 		_resume_play()
 
@@ -104,3 +104,6 @@ func _set_level(new_level_scene: PackedScene):
 
 func _on_main_menu_pressed() -> void:
 	show_main_menu()
+
+func _on_hud_intro_ended() -> void:
+	_on_restart_pressed()

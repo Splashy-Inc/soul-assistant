@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DialogData" format=3 uid="uid://b5l1n3yvwg7x0"]
+
+[ext_resource type="JSON" path="res://SCRIPTS/DialogSystem/DialogData/part_2_dialog_text.json" id="1_tuh8j"]
+[ext_resource type="Script" uid="uid://x21mfk8gcgvf" path="res://SCRIPTS/DialogSystem/DialogData/dialog_data.gd" id="2_yyp6c"]
+
+[resource]
+script = ExtResource("2_yyp6c")
+label = "Part 1"
+dialog_text_json = ExtResource("1_tuh8j")
+metadata/_custom_type_script = "uid://x21mfk8gcgvf"
