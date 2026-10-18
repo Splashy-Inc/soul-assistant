@@ -99,11 +99,15 @@ func _unhandled_input(event: InputEvent) -> void:
 			row_left = false
 			left_animation_player.play("RESET")
 			right_animation_player.play("pulse")
+			mobile_controls.left_animation.play("RESET")
+			mobile_controls.right_animation.play("pulse")
 		elif event.is_action_pressed("row_right") and not row_left:
 			speed += acceleration
 			row_left = true
 			left_animation_player.play("pulse")
 			right_animation_player.play("RESET")
+			mobile_controls.left_animation.play("pulse")
+			mobile_controls.right_animation.play("RESET")
 
 func _on_play_grid_soul_clicked(soul: Soul) -> void:
 	if stop_point is SoulDropoff and speed == 0:
