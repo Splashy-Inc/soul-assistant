@@ -28,30 +28,39 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=926885539]
+custom_minimum_size = Vector2(284, 226)
 layout_mode = 0
-offset_right = 480.0
-offset_bottom = 273.0
+offset_right = 264.0
+offset_bottom = 226.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=2108240978]
 layout_mode = 2
 
-[node name="PauseButton" parent="PanelContainer/VBoxContainer" unique_id=1347886322 instance=ExtResource("1_l6r4l")]
-layout_mode = 2
-size_flags_horizontal = 4
-mouse_behavior_recursive = 2
-theme_override_font_sizes/font_size = 48
-
 [node name="Money" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1676978621]
 layout_mode = 2
-alignment = 1
 
 [node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Money" unique_id=2138971963]
 layout_mode = 2
-text = "  Money: "
+size_flags_horizontal = 0
+text = "Money: "
 
 [node name="InfoLabel" type="Label" parent="PanelContainer/VBoxContainer/Money" unique_id=790652174]
 layout_mode = 2
 text = "0"
+horizontal_alignment = 2
+script = SubResource("GDScript_prxe1")
+
+[node name="Goal" type="HBoxContainer" parent="PanelContainer/VBoxContainer" unique_id=1088333161]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/Goal" unique_id=541423558]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Goal:   "
+
+[node name="InfoLabel" type="Label" parent="PanelContainer/VBoxContainer/Goal" unique_id=1507101209]
+layout_mode = 2
+text = "100"
 horizontal_alignment = 2
 script = SubResource("GDScript_prxe1")
 
@@ -63,4 +72,14 @@ script = ExtResource("2_pn7mg")
 
 [node name="Tick" type="Timer" parent="PanelContainer/VBoxContainer/Timer" unique_id=624453831]
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/PauseButton" to="PanelContainer/VBoxContainer/PauseButton" method="_on_pressed"]
+[node name="PauseButton" parent="." unique_id=1347886322 instance=ExtResource("1_l6r4l")]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 276.0
+offset_right = 197.0
+offset_bottom = 366.0
+size_flags_horizontal = 4
+mouse_behavior_recursive = 2
+theme_override_font_sizes/font_size = 48
+
+[connection signal="pressed" from="PauseButton" to="PauseButton" method="_on_pressed"]

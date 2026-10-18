@@ -1,6 +1,11 @@
 extends Control
 
+class_name WinScreen
+
 signal button_pressed
+
+@onready var amount: Label = $MenuContent/HBoxContainer/Amount
+@onready var goal: Label = $MenuContent/HBoxContainer/Goal
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,3 +23,7 @@ func _on_restart_button_pressed():
 
 func _on_quit_button_pressed():
 	button_pressed.emit("Quit")
+
+func set_info(money: int, money_goal: int):
+	amount.text = str(money)
+	goal.text = str(money_goal)

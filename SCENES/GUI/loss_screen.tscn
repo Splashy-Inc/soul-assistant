@@ -32,6 +32,26 @@ text = "You lose..."
 label_settings = ExtResource("2_koh0w")
 horizontal_alignment = 1
 
+[node name="HBoxContainer" type="HBoxContainer" parent="MenuContent" unique_id=1804212845]
+layout_mode = 2
+alignment = 1
+
+[node name="Money" type="Label" parent="MenuContent/HBoxContainer" unique_id=888096191]
+layout_mode = 2
+text = "Money: "
+
+[node name="Amount" type="Label" parent="MenuContent/HBoxContainer" unique_id=1669053934]
+layout_mode = 2
+text = "0"
+
+[node name="Slash" type="Label" parent="MenuContent/HBoxContainer" unique_id=1436337705]
+layout_mode = 2
+text = "/"
+
+[node name="Goal" type="Label" parent="MenuContent/HBoxContainer" unique_id=1648194731]
+layout_mode = 2
+text = "0"
+
 [node name="MenuButtons" type="VBoxContainer" parent="MenuContent" unique_id=1924737503]
 layout_mode = 2
 size_flags_horizontal = 4

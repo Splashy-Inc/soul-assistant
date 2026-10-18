@@ -36,7 +36,7 @@ func show_main_menu():
 	hud.show_main_menu()
 
 func toggle_pause_menu():
-	if hud.cur_menu != HUD.Menus.MAIN and hud.cur_menu != HUD.Menus.CONTROLS:
+	if not hud.cur_menu in [HUD.Menus.MAIN, HUD.Menus.CONTROLS, HUD.Menus.WIN, HUD.Menus.LOSS]:
 		if not paused:
 			_pause_play()
 			hud.show_pause_menu()
@@ -57,6 +57,8 @@ func _input(event):
 		toggle_pause_menu()
 
 func _restart_level():
+	Globals.money = 0
+	Globals.money_goal = 0
 	game_ended = false
 	if level:
 		level.free()

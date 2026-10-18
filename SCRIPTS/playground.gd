@@ -47,9 +47,10 @@ func _on_boat_stopped() -> void:
 func _on_river_bank_money_generated(amount: int) -> void:
 	money += amount
 	Globals.info_updated.emit(money)
-	
 
 func _on_game_over():
+	Globals.money = money
+	Globals.money_goal = money_goal
 	if money >= money_goal:
 		won.emit()
 	else:

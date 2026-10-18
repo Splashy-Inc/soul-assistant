@@ -11,8 +11,8 @@ signal main_menu_pressed
 @onready var menu_back_ground: TextureRect = $MenuScreens/MenuBackGround
 @onready var main_menu: Control = $MenuScreens/MainMenu
 @onready var controls_screen: Control = $MenuScreens/ControlsScreen
-@onready var win_screen: Control = $MenuScreens/WinScreen
-@onready var loss_screen: Control = $MenuScreens/LossScreen
+@onready var win_screen: WinScreen = $MenuScreens/WinScreen
+@onready var loss_screen: LossScreen = $MenuScreens/LossScreen
 @onready var pause_menu: Control = $MenuScreens/PauseMenu
 
 enum Menus {
@@ -80,12 +80,14 @@ func show_pause_menu():
 
 func show_win_screen():
 	cur_menu = Menus.WIN
+	win_screen.set_info(Globals.money, Globals.money_goal)
 	_clear_menu()
 	show_menu_screens()
 	win_screen.show()
 
 func show_loss_screen():
 	cur_menu = Menus.LOSS
+	loss_screen.set_info(Globals.money, Globals.money_goal)
 	_clear_menu()
 	show_menu_screens()
 	loss_screen.show()

@@ -46,11 +46,15 @@ theme_override_constants/separation = 10
 alignment = 1
 
 [node name="PlayButton" type="Button" parent="MenuContent/MenuButtons" unique_id=506636663]
-custom_minimum_size = Vector2(100, 20)
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 6
 theme_override_font_sizes/font_size = 128
 text = "Play"
 script = ExtResource("4_7foxk")
+
+[node name="Spacer" type="Control" parent="MenuContent/MenuButtons" unique_id=1268709329]
+layout_mode = 2
+size_flags_vertical = 3
 
 [connection signal="pressed" from="MenuContent/MenuButtons/PlayButton" to="." method="_on_play_button_pressed"]
