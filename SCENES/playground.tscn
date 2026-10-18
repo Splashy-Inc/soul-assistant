@@ -32,6 +32,7 @@
 [ext_resource type="PackedScene" uid="uid://lfjki5tuele5" path="res://hover_sound.tscn" id="15_0sjh1"]
 [ext_resource type="Script" uid="uid://ximhghbf72gj" path="res://SCRIPTS/soul_dropoff.gd" id="15_af28u"]
 [ext_resource type="PackedScene" uid="uid://bh6bhqq5s7sjn" path="res://press_sound.tscn" id="16_dlf3s"]
+[ext_resource type="Texture2D" uid="uid://bp321sxscuh1l" path="res://ASSETS/Art/raft_spritesheet_896x896.png" id="17_swea1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kk3q7"]
 texture = ExtResource("6_5u8wx")
@@ -90,25 +91,18 @@ texture_region_size = Vector2i(128, 128)
 tile_size = Vector2i(128, 128)
 sources/1 = SubResource("TileSetAtlasSource_kk3q7")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_68f5m"]
-texture = ExtResource("6_5u8wx")
-texture_region_size = Vector2i(128, 128)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s0wed"]
+texture = ExtResource("17_swea1")
+texture_region_size = Vector2i(896, 896)
+0:0/animation_frame_0/duration = 0.25
+0:0/animation_frame_1/duration = 0.25
+0:0/animation_frame_2/duration = 0.25
+0:0/animation_frame_3/duration = 0.25
 0:0/0 = 0
-0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-1:0/0 = 0
-1:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-2:0/0 = 0
-2:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-3:0/0 = 0
-3:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-4:0/0 = 0
-4:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-5:0/0 = 0
-5:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-6:0/0 = 0
-6:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-0:1/0 = 0
-0:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_68f5m"]
+texture = ExtResource("17_swea1")
+texture_region_size = Vector2i(128, 128)
 1:1/0 = 0
 1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 2:1/0 = 0
@@ -119,10 +113,6 @@ texture_region_size = Vector2i(128, 128)
 4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 5:1/0 = 0
 5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-6:1/0 = 0
-6:1/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-0:2/0 = 0
-0:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 1:2/0 = 0
 1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 2:2/0 = 0
@@ -133,10 +123,6 @@ texture_region_size = Vector2i(128, 128)
 4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 5:2/0 = 0
 5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-6:2/0 = 0
-6:2/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-0:3/0 = 0
-0:3/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 1:3/0 = 0
 1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 2:3/0 = 0
@@ -147,10 +133,6 @@ texture_region_size = Vector2i(128, 128)
 4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 5:3/0 = 0
 5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-6:3/0 = 0
-6:3/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-0:4/0 = 0
-0:4/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 1:4/0 = 0
 1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 2:4/0 = 0
@@ -161,10 +143,6 @@ texture_region_size = Vector2i(128, 128)
 4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 5:4/0 = 0
 5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-6:4/0 = 0
-6:4/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-0:5/0 = 0
-0:5/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 1:5/0 = 0
 1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 2:5/0 = 0
@@ -175,22 +153,9 @@ texture_region_size = Vector2i(128, 128)
 4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 5:5/0 = 0
 5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-6:5/0 = 0
-6:5/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-0:6/0 = 0
-0:6/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-1:6/0 = 0
-1:6/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-2:6/0 = 0
-2:6/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-3:6/0 = 0
-3:6/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-4:6/0 = 0
-4:6/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-5:6/0 = 0
-5:6/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
-6:6/0 = 0
-6:6/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+6:0/0 = 0
+6:0/0/modulate = Color(1, 1, 1, 0)
+6:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
 [sub_resource type="TileSet" id="TileSet_rmx7e"]
 tile_size = Vector2i(128, 128)
@@ -199,6 +164,7 @@ physics_layer_0/collision_mask = 0
 physics_layer_1/collision_layer = 16
 physics_layer_1/collision_mask = 0
 sources/1 = SubResource("TileSetAtlasSource_68f5m")
+sources/0 = SubResource("TileSetAtlasSource_s0wed")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rmx7e"]
 
@@ -449,14 +415,18 @@ offset_top = -192.0
 offset_right = 352.0
 offset_bottom = 168.0
 
+[node name="Animation" type="TileMapLayer" parent="Boat" unique_id=727304571]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_rmx7e")
+
+[node name="Boundary" type="TileMapLayer" parent="Boat" unique_id=1220953976]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAD9//3/AQAGAAAAAAD+//3/AQAGAAAAAAD///3/AQAGAAAAAAAAAP3/AQAGAAAAAAABAP3/AQAGAAAAAAACAP3/AQAGAAAAAAADAP3/AQAGAAAAAAADAP7/AQAGAAAAAAADAP//AQAGAAAAAAADAAAAAQAGAAAAAAADAAEAAQAGAAAAAAADAAIAAQAGAAAAAAADAAMAAQAGAAAAAAACAAMAAQAGAAAAAAABAAMAAQAGAAAAAAAAAAMAAQAGAAAAAAD//wMAAQAGAAAAAAD+/wMAAQAGAAAAAAD9/wMAAQAGAAAAAAD9/wIAAQAGAAAAAAD9/wEAAQAGAAAAAAD9/wAAAQAGAAAAAAD9////AQAGAAAAAAD9//7/AQAGAAAAAAA=")
+tile_set = SubResource("TileSet_rmx7e")
+
 [node name="PlayGrid" type="TileMapLayer" parent="Boat" unique_id=648146197]
 tile_map_data = PackedByteArray("AAD+//7/AQABAAEAAAD+////AQABAAIAAAD+/wAAAQABAAMAAAD+/wEAAQABAAQAAAD+/wIAAQABAAUAAAD///7/AQACAAEAAAD/////AQACAAIAAAD//wAAAQACAAMAAAD//wEAAQACAAQAAAD//wIAAQACAAUAAAAAAP7/AQADAAEAAAAAAP//AQADAAIAAAAAAAAAAQADAAMAAAAAAAEAAQADAAQAAAAAAAIAAQADAAUAAAABAP7/AQAEAAEAAAABAP//AQAEAAIAAAABAAAAAQAEAAMAAAABAAEAAQAEAAQAAAABAAIAAQAEAAUAAAACAP7/AQAFAAEAAAACAP//AQAFAAIAAAACAAAAAQAFAAMAAAACAAEAAQAFAAQAAAACAAIAAQAFAAUAAAA=")
 tile_set = SubResource("TileSet_rmx7e")
 script = ExtResource("8_xdw11")
-
-[node name="Boundary" type="TileMapLayer" parent="Boat" unique_id=727304571]
-tile_map_data = PackedByteArray("AAD9//3/AQAAAAAAAAD+//3/AQABAAAAAAD///3/AQACAAAAAAAAAP3/AQADAAAAAAABAP3/AQAEAAAAAAACAP3/AQAFAAAAAAADAP3/AQAGAAAAAAD9//7/AQAAAAEAAAD9////AQAAAAIAAAD9/wAAAQAAAAMAAAD9/wEAAQAAAAQAAAD9/wIAAQAAAAUAAAADAP7/AQAGAAEAAAADAP//AQAGAAIAAAADAAAAAQAGAAMAAAADAAEAAQAGAAQAAAADAAIAAQAGAAUAAAD9/wMAAQAAAAYAAAD+/wMAAQABAAYAAAD//wMAAQACAAYAAAAAAAMAAQADAAYAAAABAAMAAQAEAAYAAAACAAMAAQAFAAYAAAADAAMAAQAGAAYAAAA=")
-tile_set = SubResource("TileSet_rmx7e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Boat" unique_id=1267784743]
 position = Vector2(64, 64)
