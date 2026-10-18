@@ -33,6 +33,9 @@ var row_left := false
 @onready var helper_text: Label = $HelperText
 @onready var next_button: UIButton = $NextButton
 
+@onready var left_animation_player: AnimationPlayer = $RowIndicators/Left/AnimationPlayer
+@onready var right_animation_player: AnimationPlayer = $RowIndicators/Right/AnimationPlayer
+
 # TODO: Add mobile control check to only show on mobile devices
 func _process(delta: float) -> void:
 	if row_left:
@@ -86,9 +89,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.is_action_pressed("row_left") and row_left:
 			speed += acceleration
 			row_left = false
+			left_animation_player.play("RESET")
+			right_animation_player.play("pulse")
 		elif event.is_action_pressed("row_right") and not row_left:
 			speed += acceleration
 			row_left = true
+			left_animation_player.play("pulse")
+			right_animation_player.play("RESET")
 
 func _on_play_grid_soul_clicked(soul: Soul) -> void:
 	if stop_point is SoulDropoff and speed == 0:

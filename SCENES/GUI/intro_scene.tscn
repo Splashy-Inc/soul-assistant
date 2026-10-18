@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://wh4is25vmjgy"]
+
+[ext_resource type="Texture2D" uid="uid://cfdo2ym8d6deb" path="res://ASSETS/Art/charon_1.png" id="1_8vi2x"]
+[ext_resource type="Script" uid="uid://dufjm884w3fxs" path="res://SCRIPTS/intro_scene.gd" id="1_kseym"]
+[ext_resource type="Texture2D" uid="uid://dw6vsgwpy87ns" path="res://ASSETS/Art/charon_2.png" id="2_kseym"]
+[ext_resource type="PackedScene" uid="uid://cwr6cg26cwtpw" path="res://SCENES/DialogSystem/dialog_box.tscn" id="3_7yder"]
+[ext_resource type="Resource" uid="uid://b5l1n3yvwg7x0" path="res://SCRIPTS/DialogSystem/DialogData/part_2_dialog_data.tres" id="3_xvbg7"]
+[ext_resource type="Resource" uid="uid://clmelpghe4x1r" path="res://SCRIPTS/DialogSystem/DialogData/part_1_dialog_data.tres" id="6_xvbg7"]
+
+[node name="IntroScene" type="Control" unique_id=1987635739]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kseym")
+part_1_dialog_data = ExtResource("6_xvbg7")
+part_2_dialog_data = ExtResource("3_xvbg7")
+
+[node name="Part1" type="TextureRect" parent="." unique_id=484705335]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_8vi2x")
+
+[node name="Part2" type="TextureRect" parent="." unique_id=851373168]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_kseym")
+
+[node name="DialogBox" parent="." unique_id=1988314642 instance=ExtResource("3_7yder")]
+layout_mode = 1
+offset_top = -140.0
+dialog_data = ExtResource("6_xvbg7")
+
+[connection signal="dialog_ended" from="DialogBox" to="." method="_on_dialog_box_dialog_ended"]

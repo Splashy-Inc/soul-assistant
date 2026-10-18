@@ -19,11 +19,11 @@ signal skip_pressed
 @export var dialog_data: DialogData
 @export var end_buttons: Array[PackedScene]
 
-@onready var left_texture_node: TextureRect = $HBoxContainer/LeftPanel/LeftTexture
-@onready var right_texture_node: TextureRect = $HBoxContainer/RightPanel/RightTexture
-@onready var dialog_text_node: Label = $HBoxContainer/TextArea/DialogTextSection/DialogText
-@onready var dialog_button_section: HBoxContainer = $HBoxContainer/TextArea/DialogButtonSection
-@onready var dialog_button: DialogButton = $HBoxContainer/TextArea/DialogButtonSection/DialogButton
+@onready var left_texture_node: TextureRect = $VBoxContainer/HBoxContainer/LeftPanel/LeftTexture
+@onready var right_texture_node: TextureRect = $VBoxContainer/HBoxContainer/RightPanel/RightTexture
+@onready var dialog_text_node: Label = $VBoxContainer/HBoxContainer/TextArea/DialogTextSection/DialogText
+@onready var dialog_button_section: HBoxContainer = $VBoxContainer/DialogButtonSection
+@onready var dialog_button: DialogButton = $VBoxContainer/DialogButtonSection/DialogButton
 
 var cur_dialog_position := 0
 
@@ -40,7 +40,8 @@ func initialize():
 	#left_sound_player.stream = left_sound
 	#right_texture_node.texture = right_texture
 	#right_sound_player.stream = right_sound
-	
+	cur_dialog_position = 0
+	show()
 	if dialog_data and dialog_data.dialog_text_json:
 		end_buttons = dialog_data.end_buttons
 		_set_dialog_text(dialog_data.dialog_text_json.data["dialog_lines"][cur_dialog_position]["line"])

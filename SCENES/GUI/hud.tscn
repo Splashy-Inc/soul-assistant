@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://chx7ah8nu3wog" path="res://SCRIPTS/hud.gd" id="1_w38b1"]
 [ext_resource type="Texture2D" uid="uid://cfdo2ym8d6deb" path="res://ASSETS/Art/charon_1.png" id="2_5mbdk"]
+[ext_resource type="PackedScene" uid="uid://wh4is25vmjgy" path="res://SCENES/GUI/intro_scene.tscn" id="3_u0llk"]
 [ext_resource type="PackedScene" uid="uid://k7ghjsy8g1k0" path="res://SCENES/GUI/main_menu.tscn" id="4_f58rm"]
 [ext_resource type="PackedScene" uid="uid://c3sldi7g5fcg6" path="res://SCENES/GUI/pause_menu.tscn" id="6_k66bl"]
 [ext_resource type="PackedScene" uid="uid://v65h1k4msxhb" path="res://SCENES/GUI/win_screen.tscn" id="6_s7jfo"]
@@ -12,6 +13,7 @@ layer = 2
 script = ExtResource("1_w38b1")
 
 [node name="MenuScreens" type="Control" parent="." unique_id=954790933]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,7 +31,12 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_5mbdk")
 
+[node name="IntroScene" parent="MenuScreens" unique_id=1987635739 instance=ExtResource("3_u0llk")]
+visible = false
+layout_mode = 1
+
 [node name="MainMenu" parent="MenuScreens" unique_id=1900544557 instance=ExtResource("4_f58rm")]
+visible = false
 layout_mode = 1
 
 [node name="WinScreen" parent="MenuScreens" unique_id=1911079505 instance=ExtResource("6_s7jfo")]
@@ -44,6 +51,7 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
+[connection signal="intro_ended" from="MenuScreens/IntroScene" to="." method="_on_intro_ended"]
 [connection signal="button_pressed" from="MenuScreens/MainMenu" to="." method="_on_game_menu_button_pressed"]
 [connection signal="button_pressed" from="MenuScreens/WinScreen" to="." method="_on_game_menu_button_pressed"]
 [connection signal="button_pressed" from="MenuScreens/LossScreen" to="." method="_on_game_menu_button_pressed"]
