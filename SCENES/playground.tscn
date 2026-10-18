@@ -360,6 +360,44 @@ gradient = SubResource("Gradient_wxwxs")
 width = 512
 height = 32
 
+[sub_resource type="Animation" id="Animation_swea1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset_transform_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_s0wed"]
+resource_name = "pulse"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset_transform_scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gfavb"]
+_data = {
+&"RESET": SubResource("Animation_swea1"),
+&"pulse": SubResource("Animation_s0wed")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_of7f0"]
 size = Vector2(1920, 1080)
 
@@ -497,6 +535,7 @@ offset_left = -134.0
 offset_top = 395.0
 offset_right = 248.0
 offset_bottom = 485.0
+offset_transform_enabled = true
 theme = ExtResource("13_apqvo")
 theme_override_font_sizes/font_size = 48
 text = "Cross the River Styx"
@@ -505,6 +544,10 @@ script = ExtResource("14_0sjh1")
 [node name="HoverSound" parent="Boat/NextButton" unique_id=1739431041 instance=ExtResource("15_0sjh1")]
 
 [node name="PressSound" parent="Boat/NextButton" unique_id=704776872 instance=ExtResource("16_dlf3s")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Boat/NextButton" unique_id=310263499]
+libraries/ = SubResource("AnimationLibrary_gfavb")
+autoplay = &"pulse"
 
 [node name="Camera2D" type="Camera2D" parent="Boat" unique_id=299637142]
 offset = Vector2(-416, 32)
