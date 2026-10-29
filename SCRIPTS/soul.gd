@@ -32,12 +32,12 @@ func _process(delta: float) -> void:
 		if Input.is_action_pressed("click"):
 			if is_instance_valid(starting_slot):
 				global_position = get_viewport().get_mouse_position() - center.position * scale.x
-				if is_instance_valid(boat) and blocking_boundaries.is_empty():
+				if is_instance_valid(boat):
 					global_position = Vector2(snappedf(global_position.x, 128), snapped(global_position.y, 128)) + Vector2(32, -64)
-					if not blocking_souls.is_empty():
-						modulate = invalid_modulate
-					else:
-						modulate = Color(1.0, 1.0, 1.0, 1.0)
+				if not blocking_souls.is_empty() or not blocking_boundaries.is_empty():
+					modulate = invalid_modulate
+				else:
+					modulate = Color(1.0, 1.0, 1.0, 1.0)
 		else:
 			dragging = false
 			modulate = Color(1.0, 1.0, 1.0, 1.0)
