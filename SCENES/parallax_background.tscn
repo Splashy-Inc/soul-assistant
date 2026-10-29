@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://d1fnfg5c0hmib" path="res://SCENES/tilemap_background.tscn" id="1_7rpsa"]
 
 [node name="ParallaxBackground" type="Parallax2D" unique_id=1540312356]
-repeat_size = Vector2(640, 360)
-autoscroll = Vector2(0, 32)
+scale = Vector2(2, 2)
+repeat_size = Vector2(640, 384)
 repeat_times = 5
 
 [node name="TileMapBackground" parent="." unique_id=1792929100 instance=ExtResource("1_7rpsa")]

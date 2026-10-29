@@ -51,8 +51,10 @@ rect = Rect2(-192, -192, 384, 384)
 
 [node name="PickupSound" type="AudioStreamPlayer" parent="." unique_id=144772586]
 stream = ExtResource("3_b3jvd")
+volume_db = 5.0
 bus = &"SFX"
 
 [node name="DropoffSound" type="AudioStreamPlayer" parent="." unique_id=1546379212]
 stream = ExtResource("4_w7jb1")
+volume_db = 5.0
 bus = &"SFX"
