@@ -66,7 +66,6 @@ func _process(delta: float) -> void:
 			mobile_controls.hide()
 			if distance_to_stop > 10 and global_position.x < stop_point.global_position.x:
 				speed = clampf(lerpf(speed, 0, stop_weight), clampf(distance_to_stop, 512, distance_to_stop), lerpf(speed, distance_to_stop, stop_weight))
-				print(speed)
 			else:
 				global_position = stop_point.global_position
 				if speed != 0:
