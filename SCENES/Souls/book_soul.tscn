@@ -2,16 +2,40 @@
 
 [ext_resource type="Script" uid="uid://cba0bpvyx7idv" path="res://SCRIPTS/soul.gd" id="1_dniky"]
 [ext_resource type="AudioStream" uid="uid://blf5hg7mqsdv" path="res://ASSETS/Sound/soul_drag_3.ogg" id="2_0gcqe"]
-[ext_resource type="Texture2D" uid="uid://bfeyhof1byjcs" path="res://ASSETS/Art/soul_spritesheet_128x128x3.png" id="2_p1fha"]
+[ext_resource type="Texture2D" uid="uid://crx7iivkmx03f" path="res://ASSETS/Art/book_ghost_384X384.png" id="2_p1fha"]
 [ext_resource type="AudioStream" uid="uid://cq8c3ubydw7ai" path="res://ASSETS/Sound/soul_drop_3.ogg" id="3_p1fha"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vu6e6"]
 atlas = ExtResource("2_p1fha")
-region = Rect2(0, 1152, 384, 384)
+region = Rect2(0, 0, 384, 384)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vp3xp"]
 atlas = ExtResource("2_p1fha")
-region = Rect2(384, 1152, 384, 384)
+region = Rect2(384, 0, 384, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paiqi"]
+atlas = ExtResource("2_p1fha")
+region = Rect2(768, 0, 384, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwfwl"]
+atlas = ExtResource("2_p1fha")
+region = Rect2(1152, 0, 384, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01718"]
+atlas = ExtResource("2_p1fha")
+region = Rect2(1536, 0, 384, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ngb0"]
+atlas = ExtResource("2_p1fha")
+region = Rect2(1920, 0, 384, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjud0"]
+atlas = ExtResource("2_p1fha")
+region = Rect2(2304, 0, 384, 384)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yccsg"]
+atlas = ExtResource("2_p1fha")
+region = Rect2(2688, 0, 384, 384)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rmx7e"]
 animations = [{
@@ -21,10 +45,28 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vp3xp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paiqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwfwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01718")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ngb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjud0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yccsg")
 }],
 "loop": 1,
 "name": &"default",
-"speed": 4.0
+"speed": 8.0
 }]
 
 [node name="Soul" type="Area2D" unique_id=472145370]
@@ -35,10 +77,10 @@ script = ExtResource("1_dniky")
 money = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1419673022]
-position = Vector2(-64, -192)
+position = Vector2(-192, -192)
 sprite_frames = SubResource("SpriteFrames_rmx7e")
 autoplay = "default"
-frame_progress = 0.2870317
+frame_progress = 0.79287505
 centered = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1297246680]

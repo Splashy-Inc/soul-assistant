@@ -11,7 +11,7 @@ signal intro_ended
 @onready var menu_screens: Control = $MenuScreens
 @onready var menu_back_ground: TextureRect = $MenuScreens/MenuBackGround
 @onready var main_menu: Control = $MenuScreens/MainMenu
-@onready var controls_screen: Control = $MenuScreens/ControlsScreen
+#@onready var controls_screen: Control = $MenuScreens/ControlsScreen
 @onready var win_screen: WinScreen = $MenuScreens/WinScreen
 @onready var loss_screen: LossScreen = $MenuScreens/LossScreen
 @onready var pause_menu: Control = $MenuScreens/PauseMenu
@@ -67,7 +67,7 @@ func _show_controls():
 	cur_menu = Menus.CONTROLS
 	_clear_menu()
 	show_menu_screens()
-	controls_screen.show()
+	#controls_screen.show()
 
 func show_main_menu():
 	cur_menu = Menus.MAIN
